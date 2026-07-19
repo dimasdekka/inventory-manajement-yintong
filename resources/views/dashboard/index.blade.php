@@ -232,6 +232,7 @@
                 }]
             },
             options: {
+                indexAxis: 'y',
                 responsive: true,
                 maintainAspectRatio: false,
                 plugins: {
@@ -248,7 +249,7 @@
                     }
                 },
                 scales: {
-                    y: {
+                    x: {
                         beginAtZero: true,
                         grid: {
                             color: '#f5f5f5'
@@ -258,13 +259,13 @@
                             font: { family: 'Inter', size: 11 }
                         }
                     },
-                    x: {
+                    y: {
                         grid: {
                             display: false
                         },
                         ticks: {
-                            color: '#888888',
-                            font: { family: 'Inter', size: 11 }
+                            color: '#444444',
+                            font: { family: 'Inter', size: 11, weight: '550' }
                         }
                     }
                 }
