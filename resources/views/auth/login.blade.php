@@ -6,7 +6,7 @@
         <img src="{{ asset('images/logo.png') }}" alt="Logo Yintong Inventory" style="height: 54px; width: auto; object-fit: contain; margin-bottom: 10px;">
         <span>Yintong Inventory</span>
     </div>
-    <div class="auth-subtitle">Sistem Informasi Inventori & Aset Tetap</div>
+    <div class="auth-subtitle">Sistem Informasi Inventori</div>
 
     <!-- Alert error jika ada error validasi atau dari session -->
     @if ($errors->any())

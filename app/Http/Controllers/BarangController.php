@@ -146,4 +146,71 @@ class BarangController extends Controller
 
         return redirect()->route('barang.index')->with('success', 'Barang berhasil dihapus.');
     }
+
+    /**
+     * API Quick Search untuk Live Topbar Search.
+     */
+    public function quickSearch(Request $request)
+    {
+        $q = trim($request->input('q', ''));
+        if (strlen($q) < 2) {
+            return response()->json([]);
+        }
+
+        $results = [];
+
+        // 1. Cari Barang
+        $barangs = Barang::with('kategori')
+            ->where('nama_barang', 'like', "%{$q}%")
+            ->orWhere('kode_barang', 'like', "%{$q}%")
+            ->orWhere('lokasi_penyimpanan', 'like', "%{$q}%")
+            ->limit(5)
+            ->get();
+
+        foreach ($barangs as $b) {
+            $results[] = [
+                'type' => 'Barang',
+                'badge' => 'badge-emerald',
+                'title' => $b->nama_barang,
+                'subtitle' => "[{$b->kode_barang}] Stok: {$b->jumlah} {$b->satuan} • Lokasi: {$b->lokasi_penyimpanan}",
+                'url' => route('barang.show', $b->id),
+                'icon' => 'fa-boxes-stacked'
+            ];
+        }
+
+        // 2. Cari Supplier
+        $suppliers = Supplier::where('nama_supplier', 'like', "%{$q}%")
+            ->orWhere('kontak_person', 'like', "%{$q}%")
+            ->limit(3)
+            ->get();
+
+        foreach ($suppliers as $s) {
+            $results[] = [
+                'type' => 'Supplier',
+                'badge' => 'badge-info',
+                'title' => $s->nama_supplier,
+                'subtitle' => "Kontak: " . ($s->kontak_person ?? $s->telepon),
+                'url' => route('supplier.show', $s->id),
+                'icon' => 'fa-truck-field'
+            ];
+        }
+
+        // 3. Cari Kategori
+        $kategori = Kategori::where('nama_kategori', 'like', "%{$q}%")
+            ->limit(3)
+            ->get();
+
+        foreach ($kategori as $k) {
+            $results[] = [
+                'type' => 'Kategori',
+                'badge' => 'badge-secondary',
+                'title' => $k->nama_kategori,
+                'subtitle' => $k->deskripsi ?? 'Kategori Inventori',
+                'url' => route('barang.index', ['kategori_id' => $k->id]),
+                'icon' => 'fa-tags'
+            ];
+        }
+
+        return response()->json($results);
+    }
 }

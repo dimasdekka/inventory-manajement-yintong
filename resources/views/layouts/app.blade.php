@@ -585,6 +585,148 @@
             border-color: #F5C2C2;
             border-left-color: #F05252;
         }
+        /* Topbar Dropdowns & Badges */
+        .search-box-wrapper {
+            position: relative;
+            flex-grow: 1;
+            max-width: 400px;
+        }
+        .quick-search-dropdown {
+            position: absolute;
+            top: 48px;
+            left: 0;
+            right: 0;
+            background: #ffffff;
+            border: 1px solid var(--border-color);
+            border-radius: 16px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+            z-index: 1050;
+            display: none;
+            max-height: 380px;
+            overflow-y: auto;
+            padding: 8px;
+        }
+        .quick-search-dropdown.show {
+            display: block;
+        }
+        .search-result-item {
+            display: flex;
+            align-items: center;
+            padding: 10px 12px;
+            border-radius: 10px;
+            text-decoration: none;
+            color: var(--text-main);
+            transition: all 0.2s ease;
+            gap: 12px;
+        }
+        .search-result-item:hover {
+            background-color: var(--mint-light);
+            color: var(--emerald-primary);
+        }
+        .search-result-icon {
+            width: 34px;
+            height: 34px;
+            border-radius: 8px;
+            background-color: #F3F4F6;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 14px;
+            color: var(--emerald-primary);
+        }
+        .badge-search-tag {
+            font-size: 10px;
+            font-weight: 600;
+            padding: 2px 6px;
+            border-radius: 4px;
+            text-transform: uppercase;
+        }
+
+        /* Notification Popover Dropdown */
+        .notification-wrapper {
+            position: relative;
+        }
+        .bell-btn {
+            position: relative;
+        }
+        .bell-dot-badge {
+            position: absolute;
+            top: 2px;
+            right: 2px;
+            width: 18px;
+            height: 18px;
+            background-color: #DC2626;
+            color: #ffffff;
+            font-size: 10px;
+            font-weight: 700;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border: 2px solid #ffffff;
+        }
+        .notification-dropdown {
+            position: absolute;
+            top: 48px;
+            right: 0;
+            width: 340px;
+            background: #ffffff;
+            border: 1px solid var(--border-color);
+            border-radius: 18px;
+            box-shadow: 0 12px 35px rgba(0, 0, 0, 0.1);
+            z-index: 1050;
+            display: none;
+            overflow: hidden;
+        }
+        .notification-dropdown.show {
+            display: block;
+        }
+        .notif-header {
+            padding: 14px 16px;
+            border-bottom: 1px solid var(--border-color);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background-color: #FAFAFA;
+        }
+        .notif-body {
+            max-height: 320px;
+            overflow-y: auto;
+        }
+        .notif-item {
+            padding: 12px 16px;
+            border-bottom: 1px solid #F3F4F6;
+            display: flex;
+            gap: 12px;
+            text-decoration: none;
+            color: var(--text-main);
+            transition: background 0.2s;
+        }
+        .notif-item:hover {
+            background-color: #F9FAFB;
+        }
+        .notif-icon {
+            width: 32px;
+            height: 32px;
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 13px;
+            flex-shrink: 0;
+        }
+        .notif-footer {
+            padding: 10px 16px;
+            text-align: center;
+            background-color: #FAFAFA;
+            border-top: 1px solid var(--border-color);
+            font-size: 12px;
+        }
+        .notif-footer a {
+            color: var(--emerald-primary);
+            font-weight: 600;
+            text-decoration: none;
+        }
     </style>
     @yield('styles')
 </head>
@@ -614,18 +756,18 @@
                         <a href="{{ route('kategori.index') }}"><i class="fa-solid fa-tags"></i> Kategori Barang</a>
                     </li>
                     <li class="{{ Request::is('supplier*') ? 'active' : '' }}">
-                        <a href="{{ route('supplier.index') }}"><i class="fa-solid fa-truck-field"></i> Supplier / Pemasok</a>
+                        <a href="{{ route('supplier.index') }}"><i class="fa-solid fa-truck-field"></i> Data Supplier</a>
                     </li>
                     
                     <div class="menu-category-title">Transaksi</div>
                     <li class="{{ Request::is('barang-masuk*') ? 'active' : '' }}">
-                        <a href="{{ route('barang-masuk.index') }}"><i class="fa-solid fa-arrow-down-long"></i> Barang Masuk</a>
+                        <a href="{{ route('barang-masuk.index') }}"><i class="fa-solid fa-arrow-down-long text-success"></i> Barang Masuk</a>
                     </li>
                     <li class="{{ Request::is('barang-keluar*') ? 'active' : '' }}">
-                        <a href="{{ route('barang-keluar.index') }}"><i class="fa-solid fa-arrow-up-long"></i> Barang Keluar</a>
+                        <a href="{{ route('barang-keluar.index') }}"><i class="fa-solid fa-arrow-up-long text-danger"></i> Barang Keluar</a>
                     </li>
                     <li class="{{ Request::is('mutasi*') ? 'active' : '' }}">
-                        <a href="{{ route('mutasi.index') }}"><i class="fa-solid fa-arrows-spin"></i> Mutasi Barang</a>
+                        <a href="{{ route('mutasi.index') }}"><i class="fa-solid fa-right-left text-primary"></i> Mutasi Lokasi</a>
                     </li>
                     <li class="{{ Request::is('peminjaman*') ? 'active' : '' }}">
                         <a href="{{ route('peminjaman.index') }}"><i class="fa-solid fa-handshake"></i> Peminjaman Barang</a>
@@ -659,19 +801,83 @@
         <div id="content">
             <!-- Donezo Topbar Header -->
             <header class="topbar-header">
-                <!-- Search input bar -->
-                <div class="header-search-box">
-                    <i class="fa-solid fa-magnifying-glass"></i>
-                    <input type="text" placeholder="Cari data barang, supplier, transaksi..." id="globalSearchInput">
-                    <span class="kbd-shortcut">⌘F</span>
+                <!-- Search Input Bar & Live Dropdown -->
+                <div class="search-box-wrapper">
+                    <div class="header-search-box">
+                        <i class="fa-solid fa-magnifying-glass"></i>
+                        <input type="text" placeholder="Cari data barang, supplier, kategori..." id="globalSearchInput" autocomplete="off">
+                        <span class="kbd-shortcut">⌘F</span>
+                    </div>
+                    <!-- Quick Search Results Dropdown -->
+                    <div class="quick-search-dropdown" id="quickSearchResultsDropdown"></div>
                 </div>
                 
                 <!-- Actions & User Profile Pill -->
                 <div class="header-actions">
-                    <a href="{{ route('laporan.index') }}" class="icon-circle-btn" title="Laporan & Ringkasan">
-                        <i class="fa-regular fa-bell"></i>
-                    </a>
+                    <!-- Notification Bell Button Wrapper -->
+                    <div class="notification-wrapper">
+                        <button type="button" class="icon-circle-btn bell-btn" id="notificationBellBtn" title="Notifikasi Inventori">
+                            <i class="fa-regular fa-bell"></i>
+                            @if(isset($totalNotif) && $totalNotif > 0)
+                                <span class="bell-dot-badge">{{ $totalNotif }}</span>
+                            @endif
+                        </button>
+
+                        <!-- Notification Dropdown Popover -->
+                        <div class="notification-dropdown" id="notificationDropdown">
+                            <div class="notif-header">
+                                <span class="fw-bold font-outfit" style="font-size: 14px; color: var(--text-main);">Notifikasi System</span>
+                                @if(isset($totalNotif) && $totalNotif > 0)
+                                    <span class="badge-custom badge-danger">{{ $totalNotif }} Perlu Perhatian</span>
+                                @else
+                                    <span class="badge-custom badge-success">Semua Aman</span>
+                                @endif
+                            </div>
+                            <div class="notif-body">
+                                @if(isset($notifStok) && $notifStok->count() > 0)
+                                    <div class="px-3 pt-2 pb-1 text-muted text-uppercase fw-bold" style="font-size: 10px;">Stok Kritis</div>
+                                    @foreach($notifStok as $stokItem)
+                                        <a href="{{ route('barang.show', $stokItem->id) }}" class="notif-item">
+                                            <div class="notif-icon" style="background: #FDF2F2; color: #DC2626;">
+                                                <i class="fa-solid fa-triangle-exclamation"></i>
+                                            </div>
+                                            <div>
+                                                <div class="fw-semibold" style="font-size: 12.5px;">{{ $stokItem->nama_barang }}</div>
+                                                <div class="text-danger fw-bold" style="font-size: 11px;">Stok tersisa {{ $stokItem->jumlah }} {{ $stokItem->satuan }} (Batas: {{ $stokItem->stok_minimum }})</div>
+                                            </div>
+                                        </a>
+                                    @endforeach
+                                @endif
+
+                                @if(isset($notifPinjam) && $notifPinjam->count() > 0)
+                                    <div class="px-3 pt-2 pb-1 text-muted text-uppercase fw-bold" style="font-size: 10px;">Barang Dipinjam</div>
+                                    @foreach($notifPinjam as $pinjamItem)
+                                        <a href="{{ route('peminjaman.index') }}" class="notif-item">
+                                            <div class="notif-icon" style="background: #FEF3C7; color: #D97706;">
+                                                <i class="fa-solid fa-clock"></i>
+                                            </div>
+                                            <div>
+                                                <div class="fw-semibold" style="font-size: 12.5px;">{{ $pinjamItem->barang->nama_barang ?? 'Barang' }}</div>
+                                                <div class="text-muted" style="font-size: 11px;">Dipinjam oleh {{ $pinjamItem->peminjam->nama ?? '-' }} ({{ $pinjamItem->jumlah }} unit)</div>
+                                            </div>
+                                        </a>
+                                    @endforeach
+                                @endif
+
+                                @if((!isset($notifStok) || $notifStok->count() == 0) && (!isset($notifPinjam) || $notifPinjam->count() == 0))
+                                    <div class="text-center py-4 text-muted" style="font-size: 12.5px;">
+                                        <i class="fa-solid fa-circle-check text-success fs-4 mb-2 d-block"></i>
+                                        Tidak ada peringatan stok atau peminjaman aktif.
+                                    </div>
+                                @endif
+                            </div>
+                            <div class="notif-footer">
+                                <a href="{{ route('laporan.index') }}">Lihat Laporan Inventori Lengkap →</a>
+                            </div>
+                        </div>
+                    </div>
                     
+                    <!-- Profile Pill -->
                     <div class="user-profile-pill">
                         @if(auth()->user()->foto)
                             <img src="{{ asset(auth()->user()->foto) }}" class="user-avatar" alt="Avatar">
@@ -726,7 +932,107 @@
 
     <!-- Bootstrap 5 Bundle JS -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+
+    <!-- Topbar Functional Scripts: Live Search & Notification Bell -->
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            // 1. Shortcut Keyboard ⌘F / Ctrl+K / Ctrl+F untuk fokus kolom pencarian
+            document.addEventListener('keydown', function (e) {
+                if ((e.metaKey || e.ctrlKey) && (e.key === 'f' || e.key === 'F' || e.key === 'k' || e.key === 'K')) {
+                    e.preventDefault();
+                    const searchInput = document.getElementById('globalSearchInput');
+                    if (searchInput) {
+                        searchInput.focus();
+                        searchInput.select();
+                    }
+                }
+            });
+
+            // 2. Interactive Live Quick Search
+            const searchInput = document.getElementById('globalSearchInput');
+            const searchDropdown = document.getElementById('quickSearchResultsDropdown');
+            let searchTimeout = null;
+
+            if (searchInput && searchDropdown) {
+                // Enter Key Direct Redirect to Barang Index
+                searchInput.addEventListener('keydown', function(e) {
+                    if (e.key === 'Enter' && this.value.trim() !== '') {
+                        window.location.href = "{{ route('barang.index') }}?search=" + encodeURIComponent(this.value.trim());
+                    }
+                });
+
+                // Typing AJAX Fetch
+                searchInput.addEventListener('input', function () {
+                    clearTimeout(searchTimeout);
+                    const query = this.value.trim();
+
+                    if (query.length < 2) {
+                        searchDropdown.classList.remove('show');
+                        searchDropdown.innerHTML = '';
+                        return;
+                    }
+
+                    searchTimeout = setTimeout(() => {
+                        fetch("{{ route('api.quick-search') }}?q=" + encodeURIComponent(query))
+                            .then(response => response.json())
+                            .then(data => {
+                                if (data.length === 0) {
+                                    searchDropdown.innerHTML = `
+                                        <div class="text-center py-3 text-muted" style="font-size: 13px;">
+                                            <i class="fa-solid fa-magnifying-glass mb-1 d-block"></i>
+                                            Tidak ditemukan hasil untuk "${query}"
+                                        </div>
+                                    `;
+                                } else {
+                                    let html = '';
+                                    data.forEach(item => {
+                                        html += `
+                                            <a href="${item.url}" class="search-result-item">
+                                                <div class="search-result-icon">
+                                                    <i class="fa-solid ${item.icon}"></i>
+                                                </div>
+                                                <div class="flex-grow-1 overflow-hidden">
+                                                    <div class="d-flex justify-content-between align-items-center mb-1">
+                                                        <span class="fw-semibold text-truncate" style="font-size: 13px;">${item.title}</span>
+                                                        <span class="badge-search-tag ${item.badge}">${item.type}</span>
+                                                    </div>
+                                                    <div class="text-muted text-truncate" style="font-size: 11.5px;">${item.subtitle}</div>
+                                                </div>
+                                            </a>
+                                        `;
+                                    });
+                                    searchDropdown.innerHTML = html;
+                                }
+                                searchDropdown.classList.add('show');
+                            })
+                            .catch(err => console.error('Search error:', err));
+                    }, 250);
+                });
+            }
+
+            // 3. Notification Bell Toggle
+            const bellBtn = document.getElementById('notificationBellBtn');
+            const notifDropdown = document.getElementById('notificationDropdown');
+
+            if (bellBtn && notifDropdown) {
+                bellBtn.addEventListener('click', function (e) {
+                    e.stopPropagation();
+                    notifDropdown.classList.toggle('show');
+                    if (searchDropdown) searchDropdown.classList.remove('show');
+                });
+            }
+
+            // Dismiss dropdowns when clicking outside
+            document.addEventListener('click', function (e) {
+                if (searchDropdown && !searchInput.contains(e.target) && !searchDropdown.contains(e.target)) {
+                    searchDropdown.classList.remove('show');
+                }
+                if (notifDropdown && bellBtn && !bellBtn.contains(e.target) && !notifDropdown.contains(e.target)) {
+                    notifDropdown.classList.remove('show');
+                }
+            });
+        });
+    </script>
     @yield('scripts')
 </body>
 </html>
-

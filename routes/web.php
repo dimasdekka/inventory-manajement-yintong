@@ -41,6 +41,9 @@ Route::middleware('auth')->group(function () {
     // Dashboard
     Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard');
 
+    // Quick Search API
+    Route::get('/api/quick-search', [BarangController::class, 'quickSearch'])->name('api.quick-search');
+
     // 1. Modul Data Barang
     Route::middleware('role:administrator,staff_gudang,pimpinan')->group(function () {
         Route::get('/barang', [BarangController::class, 'index'])->name('barang.index');
