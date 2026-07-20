@@ -19,7 +19,6 @@
                 <label for="jenis_laporan" class="form-label-custom">Jenis Laporan <span class="text-danger">*</span></label>
                 <select class="form-select form-control-custom w-100" id="jenis_laporan" name="jenis_laporan" required>
                     <option value="stok" {{ request('jenis_laporan', 'stok') == 'stok' ? 'selected' : '' }}>Stok Barang / Aset</option>
-                    <option value="aset_tetap" {{ request('jenis_laporan') == 'aset_tetap' ? 'selected' : '' }}>Aset Tetap / Properti</option>
                     <option value="masuk" {{ request('jenis_laporan') == 'masuk' ? 'selected' : '' }}>Transaksi Barang Masuk</option>
                     <option value="keluar" {{ request('jenis_laporan') == 'keluar' ? 'selected' : '' }}>Transaksi Barang Keluar</option>
                     <option value="mutasi" {{ request('jenis_laporan') == 'mutasi' ? 'selected' : '' }}>Riwayat Mutasi Lokasi</option>
@@ -83,8 +82,6 @@
                 <span class="text-uppercase text-decoration-underline fw-bold">
                     @if(request('jenis_laporan') == 'stok')
                         Stok Barang & Aset
-                    @elseif(request('jenis_laporan') == 'aset_tetap')
-                        Aset Tetap / Properti
                     @elseif(request('jenis_laporan') == 'masuk')
                         Transaksi Barang Masuk
                     @elseif(request('jenis_laporan') == 'keluar')
@@ -294,52 +291,6 @@
                             @endforeach
                         </tbody>
                     </table>
-                @elseif(request('jenis_laporan') == 'aset_tetap')
-                    <!-- Aset Tetap -->
-                    <table class="table-custom">
-                        <thead>
-                            <tr>
-                                <th>Kode Aset</th>
-                                <th>Nama Aset / Properti</th>
-                                <th>Tipe</th>
-                                <th>Alamat</th>
-                                <th>Luas Tanah / Bangunan</th>
-                                <th>Tgl Perolehan</th>
-                                <th>Nilai Perolehan</th>
-                                <th>Kepemilikan</th>
-                                <th>Kondisi Bangunan</th>
-                                <th>PIC</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            @foreach($data as $item)
-                                <tr>
-                                    <td class="fw-semibold">{{ $item->kode_aset }}</td>
-                                    <td>{{ $item->nama_aset }}</td>
-                                    <td>
-                                        @if($item->tipe == 'ruko')
-                                            <span class="badge-custom">Ruko</span>
-                                        @elseif($item->tipe == 'kantor')
-                                            <span class="badge-custom badge-dark">Kantor</span>
-                                        @else
-                                            <span class="badge-custom badge-warning">Mess Karyawan</span>
-                                        @endif
-                                    </td>
-                                    <td>{{ $item->alamat }}</td>
-                                    <td>{{ $item->luas_tanah }} m² / {{ $item->luas_bangunan }} m²</td>
-                                    <td>{{ $item->tanggal_perolehan->format('d-m-Y') }}</td>
-                                    <td>Rp {{ number_format($item->nilai_perolehan, 0, ',', '.') }}</td>
-                                    <td>{{ $item->status_kepemilikan == 'milik_sendiri' ? 'Milik Sendiri' : 'Sewa' }}</td>
-                                    <td>
-                                        <span class="badge-custom {{ $item->kondisi_bangunan == 'baik' ? 'badge-success' : ($item->kondisi_bangunan == 'perlu_perbaikan' ? 'badge-warning' : 'badge-danger') }}">
-                                            {{ $item->kondisi_bangunan }}
-                                        </span>
-                                    </td>
-                                    <td>{{ $item->pic }}</td>
-                                </tr>
-                            @endforeach
-                        </tbody>
-                    </table>
                 @endif
             </div>
         @else
@@ -367,13 +318,6 @@
                 dateRangeGroup.style.display = 'none';
                 categoryGroup.style.display = 'block';
                 locationGroup.style.display = 'block';
-                // Remove required status from date fields
-                document.getElementById('tanggal_mulai').removeAttribute('required');
-                document.getElementById('tanggal_selesai').removeAttribute('required');
-            } else if (reportType === 'aset_tetap') {
-                dateRangeGroup.style.display = 'block';
-                categoryGroup.style.display = 'none';
-                locationGroup.style.display = 'none';
                 // Remove required status from date fields
                 document.getElementById('tanggal_mulai').removeAttribute('required');
                 document.getElementById('tanggal_selesai').removeAttribute('required');

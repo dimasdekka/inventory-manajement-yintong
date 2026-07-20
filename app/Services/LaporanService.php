@@ -70,12 +70,6 @@ class LaporanService
                 }
                 return $query->orderBy('tanggal_pinjam', 'desc')->get();
 
-            case 'aset_tetap':
-                $query = \App\Models\AsetTetap::query();
-                if (!empty($filters['tanggal_mulai']) && !empty($filters['tanggal_selesai'])) {
-                    $query->whereBetween('tanggal_perolehan', [$filters['tanggal_mulai'], $filters['tanggal_selesai']]);
-                }
-                return $query->orderBy('kode_aset', 'asc')->get();
 
             case 'stok':
             default:
@@ -196,25 +190,7 @@ class LaporanService
                 }
                 break;
 
-            case 'aset_tetap':
-                $headings = ['Kode Aset', 'Nama Aset', 'Tipe', 'Alamat', 'Luas Tanah', 'Luas Bangunan', 'Tgl Perolehan', 'Nilai Perolehan', 'Kepemilikan', 'Kondisi Bangunan', 'PIC', 'Keterangan'];
-                foreach ($data as $item) {
-                    $exportData->push([
-                        $item->kode_aset,
-                        $item->nama_aset,
-                        strtoupper($item->tipe),
-                        $item->alamat,
-                        $item->luas_tanah . ' m²',
-                        $item->luas_bangunan . ' m²',
-                        $item->tanggal_perolehan->format('d-m-Y'),
-                        $item->nilai_perolehan,
-                        strtoupper($item->status_kepemilikan),
-                        strtoupper($item->kondisi_bangunan),
-                        $item->pic,
-                        $item->keterangan,
-                    ]);
-                }
-                break;
+
         }
 
         return [$exportData, $headings];
@@ -238,8 +214,7 @@ class LaporanService
         $title = 'LAPORAN ' . strtoupper($jenisLaporan == 'stok' ? 'stok barang' : 'transaksi barang ' . $jenisLaporan);
         if ($jenisLaporan == 'peminjaman') {
             $title = 'LAPORAN PEMINJAMAN DAN PENGEMBALIAN BARANG';
-        } elseif ($jenisLaporan == 'aset_tetap') {
-            $title = 'LAPORAN DATA ASET TETAP / PROPERTI';
+
         }
 
         $pdf = Pdf::loadView('laporan.pdf', compact('data', 'jenisLaporan', 'filters', 'title'))

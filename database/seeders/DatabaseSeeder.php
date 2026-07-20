@@ -7,7 +7,6 @@ use App\Models\User;
 use App\Models\Kategori;
 use App\Models\Supplier;
 use App\Models\Barang;
-use App\Models\AsetTetap;
 use Illuminate\Support\Facades\Hash;
 
 class DatabaseSeeder extends Seeder
@@ -193,52 +192,6 @@ class DatabaseSeeder extends Seeder
             'pic' => 'Hendra Saputra',
             'keterangan' => 'Aset inventaris untuk staff operasional baru.',
             'stok_minimum' => 2,
-        ]);
-
-        // 5. Seed Aset Tetap
-        AsetTetap::create([
-            'kode_aset' => 'AST-PROP-0001',
-            'nama_aset' => 'Ruko Kantor Pusat Mangga Dua',
-            'tipe' => 'kantor',
-            'alamat' => 'Jl. Mangga Dua Raya Blok H1 No. 5, Jakarta Pusat',
-            'luas_tanah' => 150,
-            'luas_bangunan' => 450,
-            'tanggal_perolehan' => '2018-04-12',
-            'nilai_perolehan' => 2500000000.00,
-            'status_kepemilikan' => 'milik_sendiri',
-            'kondisi_bangunan' => 'baik',
-            'pic' => 'Hermawan Kusuma',
-            'keterangan' => 'Gedung operasional utama perusahaan, sertifikat SHM No. 456.',
-        ]);
-
-        AsetTetap::create([
-            'kode_aset' => 'AST-PROP-0002',
-            'nama_aset' => 'Mess Karyawan Palmerah',
-            'tipe' => 'mess_karyawan',
-            'alamat' => 'Jl. Palmerah Barat No. 10, Jakarta Barat',
-            'luas_tanah' => 200,
-            'luas_bangunan' => 180,
-            'tanggal_perolehan' => '2021-08-15',
-            'nilai_perolehan' => 1200000000.00,
-            'status_kepemilikan' => 'milik_sendiri',
-            'kondisi_bangunan' => 'baik',
-            'pic' => 'Budi Santoso',
-            'keterangan' => 'Mess tempat tinggal staff operasional luar kota.',
-        ]);
-
-        AsetTetap::create([
-            'kode_aset' => 'AST-PROP-0003',
-            'nama_aset' => 'Ruko Gudang Tambahan BSD',
-            'tipe' => 'ruko',
-            'alamat' => 'Ruko Golden Boulevard Blok C No. 15, BSD City, Tangerang',
-            'luas_tanah' => 120,
-            'luas_bangunan' => 240,
-            'tanggal_perolehan' => '2023-01-10',
-            'nilai_perolehan' => 120000000.00,
-            'status_kepemilikan' => 'sewa',
-            'kondisi_bangunan' => 'perlu_perbaikan',
-            'pic' => 'Rian Hidayat',
-            'keterangan' => 'Sewa ruko untuk gudang transit logistik barat. Kontrak s.d Desember 2026.',
         ]);
     }
 }

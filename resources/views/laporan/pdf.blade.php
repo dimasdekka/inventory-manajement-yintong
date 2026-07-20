@@ -197,18 +197,7 @@
                     <th style="width: 10%;">Status</th>
                     <th style="width: 10%;">Petugas</th>
                 </tr>
-            @elseif($jenisLaporan == 'aset_tetap')
-                <tr>
-                    <th style="width: 12%;">Kode Aset</th>
-                    <th style="width: 18%;">Nama Aset</th>
-                    <th style="width: 10%;">Tipe</th>
-                    <th style="width: 25%;">Alamat</th>
-                    <th style="width: 10%;">Luas T/B</th>
-                    <th style="width: 10%;">Tgl Perolehan</th>
-                    <th style="width: 15%;">Nilai Perolehan</th>
-                    <th style="width: 10%;">Kepemilikan</th>
-                    <th style="width: 10%;">Kondisi</th>
-                </tr>
+
             @endif
         </thead>
         <tbody>
@@ -273,18 +262,7 @@
                         <td><span class="badge-status">{{ $item->status }}</span></td>
                         <td>{{ $item->user->nama }}</td>
                     </tr>
-                @elseif($jenisLaporan == 'aset_tetap')
-                    <tr>
-                        <td style="font-weight: bold;">{{ $item->kode_aset }}</td>
-                        <td>{{ $item->nama_aset }}</td>
-                        <td style="text-transform: uppercase;">{{ str_replace('_', ' ', $item->tipe) }}</td>
-                        <td>{{ $item->alamat }}</td>
-                        <td>{{ $item->luas_tanah }} m² / {{ $item->luas_bangunan }} m²</td>
-                        <td>{{ $item->tanggal_perolehan->format('d-m-Y') }}</td>
-                        <td>Rp {{ number_format($item->nilai_perolehan, 0, ',', '.') }}</td>
-                        <td style="text-transform: uppercase;">{{ str_replace('_', ' ', $item->status_kepemilikan) }}</td>
-                        <td><span class="badge-status">{{ $item->kondisi_bangunan }}</span></td>
-                    </tr>
+
                 @endif
             @empty
                 <tr>

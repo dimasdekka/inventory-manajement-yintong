@@ -412,9 +412,6 @@
                 <li class="{{ Request::is('supplier*') ? 'active' : '' }}">
                     <a href="{{ route('supplier.index') }}"><i class="fa-solid fa-truck-field"></i> Supplier / Pemasok</a>
                 </li>
-                <li class="{{ Request::is('aset-tetap*') ? 'active' : '' }}">
-                    <a href="{{ route('aset-tetap.index') }}"><i class="fa-solid fa-building"></i> Aset Tetap (Properti)</a>
-                </li>
                 
                 <div class="menu-category">Transaksi</div>
                 <li class="{{ Request::is('barang-masuk*') ? 'active' : '' }}">

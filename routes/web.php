@@ -13,7 +13,6 @@ use App\Http\Controllers\PeminjamanController;
 use App\Http\Controllers\PengembalianController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\LaporanController;
-use App\Http\Controllers\AsetTetapController;
 
 /*
 |--------------------------------------------------------------------------
@@ -131,20 +130,5 @@ Route::middleware('auth')->group(function () {
         Route::get('/laporan', [LaporanController::class, 'index'])->name('laporan.index');
         Route::get('/laporan/pdf', [LaporanController::class, 'exportPdf'])->name('laporan.pdf');
         Route::get('/laporan/excel', [LaporanController::class, 'exportExcel'])->name('laporan.excel');
-    });
-
-    // 11. Modul Aset Tetap (Properti)
-    Route::middleware('role:administrator,staff_gudang,pimpinan')->group(function () {
-        Route::get('/aset-tetap', [AsetTetapController::class, 'index'])->name('aset-tetap.index');
-        Route::get('/aset-tetap/{aset_tetap}', [AsetTetapController::class, 'show'])->name('aset-tetap.show');
-    });
-    Route::middleware('role:administrator,staff_gudang')->group(function () {
-        Route::get('/aset-tetap/create/form', [AsetTetapController::class, 'create'])->name('aset-tetap.create');
-        Route::post('/aset-tetap', [AsetTetapController::class, 'store'])->name('aset-tetap.store');
-        Route::get('/aset-tetap/{aset_tetap}/edit', [AsetTetapController::class, 'edit'])->name('aset-tetap.edit');
-        Route::put('/aset-tetap/{aset_tetap}', [AsetTetapController::class, 'update'])->name('aset-tetap.update');
-    });
-    Route::middleware('role:administrator')->group(function () {
-        Route::delete('/aset-tetap/{aset_tetap}', [AsetTetapController::class, 'destroy'])->name('aset-tetap.destroy');
     });
 });
