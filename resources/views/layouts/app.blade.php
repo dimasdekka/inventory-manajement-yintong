@@ -93,7 +93,7 @@
         }
 
         ul.sidebar-menu {
-            padding: 10px 0;
+            padding: 8px 0;
             margin: 0;
             list-style: none;
         }
@@ -139,46 +139,46 @@
             box-shadow: 0 4px 14px rgba(15, 90, 55, 0.25);
         }
 
-        /* Sidebar Bottom Widget */
+        /* Sidebar Bottom Widget Card (Balanced Size) */
         .sidebar-bottom-card {
             background: linear-gradient(135deg, #0F5A37 0%, #063821 100%);
-            border-radius: 14px;
-            padding: 14px;
+            border-radius: 12px;
+            padding: 12px;
             color: #ffffff;
             position: relative;
             overflow: hidden;
-            margin-top: 16px;
+            margin-top: 12px;
         }
         .sidebar-bottom-card::after {
             content: '';
             position: absolute;
-            width: 100px;
-            height: 100px;
+            width: 80px;
+            height: 80px;
             background: rgba(255,255,255,0.08);
             border-radius: 50%;
-            top: -30px;
-            right: -30px;
+            top: -20px;
+            right: -20px;
         }
         .sidebar-bottom-title {
             font-family: 'Outfit', sans-serif;
-            font-size: 12.5px;
+            font-size: 12px;
             font-weight: 600;
             margin-bottom: 2px;
         }
         .sidebar-bottom-desc {
-            font-size: 10.5px;
+            font-size: 10px;
             color: rgba(255,255,255,0.75);
-            margin-bottom: 10px;
+            margin-bottom: 8px;
             line-height: 1.3;
         }
         .btn-sidebar-widget {
             background-color: rgba(255,255,255,0.2);
             color: #ffffff;
             border: 1px solid rgba(255,255,255,0.3);
-            font-size: 10.5px;
+            font-size: 10px;
             font-weight: 600;
             padding: 4px 12px;
-            border-radius: 20px;
+            border-radius: 18px;
             text-decoration: none;
             display: inline-block;
             transition: all 0.2s;
