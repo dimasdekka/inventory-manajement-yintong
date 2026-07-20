@@ -53,10 +53,14 @@
             border: 1px solid var(--border-color);
             display: flex;
             flex-direction: column;
-            justify-content: space-between;
             padding: 16px 12px;
             box-shadow: 0 4px 20px rgba(0, 0, 0, 0.02);
             transition: all 0.3s;
+            align-self: flex-start;
+            position: sticky;
+            top: 10px;
+            max-height: calc(100vh - 20px);
+            overflow-y: auto;
         }
         
         .sidebar-brand {
@@ -143,7 +147,7 @@
             color: #ffffff;
             position: relative;
             overflow: hidden;
-            margin-top: auto;
+            margin-top: 16px;
         }
         .sidebar-bottom-card::after {
             content: '';
