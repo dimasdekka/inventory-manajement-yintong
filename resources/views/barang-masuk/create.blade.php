@@ -28,7 +28,7 @@
                     </button>
                 </div>
                 <select class="form-select form-control-custom w-100 @error('barang_id') is-invalid @enderror" id="barang_id" name="barang_id" required>
-                    <option value="">-- Pilih Barang --</option>
+                    <option value="">Pilih Barang</option>
                     @foreach($barang as $item)
                         <option value="{{ $item->id }}" data-harga="{{ $item->harga_satuan }}" data-satuan="{{ $item->satuan }}" data-kode="{{ $item->kode_barang }}" {{ old('barang_id') == $item->id ? 'selected' : '' }}>
                             {{ $item->kode_barang }} - {{ $item->nama_barang }} (Stok saat ini: {{ $item->jumlah }} {{ $item->satuan }})
@@ -41,7 +41,7 @@
             <div class="col-12 col-md-6">
                 <label for="supplier_id" class="form-label-custom">Supplier / Pemasok <span class="text-danger">*</span></label>
                 <select class="form-select form-control-custom w-100 @error('supplier_id') is-invalid @enderror" id="supplier_id" name="supplier_id" required>
-                    <option value="">-- Pilih Supplier --</option>
+                    <option value="">Pilih Supplier</option>
                     @foreach($suppliers as $sup)
                         <option value="{{ $sup->id }}" {{ old('supplier_id') == $sup->id ? 'selected' : '' }}>
                             {{ $sup->kode_supplier }} - {{ $sup->nama_supplier }}

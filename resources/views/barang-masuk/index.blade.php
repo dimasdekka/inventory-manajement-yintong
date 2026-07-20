@@ -25,7 +25,7 @@
             
             <div style="min-width: 200px;">
                 <select name="supplier_id" class="form-select form-control-custom w-100">
-                    <option value="">-- Semua Supplier --</option>
+                    <option value="">Semua Supplier</option>
                     @foreach($suppliers as $sup)
                         <option value="{{ $sup->id }}" {{ request('supplier_id') == $sup->id ? 'selected' : '' }}>
                             {{ $sup->nama_supplier }}

@@ -309,79 +309,74 @@
             padding: 24px;
         }
 
-        /* Stat Cards - Donezo Pattern */
-        .stat-card-donezo {
+        /* Modern Bespoke Stat Cards (Human UI Design) */
+        .stat-card-custom {
             background-color: #ffffff;
             border: 1px solid var(--border-color);
-            border-radius: var(--card-radius);
-            padding: 22px;
-            position: relative;
-            transition: transform 0.2s ease, box-shadow 0.2s ease;
+            border-radius: 16px;
+            padding: 20px;
             height: 100%;
             display: flex;
             flex-direction: column;
             justify-content: space-between;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.02);
+            transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
         }
-        .stat-card-donezo:hover {
+        .stat-card-custom:hover {
+            border-color: #D1D5DB;
             transform: translateY(-2px);
-            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.04);
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.05);
         }
-
-        /* Emerald Featured Stat Card */
-        .stat-card-donezo.featured-emerald {
+        .stat-card-featured {
             background: linear-gradient(135deg, #0F5A37 0%, #083E25 100%);
-            color: #ffffff;
             border: none;
-            box-shadow: 0 8px 25px rgba(15, 90, 55, 0.2);
-        }
-        .stat-card-donezo.featured-emerald .stat-title {
-            color: rgba(255,255,255,0.85);
-        }
-        .stat-card-donezo.featured-emerald .stat-number {
             color: #ffffff;
+            box-shadow: 0 8px 24px rgba(15, 90, 55, 0.2);
         }
-        .stat-card-donezo.featured-emerald .arrow-btn-circle {
-            background-color: rgba(255,255,255,0.2);
-            color: #ffffff;
-            border: none;
+        .stat-card-featured:hover {
+            box-shadow: 0 12px 28px rgba(15, 90, 55, 0.28);
         }
-
-        .stat-header {
-            display: flex;
-            justify-content: space-between;
-            align-items: flex-start;
-            margin-bottom: 12px;
+        .stat-card-warning-alert {
+            background-color: #FEF2F2;
+            border: 1px solid #FEE2E2;
         }
-        .stat-title {
-            font-size: 13.5px;
+        .stat-card-warning-alert:hover {
+            border-color: #FCA5A5;
+            background-color: #FDF2F2;
+        }
+        .stat-card-label {
+            font-size: 12.5px;
             font-weight: 600;
             color: var(--text-muted);
+            letter-spacing: 0.2px;
         }
-        .arrow-btn-circle {
-            width: 34px;
-            height: 34px;
-            border-radius: 50%;
-            background-color: var(--bg-app);
-            border: 1px solid var(--border-color);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: var(--text-main);
-            font-size: 13px;
-        }
-        .stat-number {
+        .stat-card-value {
             font-family: 'Outfit', sans-serif;
-            font-size: 34px;
+            font-size: 32px;
             font-weight: 700;
             color: var(--text-main);
             line-height: 1.1;
-            margin-bottom: 10px;
+            margin-bottom: 8px;
         }
-        .stat-footnote {
-            font-size: 11.5px;
+        .stat-card-subtext {
+            font-size: 12px;
             display: flex;
             align-items: center;
-            gap: 6px;
+            gap: 4px;
+        }
+        .stat-card-link-pill {
+            font-size: 11.5px;
+            font-weight: 600;
+            padding: 3px 10px;
+            border-radius: 20px;
+            background: rgba(255, 255, 255, 0.2);
+            backdrop-filter: blur(4px);
+            text-decoration: none;
+            transition: background 0.2s;
+        }
+        .stat-card-link-pill:hover {
+            background: rgba(255, 255, 255, 0.3);
+            color: #ffffff;
         }
 
         /* Clean Table Styles */
@@ -739,7 +734,7 @@
                     <div class="brand-logo-icon" style="background: transparent; border: none;">
                         <img src="{{ asset('images/logo.png') }}" alt="Logo Yintong" style="height: 38px; width: 38px; object-fit: contain;">
                     </div>
-                    <span class="brand-text">Yintong</span>
+                    <span class="brand-text">Yintong Inventory</span>
                 </div>
 
                 <ul class="sidebar-menu">

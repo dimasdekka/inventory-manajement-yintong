@@ -25,7 +25,7 @@
             
             <div style="min-width: 200px;">
                 <select name="barang_id" class="form-select form-control-custom w-100">
-                    <option value="">-- Semua Barang --</option>
+                    <option value="">Semua Barang</option>
                     @foreach($barang as $item)
                         <option value="{{ $item->id }}" {{ request('barang_id') == $item->id ? 'selected' : '' }}>
                             {{ $item->kode_barang }} - {{ $item->nama_barang }}

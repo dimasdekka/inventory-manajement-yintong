@@ -23,7 +23,7 @@
             <div class="col-12 col-md-6">
                 <label for="barang_id" class="form-label-custom">Pilih Barang yang Dipinjam <span class="text-danger">*</span></label>
                 <select class="form-select form-control-custom w-100 @error('barang_id') is-invalid @enderror" id="barang_id" name="barang_id" required>
-                    <option value="">-- Pilih Barang --</option>
+                    <option value="">Pilih Barang</option>
                     @foreach($barang as $item)
                         <option value="{{ $item->id }}" data-stok="{{ $item->jumlah }}" data-satuan="{{ $item->satuan }}" {{ old('barang_id') == $item->id ? 'selected' : '' }}>
                             {{ $item->kode_barang }} - {{ $item->nama_barang }} (Tersedia: {{ $item->jumlah }} {{ $item->satuan }})

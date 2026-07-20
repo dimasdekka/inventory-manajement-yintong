@@ -19,7 +19,7 @@
             
             <div style="min-width: 150px;">
                 <select name="kategori_id" class="form-select form-control-custom w-100">
-                    <option value="">-- Semua Kategori --</option>
+                    <option value="">Semua Kategori</option>
                     @foreach($kategori as $kat)
                         <option value="{{ $kat->id }}" {{ request('kategori_id') == $kat->id ? 'selected' : '' }}>
                             {{ $kat->nama_kategori }}
@@ -30,7 +30,7 @@
 
             <div style="min-width: 150px;">
                 <select name="lokasi" class="form-select form-control-custom w-100">
-                    <option value="">-- Semua Lokasi --</option>
+                    <option value="">Semua Lokasi</option>
                     @foreach($lokasi as $lok)
                         @if($lok)
                             <option value="{{ $lok }}" {{ request('lok') == $lok ? 'selected' : '' }}>

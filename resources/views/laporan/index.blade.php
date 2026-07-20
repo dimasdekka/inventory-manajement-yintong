@@ -38,7 +38,7 @@
             <div class="col-12 col-md-2" id="kategori-group">
                 <label for="kategori_id" class="form-label-custom">Kategori</label>
                 <select class="form-select form-control-custom w-100" id="kategori_id" name="kategori_id">
-                    <option value="">-- Semua --</option>
+                    <option value="">Semua</option>
                     @foreach($kategori as $kat)
                         <option value="{{ $kat->id }}" {{ request('kategori_id') == $kat->id ? 'selected' : '' }}>
                             {{ $kat->nama_kategori }}
@@ -50,7 +50,7 @@
             <div class="col-12 col-md-2" id="lokasi-group">
                 <label for="lokasi_penyimpanan" class="form-label-custom">Lokasi</label>
                 <select class="form-select form-control-custom w-100" id="lokasi_penyimpanan" name="lokasi_penyimpanan">
-                    <option value="">-- Semua --</option>
+                    <option value="">Semua</option>
                     @foreach($lokasi as $lok)
                         @if($lok)
                             <option value="{{ $lok }}" {{ request('lokasi_penyimpanan') == $lok ? 'selected' : '' }}>

@@ -27,117 +27,99 @@
 
 <!-- Baris 1: 4 Kartu Statistik Utama (Donezo Layout) -->
 <div class="row g-4 mb-4">
+    <!-- Baris 1: 4 Kartu Statistik Utama -->
+<div class="row g-4 mb-4">
     <!-- Featured Emerald Stat Card -->
     <div class="col-12 col-md-6 col-lg-3">
-        <div class="stat-card-donezo featured-emerald">
-            <div class="stat-header">
-                <span class="stat-title">Total Barang</span>
-                <a href="{{ route('barang.index') }}" class="arrow-btn-circle" title="Lihat Detail">
-                    <i class="fa-solid fa-arrow-up-right-from-square"></i>
+        <div class="stat-card-custom stat-card-featured">
+            <div class="d-flex justify-content-between align-items-center mb-3">
+                <span class="stat-card-label text-white-50">Total Unit Barang</span>
+                <a href="{{ route('barang.index') }}" class="stat-card-link-pill text-white" title="Lihat Katalog">
+                    Detail <i class="fa-solid fa-arrow-right ms-1"></i>
                 </a>
             </div>
-            <div>
-                <div class="stat-number">{{ number_format($totalBarang) }}</div>
-                <div class="stat-footnote">
-                    <i class="fa-solid fa-circle-check"></i> Terdata dalam katalog
-                </div>
+            <div class="stat-card-value text-white">{{ number_format($totalBarang) }}</div>
+            <div class="stat-card-subtext text-white-50">
+                <i class="fa-solid fa-circle-check me-1"></i> Terdata dalam katalog inventori
             </div>
         </div>
     </div>
 
-    <!-- Stat Card 2 -->
+    <!-- Stat Card 2: Kategori -->
     <div class="col-12 col-md-6 col-lg-3">
-        <div class="stat-card-donezo">
-            <div class="stat-header">
-                <span class="stat-title">Kategori Barang</span>
-                <a href="{{ route('kategori.index') }}" class="arrow-btn-circle" title="Lihat Detail">
-                    <i class="fa-solid fa-arrow-up-right-from-square"></i>
-                </a>
+        <div class="stat-card-custom">
+            <div class="d-flex justify-content-between align-items-center mb-3">
+                <span class="stat-card-label">Kategori Barang</span>
+                <span class="badge-custom badge-success">Aktif</span>
             </div>
-            <div>
-                <div class="stat-number">{{ $totalKategori }}</div>
-                <div class="stat-footnote text-muted">
-                    <i class="fa-solid fa-tags text-success me-1"></i> Kategori aktif
-                </div>
+            <div class="stat-card-value">{{ $totalKategori }}</div>
+            <div class="stat-card-subtext text-muted">
+                <i class="fa-solid fa-tags text-success me-1"></i> Kelompok klasifikasi barang
             </div>
         </div>
     </div>
 
-    <!-- Stat Card 3 -->
+    <!-- Stat Card 3: Supplier -->
     <div class="col-12 col-md-6 col-lg-3">
-        <div class="stat-card-donezo">
-            <div class="stat-header">
-                <span class="stat-title">Supplier / Pemasok</span>
-                <a href="{{ route('supplier.index') }}" class="arrow-btn-circle" title="Lihat Detail">
-                    <i class="fa-solid fa-arrow-up-right-from-square"></i>
-                </a>
+        <div class="stat-card-custom">
+            <div class="d-flex justify-content-between align-items-center mb-3">
+                <span class="stat-card-label">Supplier / Pemasok</span>
+                <span class="badge-custom badge-secondary">Mitra</span>
             </div>
-            <div>
-                <div class="stat-number">{{ $totalSupplier }}</div>
-                <div class="stat-footnote text-muted">
-                    <i class="fa-solid fa-truck-field text-primary me-1"></i> Mitra terdaftar
-                </div>
+            <div class="stat-card-value">{{ $totalSupplier }}</div>
+            <div class="stat-card-subtext text-muted">
+                <i class="fa-solid fa-truck-field text-primary me-1"></i> Terdaftar dalam sistem
             </div>
         </div>
     </div>
 
-    <!-- Stat Card 4 -->
+    <!-- Stat Card 4: Dipinjam -->
     <div class="col-12 col-md-6 col-lg-3">
-        <div class="stat-card-donezo">
-            <div class="stat-header">
-                <span class="stat-title">Barang Dipinjam</span>
-                <a href="{{ route('peminjaman.index') }}" class="arrow-btn-circle" title="Lihat Detail">
-                    <i class="fa-solid fa-arrow-up-right-from-square"></i>
-                </a>
+        <div class="stat-card-custom">
+            <div class="d-flex justify-content-between align-items-center mb-3">
+                <span class="stat-card-label">Barang Dipinjam</span>
+                <span class="badge-custom badge-warning">Aktif</span>
             </div>
-            <div>
-                <div class="stat-number">{{ number_format($barangDipinjam) }}</div>
-                <div class="stat-footnote text-muted">
-                    <i class="fa-solid fa-clock text-warning me-1"></i> Unit sedang dipinjam
-                </div>
+            <div class="stat-card-value">{{ number_format($barangDipinjam) }}</div>
+            <div class="stat-card-subtext text-muted">
+                <i class="fa-solid fa-clock text-warning me-1"></i> Unit sedang di luar gudang
             </div>
         </div>
     </div>
 </div>
 
-<!-- Baris 2: 3 Kartu Ringkasan Operasional -->
+<!-- Baris 2: 3 Kartu Ringkasan Operasional Bulanan -->
 <div class="row g-4 mb-4">
     <div class="col-12 col-md-4">
-        <div class="stat-card-donezo">
-            <div class="stat-header">
-                <span class="stat-title">Barang Masuk (Bulan Ini)</span>
-                <div class="arrow-btn-circle"><i class="fa-solid fa-arrow-down-long text-success"></i></div>
+        <div class="stat-card-custom">
+            <div class="d-flex justify-content-between align-items-center mb-3">
+                <span class="stat-card-label">Barang Masuk (Bulan Ini)</span>
+                <span class="badge-custom badge-success"><i class="fa-solid fa-arrow-down me-1"></i> Inflow</span>
             </div>
-            <div>
-                <div class="stat-number">+{{ number_format($barangMasukBulanIni) }}</div>
-                <div class="stat-footnote text-muted">Penambahan stok bulan {{ date('F') }}</div>
-            </div>
+            <div class="stat-card-value text-success">+{{ number_format($barangMasukBulanIni) }}</div>
+            <div class="stat-card-subtext text-muted">Stok masuk bulan {{ date('F Y') }}</div>
         </div>
     </div>
 
     <div class="col-12 col-md-4">
-        <div class="stat-card-donezo">
-            <div class="stat-header">
-                <span class="stat-title">Barang Keluar (Bulan Ini)</span>
-                <div class="arrow-btn-circle"><i class="fa-solid fa-arrow-up-long text-danger"></i></div>
+        <div class="stat-card-custom">
+            <div class="d-flex justify-content-between align-items-center mb-3">
+                <span class="stat-card-label">Barang Keluar (Bulan Ini)</span>
+                <span class="badge-custom badge-danger"><i class="fa-solid fa-arrow-up me-1"></i> Outflow</span>
             </div>
-            <div>
-                <div class="stat-number">-{{ number_format($barangKeluarBulanIni) }}</div>
-                <div class="stat-footnote text-muted">Pengeluaran unit bulan {{ date('F') }}</div>
-            </div>
+            <div class="stat-card-value text-dark">-{{ number_format($barangKeluarBulanIni) }}</div>
+            <div class="stat-card-subtext text-muted">Pengeluaran unit bulan {{ date('F Y') }}</div>
         </div>
     </div>
 
     <div class="col-12 col-md-4">
-        <div class="stat-card-donezo" style="border-left: 4px solid #DC2626;">
-            <div class="stat-header">
-                <span class="stat-title text-danger">Aset Kondisi Rusak</span>
-                <div class="arrow-btn-circle" style="background-color: #FDF2F2;"><i class="fa-solid fa-triangle-exclamation text-danger"></i></div>
+        <div class="stat-card-custom stat-card-warning-alert">
+            <div class="d-flex justify-content-between align-items-center mb-3">
+                <span class="stat-card-label text-danger">Aset Kondisi Rusak</span>
+                <span class="badge-custom badge-danger">Maintenance</span>
             </div>
-            <div>
-                <div class="stat-number text-danger">{{ number_format($barangRusak) }}</div>
-                <div class="stat-footnote text-danger">Memerlukan pemeliharaan / replacement</div>
-            </div>
+            <div class="stat-card-value text-danger">{{ number_format($barangRusak) }}</div>
+            <div class="stat-card-subtext text-danger">Memerlukan pemeliharaan / replacement</div>
         </div>
     </div>
 </div>

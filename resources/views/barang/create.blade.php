@@ -49,7 +49,7 @@
             <div class="col-12 col-md-3">
                 <label for="kategori_id" class="form-label-custom">Kategori Barang <span class="text-danger">*</span></label>
                 <select class="form-select form-control-custom w-100 @error('kategori_id') is-invalid @enderror" id="kategori_id" name="kategori_id" required>
-                    <option value="">-- Pilih Kategori --</option>
+                    <option value="">Pilih Kategori</option>
                     @foreach($kategori as $kat)
                         <option value="{{ $kat->id }}" {{ old('kategori_id') == $kat->id ? 'selected' : '' }}>
                             {{ $kat->nama_kategori }}

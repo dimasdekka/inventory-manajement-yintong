@@ -28,7 +28,7 @@
                     </button>
                 </div>
                 <select class="form-select form-control-custom w-100 @error('barang_id') is-invalid @enderror" id="barang_id" name="barang_id" required>
-                    <option value="">-- Pilih Barang --</option>
+                    <option value="">Pilih Barang</option>
                     @foreach($barang as $item)
                         <option value="{{ $item->id }}" data-stok="{{ $item->jumlah }}" data-satuan="{{ $item->satuan }}" data-kode="{{ $item->kode_barang }}" {{ old('barang_id') == $item->id ? 'selected' : '' }}>
                             {{ $item->kode_barang }} - {{ $item->nama_barang }} (Tersedia: {{ $item->jumlah }} {{ $item->satuan }})
