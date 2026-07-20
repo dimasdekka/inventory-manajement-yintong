@@ -32,7 +32,7 @@
             background-color: var(--bg-app);
             color: var(--text-main);
             margin: 0;
-            padding: 16px;
+            padding: 10px 14px;
             min-height: 100vh;
         }
         
@@ -40,21 +40,21 @@
         .app-container {
             display: flex;
             width: 100%;
-            min-height: calc(100vh - 32px);
-            gap: 20px;
+            min-height: calc(100vh - 20px);
+            gap: 14px;
         }
         
         /* Sidebar Layout */
         #sidebar {
-            width: 260px;
-            min-width: 260px;
+            width: 250px;
+            min-width: 250px;
             background-color: var(--sidebar-bg);
-            border-radius: var(--card-radius);
+            border-radius: 16px;
             border: 1px solid var(--border-color);
             display: flex;
             flex-direction: column;
             justify-content: space-between;
-            padding: 24px 16px;
+            padding: 16px 12px;
             box-shadow: 0 4px 20px rgba(0, 0, 0, 0.02);
             transition: all 0.3s;
         }
@@ -62,14 +62,14 @@
         .sidebar-brand {
             display: flex;
             align-items: center;
-            gap: 12px;
-            padding: 0 12px 20px 12px;
+            gap: 10px;
+            padding: 0 8px 12px 8px;
             border-bottom: 1px solid var(--border-color);
         }
         
         .brand-logo-icon {
-            width: 38px;
-            height: 38px;
+            width: 36px;
+            height: 36px;
             background: linear-gradient(135deg, var(--emerald-primary) 0%, #168050 100%);
             border-radius: 12px;
             display: flex;
@@ -89,14 +89,14 @@
         }
 
         ul.sidebar-menu {
-            padding: 16px 0;
+            padding: 10px 0;
             margin: 0;
             list-style: none;
         }
         
         .menu-category-title {
-            padding: 14px 14px 6px 14px;
-            font-size: 10.5px;
+            padding: 10px 10px 4px 10px;
+            font-size: 10px;
             font-weight: 700;
             text-transform: uppercase;
             letter-spacing: 1.2px;
@@ -104,23 +104,23 @@
         }
         
         ul.sidebar-menu li a {
-            padding: 11px 16px;
-            font-size: 13.5px;
+            padding: 8px 12px;
+            font-size: 13px;
             font-weight: 500;
             display: flex;
             align-items: center;
-            gap: 12px;
+            gap: 10px;
             color: var(--text-muted);
             text-decoration: none;
-            border-radius: 14px;
+            border-radius: 12px;
             transition: all 0.2s ease;
-            margin-bottom: 4px;
+            margin-bottom: 2px;
         }
         
         ul.sidebar-menu li a i {
-            width: 20px;
+            width: 18px;
             text-align: center;
-            font-size: 16px;
+            font-size: 15px;
         }
         
         ul.sidebar-menu li a:hover {
@@ -138,8 +138,8 @@
         /* Sidebar Bottom Widget */
         .sidebar-bottom-card {
             background: linear-gradient(135deg, #0F5A37 0%, #063821 100%);
-            border-radius: 16px;
-            padding: 18px;
+            border-radius: 14px;
+            padding: 14px;
             color: #ffffff;
             position: relative;
             overflow: hidden;
@@ -157,23 +157,23 @@
         }
         .sidebar-bottom-title {
             font-family: 'Outfit', sans-serif;
-            font-size: 13px;
+            font-size: 12.5px;
             font-weight: 600;
-            margin-bottom: 4px;
+            margin-bottom: 2px;
         }
         .sidebar-bottom-desc {
-            font-size: 11px;
+            font-size: 10.5px;
             color: rgba(255,255,255,0.75);
-            margin-bottom: 12px;
-            line-height: 1.4;
+            margin-bottom: 10px;
+            line-height: 1.3;
         }
         .btn-sidebar-widget {
             background-color: rgba(255,255,255,0.2);
             color: #ffffff;
             border: 1px solid rgba(255,255,255,0.3);
-            font-size: 11px;
+            font-size: 10.5px;
             font-weight: 600;
-            padding: 6px 14px;
+            padding: 4px 12px;
             border-radius: 20px;
             text-decoration: none;
             display: inline-block;
@@ -198,10 +198,10 @@
             align-items: center;
             justify-content: space-between;
             background-color: var(--sidebar-bg);
-            border-radius: var(--card-radius);
+            border-radius: 16px;
             border: 1px solid var(--border-color);
-            padding: 12px 24px;
-            margin-bottom: 20px;
+            padding: 8px 16px;
+            margin-bottom: 12px;
             box-shadow: 0 4px 20px rgba(0, 0, 0, 0.02);
         }
         
@@ -211,19 +211,19 @@
         }
         .header-search-box i {
             position: absolute;
-            left: 16px;
+            left: 14px;
             top: 50%;
             transform: translateY(-50%);
             color: var(--text-muted);
-            font-size: 14px;
+            font-size: 13px;
         }
         .header-search-box input {
             width: 100%;
             background-color: var(--bg-app);
             border: 1px solid transparent;
             border-radius: 30px;
-            padding: 9px 40px 9px 42px;
-            font-size: 13px;
+            padding: 7px 36px 7px 38px;
+            font-size: 12.5px;
             color: var(--text-main);
             outline: none;
             transition: all 0.2s;
@@ -235,14 +235,14 @@
         }
         .header-search-box .kbd-shortcut {
             position: absolute;
-            right: 14px;
+            right: 12px;
             top: 50%;
             transform: translateY(-50%);
             background-color: #ffffff;
             border: 1px solid var(--border-color);
             border-radius: 6px;
-            padding: 2px 6px;
-            font-size: 10.5px;
+            padding: 1px 5px;
+            font-size: 10px;
             font-weight: 600;
             color: var(--text-muted);
         }
@@ -250,12 +250,12 @@
         .header-actions {
             display: flex;
             align-items: center;
-            gap: 12px;
+            gap: 10px;
         }
 
         .icon-circle-btn {
-            width: 40px;
-            height: 40px;
+            width: 36px;
+            height: 36px;
             border-radius: 50%;
             background-color: var(--bg-app);
             border: 1px solid var(--border-color);
@@ -274,15 +274,15 @@
         .user-profile-pill {
             display: flex;
             align-items: center;
-            gap: 10px;
-            padding: 4px 14px 4px 6px;
+            gap: 8px;
+            padding: 3px 12px 3px 5px;
             background-color: var(--bg-app);
             border-radius: 30px;
             border: 1px solid var(--border-color);
         }
         .user-avatar {
-            width: 34px;
-            height: 34px;
+            width: 30px;
+            height: 30px;
             border-radius: 50%;
             background-color: var(--emerald-primary);
             color: #ffffff;
@@ -290,7 +290,7 @@
             align-items: center;
             justify-content: center;
             font-weight: 700;
-            font-size: 13.5px;
+            font-size: 12.5px;
             overflow: hidden;
             object-fit: cover;
         }
@@ -303,38 +303,38 @@
         .card-custom {
             background-color: #ffffff;
             border: 1px solid var(--border-color);
-            border-radius: var(--card-radius);
-            box-shadow: 0 4px 25px rgba(0, 0, 0, 0.02);
-            margin-bottom: 24px;
-            padding: 24px;
+            border-radius: 16px;
+            box-shadow: 0 2px 12px rgba(0, 0, 0, 0.02);
+            margin-bottom: 14px;
+            padding: 16px;
         }
 
         /* Modern Bespoke Stat Cards (Human UI Design) */
         .stat-card-custom {
             background-color: #ffffff;
             border: 1px solid var(--border-color);
-            border-radius: 16px;
-            padding: 20px;
+            border-radius: 14px;
+            padding: 14px 16px;
             height: 100%;
             display: flex;
             flex-direction: column;
             justify-content: space-between;
-            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.02);
-            transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.02);
+            transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
         }
         .stat-card-custom:hover {
             border-color: #D1D5DB;
             transform: translateY(-2px);
-            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.05);
+            box-shadow: 0 6px 16px rgba(0, 0, 0, 0.04);
         }
         .stat-card-featured {
             background: linear-gradient(135deg, #0F5A37 0%, #083E25 100%);
             border: none;
             color: #ffffff;
-            box-shadow: 0 8px 24px rgba(15, 90, 55, 0.2);
+            box-shadow: 0 6px 20px rgba(15, 90, 55, 0.18);
         }
         .stat-card-featured:hover {
-            box-shadow: 0 12px 28px rgba(15, 90, 55, 0.28);
+            box-shadow: 0 10px 24px rgba(15, 90, 55, 0.25);
         }
         .stat-card-warning-alert {
             background-color: #FEF2F2;
@@ -345,29 +345,29 @@
             background-color: #FDF2F2;
         }
         .stat-card-label {
-            font-size: 12.5px;
+            font-size: 12px;
             font-weight: 600;
             color: var(--text-muted);
-            letter-spacing: 0.2px;
+            letter-spacing: 0.1px;
         }
         .stat-card-value {
             font-family: 'Outfit', sans-serif;
-            font-size: 32px;
+            font-size: 26px;
             font-weight: 700;
             color: var(--text-main);
             line-height: 1.1;
-            margin-bottom: 8px;
+            margin-bottom: 4px;
         }
         .stat-card-subtext {
-            font-size: 12px;
+            font-size: 11.5px;
             display: flex;
             align-items: center;
             gap: 4px;
         }
         .stat-card-link-pill {
-            font-size: 11.5px;
+            font-size: 11px;
             font-weight: 600;
-            padding: 3px 10px;
+            padding: 2px 8px;
             border-radius: 20px;
             background: rgba(255, 255, 255, 0.2);
             backdrop-filter: blur(4px);

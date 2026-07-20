@@ -9,30 +9,28 @@
 @endsection
 
 @section('content')
-<!-- Header Donezo Pattern: Title + Subtitle + Action Buttons -->
-<div class="d-flex flex-column flex-md-row justify-content-between align-items-start align-items-md-center mb-4 gap-3">
+<!-- Header: Title + Subtitle + Action Buttons -->
+<div class="d-flex flex-column flex-md-row justify-content-between align-items-start align-items-md-center mb-3 gap-2">
     <div>
-        <h2 class="font-outfit fw-bold mb-1" style="font-size: 26px; color: var(--text-main);">Dashboard</h2>
-        <p class="text-muted m-0" style="font-size: 13.5px;">Kelola, pantau, dan alokasikan stok inventori kantor secara real-time.</p>
+        <h2 class="font-outfit fw-bold mb-1" style="font-size: 22px; color: var(--text-main);">Dashboard</h2>
+        <p class="text-muted m-0" style="font-size: 12.5px;">Kelola, pantau, dan alokasikan stok inventori kantor secara real-time.</p>
     </div>
     <div class="d-flex gap-2">
-        <a href="{{ route('barang-masuk.create') }}" class="btn-custom btn-custom-dark">
+        <a href="{{ route('barang-masuk.create') }}" class="btn-custom btn-custom-dark btn-custom-sm">
             <i class="fa-solid fa-plus"></i> Catat Barang Masuk
         </a>
-        <a href="{{ route('barang.index') }}" class="btn-custom btn-custom-light">
+        <a href="{{ route('barang.index') }}" class="btn-custom btn-custom-light btn-custom-sm">
             <i class="fa-solid fa-boxes-stacked"></i> Kelola Barang
         </a>
     </div>
 </div>
 
-<!-- Baris 1: 4 Kartu Statistik Utama (Donezo Layout) -->
-<div class="row g-4 mb-4">
-    <!-- Baris 1: 4 Kartu Statistik Utama -->
-<div class="row g-4 mb-4">
+<!-- Baris 1: 4 Kartu Statistik Utama -->
+<div class="row g-3 mb-3">
     <!-- Featured Emerald Stat Card -->
     <div class="col-12 col-md-6 col-lg-3">
         <div class="stat-card-custom stat-card-featured">
-            <div class="d-flex justify-content-between align-items-center mb-3">
+            <div class="d-flex justify-content-between align-items-center mb-2">
                 <span class="stat-card-label text-white-50">Total Unit Barang</span>
                 <a href="{{ route('barang.index') }}" class="stat-card-link-pill text-white" title="Lihat Katalog">
                     Detail <i class="fa-solid fa-arrow-right ms-1"></i>
@@ -48,13 +46,13 @@
     <!-- Stat Card 2: Kategori -->
     <div class="col-12 col-md-6 col-lg-3">
         <div class="stat-card-custom">
-            <div class="d-flex justify-content-between align-items-center mb-3">
+            <div class="d-flex justify-content-between align-items-center mb-2">
                 <span class="stat-card-label">Kategori Barang</span>
                 <span class="badge-custom badge-success">Aktif</span>
             </div>
             <div class="stat-card-value">{{ $totalKategori }}</div>
             <div class="stat-card-subtext text-muted">
-                <i class="fa-solid fa-tags text-success me-1"></i> Kelompok klasifikasi barang
+                <i class="fa-solid fa-tags text-success me-1"></i> Klasifikasi barang
             </div>
         </div>
     </div>
@@ -62,7 +60,7 @@
     <!-- Stat Card 3: Supplier -->
     <div class="col-12 col-md-6 col-lg-3">
         <div class="stat-card-custom">
-            <div class="d-flex justify-content-between align-items-center mb-3">
+            <div class="d-flex justify-content-between align-items-center mb-2">
                 <span class="stat-card-label">Supplier / Pemasok</span>
                 <span class="badge-custom badge-secondary">Mitra</span>
             </div>
@@ -76,23 +74,23 @@
     <!-- Stat Card 4: Dipinjam -->
     <div class="col-12 col-md-6 col-lg-3">
         <div class="stat-card-custom">
-            <div class="d-flex justify-content-between align-items-center mb-3">
+            <div class="d-flex justify-content-between align-items-center mb-2">
                 <span class="stat-card-label">Barang Dipinjam</span>
                 <span class="badge-custom badge-warning">Aktif</span>
             </div>
             <div class="stat-card-value">{{ number_format($barangDipinjam) }}</div>
             <div class="stat-card-subtext text-muted">
-                <i class="fa-solid fa-clock text-warning me-1"></i> Unit sedang di luar gudang
+                <i class="fa-solid fa-clock text-warning me-1"></i> Unit sedang dipinjam
             </div>
         </div>
     </div>
 </div>
 
 <!-- Baris 2: 3 Kartu Ringkasan Operasional Bulanan -->
-<div class="row g-4 mb-4">
+<div class="row g-3 mb-3">
     <div class="col-12 col-md-4">
         <div class="stat-card-custom">
-            <div class="d-flex justify-content-between align-items-center mb-3">
+            <div class="d-flex justify-content-between align-items-center mb-2">
                 <span class="stat-card-label">Barang Masuk (Bulan Ini)</span>
                 <span class="badge-custom badge-success"><i class="fa-solid fa-arrow-down me-1"></i> Inflow</span>
             </div>
@@ -103,7 +101,7 @@
 
     <div class="col-12 col-md-4">
         <div class="stat-card-custom">
-            <div class="d-flex justify-content-between align-items-center mb-3">
+            <div class="d-flex justify-content-between align-items-center mb-2">
                 <span class="stat-card-label">Barang Keluar (Bulan Ini)</span>
                 <span class="badge-custom badge-danger"><i class="fa-solid fa-arrow-up me-1"></i> Outflow</span>
             </div>
@@ -114,7 +112,7 @@
 
     <div class="col-12 col-md-4">
         <div class="stat-card-custom stat-card-warning-alert">
-            <div class="d-flex justify-content-between align-items-center mb-3">
+            <div class="d-flex justify-content-between align-items-center mb-2">
                 <span class="stat-card-label text-danger">Aset Kondisi Rusak</span>
                 <span class="badge-custom badge-danger">Maintenance</span>
             </div>
@@ -125,14 +123,14 @@
 </div>
 
 <!-- Baris 3: 2 Kolom Grafik Analytics -->
-<div class="row g-4 mb-4">
+<div class="row g-3 mb-3">
     <div class="col-12 col-lg-6">
         <div class="card-custom">
-            <div class="d-flex justify-content-between align-items-center mb-3">
-                <h5 class="font-outfit m-0" style="font-size: 16px; font-weight: 600;">Stok Barang per Kategori</h5>
+            <div class="d-flex justify-content-between align-items-center mb-2">
+                <h5 class="font-outfit m-0" style="font-size: 15px; font-weight: 600;">Stok Barang per Kategori</h5>
                 <span class="badge-custom"><i class="fa-solid fa-chart-column"></i> Analytics</span>
             </div>
-            <div style="position: relative; height: 280px;">
+            <div style="position: relative; height: 220px;">
                 <canvas id="categoryChart"></canvas>
             </div>
         </div>
@@ -140,11 +138,11 @@
 
     <div class="col-12 col-lg-6">
         <div class="card-custom">
-            <div class="d-flex justify-content-between align-items-center mb-3">
-                <h5 class="font-outfit m-0" style="font-size: 16px; font-weight: 600;">Transaksi Barang Masuk vs Keluar</h5>
+            <div class="d-flex justify-content-between align-items-center mb-2">
+                <h5 class="font-outfit m-0" style="font-size: 15px; font-weight: 600;">Transaksi Barang Masuk vs Keluar</h5>
                 <span class="badge-custom"><i class="fa-solid fa-chart-line"></i> Tren Bulanan</span>
             </div>
-            <div style="position: relative; height: 280px;">
+            <div style="position: relative; height: 220px;">
                 <canvas id="transactionChart"></canvas>
             </div>
         </div>
@@ -153,10 +151,10 @@
 
 <!-- Baris 4: Notifikasi Stok Minimum -->
 <div class="card-custom">
-    <div class="d-flex align-items-center justify-content-between mb-3">
+    <div class="d-flex align-items-center justify-content-between mb-2">
         <div>
-            <h5 class="font-outfit m-0 mb-1" style="font-size: 16px; font-weight: 600;">Notifikasi Stok Minimum</h5>
-            <p class="text-muted m-0" style="font-size: 12.5px;">Daftar barang yang mencapai atau di bawah batas minimum stok.</p>
+            <h5 class="font-outfit m-0 mb-1" style="font-size: 15px; font-weight: 600;">Notifikasi Stok Minimum</h5>
+            <p class="text-muted m-0" style="font-size: 12px;">Daftar barang yang mencapai atau di bawah batas minimum stok.</p>
         </div>
         <span class="badge-custom badge-danger"><i class="fa-solid fa-bell"></i> Perlu Restock</span>
     </div>
