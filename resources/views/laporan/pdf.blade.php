@@ -14,8 +14,8 @@
         
         .header {
             text-align: center;
-            margin-bottom: 25px;
-            border-bottom: 2px solid #111111;
+            margin-bottom: 20px;
+            border-bottom: 2px solid #0F5A37;
             padding-bottom: 10px;
         }
         
@@ -25,6 +25,7 @@
             text-transform: uppercase;
             letter-spacing: 0.5px;
             margin: 0 0 5px 0;
+            color: #0F5A37;
         }
         
         .report-title {
@@ -32,18 +33,19 @@
             font-weight: bold;
             margin: 0 0 5px 0;
             text-transform: uppercase;
+            color: #111827;
         }
         
         .report-period {
             font-size: 11px;
-            color: #555555;
+            color: #6B7280;
             margin: 0;
         }
 
         .filter-summary {
             margin-bottom: 15px;
             font-size: 10px;
-            color: #444444;
+            color: #4B5563;
         }
         
         .table-laporan {
@@ -53,36 +55,33 @@
         }
         
         .table-laporan th {
-            background-color: #f5f5f5;
-            color: #111111;
+            background-color: #E6F4ED;
+            color: #0D5230;
             font-weight: bold;
             text-transform: uppercase;
             font-size: 9px;
-            border: 1px solid #cccccc;
+            border: 1px solid #C2E7D3;
             padding: 7px 10px;
             text-align: left;
         }
         
         .table-laporan td {
             padding: 6px 10px;
-            border: 1px solid #cccccc;
+            border: 1px solid #EAECEF;
             vertical-align: middle;
             font-size: 9.5px;
-            color: #222222;
-        }
-        
-        .table-laporan tr:nth-child(even) td {
-            background-color: #fafafa;
+            color: #111827;
         }
 
         .badge-status {
             display: inline-block;
-            padding: 2px 4px;
+            padding: 2px 5px;
             font-size: 8px;
             font-weight: bold;
             text-transform: uppercase;
-            border: 1px solid #999999;
+            border: 1px solid #9CA3AF;
             border-radius: 3px;
+            background-color: #F3F4F6;
         }
 
         .footer {
@@ -90,10 +89,10 @@
             bottom: 0;
             left: 0;
             right: 0;
-            height: 30px;
+            height: 25px;
             font-size: 9px;
-            color: #666666;
-            border-top: 1px solid #e5e5e5;
+            color: #9CA3AF;
+            border-top: 1px solid #EAECEF;
             padding-top: 5px;
             text-align: right;
         }
@@ -104,18 +103,22 @@
         }
 
         .signature-section {
-            margin-top: 40px;
+            margin-top: 30px;
             text-align: right;
             font-size: 11px;
             page-break-inside: avoid;
         }
 
         .signature-space {
-            height: 70px;
+            height: 60px;
         }
     </style>
 </head>
 <body>
+    @php
+        $colSpan = ($jenisLaporan == 'stok') ? 10 : (($jenisLaporan == 'keluar') ? 8 : 9);
+    @endphp
+
     <!-- Header Instansi -->
     <div class="header">
         <h1 class="company-name">SISTEM INFORMASI INVENTORI KANTOR</h1>
@@ -131,26 +134,13 @@
 
     <!-- Parameter Filter yang Digunakan -->
     <div class="filter-summary">
-        Dicetak oleh: <strong>{{ auth()->user()->nama }} ({{ ucfirst(auth()->user()->role) }})</strong> | Tanggal Cetak: {{ date('d-m-Y H:i') }}
+        Dicetak oleh: <strong>{{ auth()->user()?->nama ?? 'Administrator' }} ({{ ucfirst(auth()->user()?->role ?? 'Admin') }})</strong> | Tanggal Cetak: {{ date('d-m-Y H:i') }}
     </div>
 
     <!-- Tabel Data Laporan -->
     <table class="table-laporan">
         <thead>
-            @if($jenisLaporan == 'stok')
-                <tr>
-                    <th style="width: 10%;">Kode Barang</th>
-                    <th style="width: 20%;">Nama Barang</th>
-                    <th style="width: 10%;">Kategori</th>
-                    <th style="width: 10%;">Merek</th>
-                    <th style="width: 7%;">Stok</th>
-                    <th style="width: 7%;">Satuan</th>
-                    <th style="width: 10%;">Lokasi</th>
-                    <th style="width: 8%;">Kondisi</th>
-                    <th style="width: 10%;">Harga Satuan</th>
-                    <th style="width: 12%;">Total Nilai Aset</th>
-                </tr>
-            @elseif($jenisLaporan == 'masuk')
+            @if($jenisLaporan == 'masuk')
                 <tr>
                     <th style="width: 12%;">No. Transaksi</th>
                     <th style="width: 10%;">Tanggal</th>
@@ -197,16 +187,77 @@
                     <th style="width: 10%;">Status</th>
                     <th style="width: 10%;">Petugas</th>
                 </tr>
-
+            @else
+                <!-- Default / Stok -->
+                <tr>
+                    <th style="width: 10%;">Kode Barang</th>
+                    <th style="width: 20%;">Nama Barang</th>
+                    <th style="width: 10%;">Kategori</th>
+                    <th style="width: 10%;">Merek</th>
+                    <th style="width: 7%;">Stok</th>
+                    <th style="width: 7%;">Satuan</th>
+                    <th style="width: 10%;">Lokasi</th>
+                    <th style="width: 8%;">Kondisi</th>
+                    <th style="width: 10%;">Harga Satuan</th>
+                    <th style="width: 12%;">Total Nilai Aset</th>
+                </tr>
             @endif
         </thead>
         <tbody>
             @forelse($data as $item)
-                @if($jenisLaporan == 'stok')
+                @if($jenisLaporan == 'masuk')
+                    <tr>
+                        <td style="font-weight: bold;">{{ $item->no_transaksi }}</td>
+                        <td>{{ optional($item->tanggal)->format('d-m-Y') ?? '-' }}</td>
+                        <td>{{ $item->barang->kode_barang ?? '-' }}</td>
+                        <td>{{ $item->barang->nama_barang ?? '-' }}</td>
+                        <td>{{ $item->supplier->nama_supplier ?? '-' }}</td>
+                        <td>+{{ $item->jumlah }} {{ $item->barang->satuan ?? '' }}</td>
+                        <td>Rp {{ number_format($item->harga_satuan, 0, ',', '.') }}</td>
+                        <td style="font-weight: bold;">Rp {{ number_format($item->jumlah * $item->harga_satuan, 0, ',', '.') }}</td>
+                        <td>{{ $item->user->nama ?? '-' }}</td>
+                    </tr>
+                @elseif($jenisLaporan == 'keluar')
+                    <tr>
+                        <td style="font-weight: bold;">{{ $item->no_transaksi }}</td>
+                        <td>{{ optional($item->tanggal)->format('d-m-Y') ?? '-' }}</td>
+                        <td>{{ $item->barang->kode_barang ?? '-' }}</td>
+                        <td>{{ $item->barang->nama_barang ?? '-' }}</td>
+                        <td>-{{ $item->jumlah }} {{ $item->barang->satuan ?? '' }}</td>
+                        <td>{{ $item->tujuan_penggunaan ?? '-' }}</td>
+                        <td>{{ $item->keterangan ?? '-' }}</td>
+                        <td>{{ $item->user->nama ?? '-' }}</td>
+                    </tr>
+                @elseif($jenisLaporan == 'mutasi')
+                    <tr>
+                        <td style="font-weight: bold;">{{ $item->no_transaksi }}</td>
+                        <td>{{ optional($item->tanggal)->format('d-m-Y') ?? '-' }}</td>
+                        <td>{{ $item->barang->kode_barang ?? '-' }}</td>
+                        <td>{{ $item->barang->nama_barang ?? '-' }}</td>
+                        <td>{{ $item->jumlah }} {{ $item->barang->satuan ?? '' }}</td>
+                        <td>{{ $item->lokasi_asal }}</td>
+                        <td style="font-weight: bold;">{{ $item->lokasi_tujuan }}</td>
+                        <td>{{ $item->pic_tujuan ?? '-' }}</td>
+                        <td>{{ $item->user->nama ?? '-' }}</td>
+                    </tr>
+                @elseif($jenisLaporan == 'peminjaman')
+                    <tr>
+                        <td style="font-weight: bold;">{{ $item->no_transaksi }}</td>
+                        <td>{{ $item->barang->nama_barang ?? '-' }}</td>
+                        <td>{{ $item->peminjam->nama ?? '-' }}</td>
+                        <td>{{ $item->jumlah }} {{ $item->barang->satuan ?? '' }}</td>
+                        <td>{{ optional($item->tanggal_pinjam)->format('d-m-Y') ?? '-' }}</td>
+                        <td>{{ optional($item->tanggal_rencana_kembali)->format('d-m-Y') ?? '-' }}</td>
+                        <td>{{ $item->pengembalian ? optional($item->pengembalian->tanggal_kembali)->format('d-m-Y') : '-' }}</td>
+                        <td><span class="badge-status">{{ $item->status }}</span></td>
+                        <td>{{ $item->user->nama ?? '-' }}</td>
+                    </tr>
+                @else
+                    <!-- Default / Stok -->
                     <tr>
                         <td style="font-weight: bold;">{{ $item->kode_barang }}</td>
                         <td>{{ $item->nama_barang }}</td>
-                        <td>{{ $item->kategori->nama_kategori }}</td>
+                        <td>{{ $item->kategori->nama_kategori ?? '-' }}</td>
                         <td>{{ $item->merek ?? '-' }}</td>
                         <td>{{ $item->jumlah }}</td>
                         <td>{{ $item->satuan }}</td>
@@ -215,59 +266,11 @@
                         <td>Rp {{ number_format($item->harga_satuan, 0, ',', '.') }}</td>
                         <td style="font-weight: bold;">Rp {{ number_format($item->total_nilai_aset, 0, ',', '.') }}</td>
                     </tr>
-                @elseif($jenisLaporan == 'masuk')
-                    <tr>
-                        <td style="font-weight: bold;">{{ $item->no_transaksi }}</td>
-                        <td>{{ $item->tanggal->format('d-m-Y') }}</td>
-                        <td>{{ $item->barang->kode_barang }}</td>
-                        <td>{{ $item->barang->nama_barang }}</td>
-                        <td>{{ $item->supplier->nama_supplier }}</td>
-                        <td>+{{ $item->jumlah }} {{ $item->barang->satuan }}</td>
-                        <td>Rp {{ number_format($item->harga_satuan, 0, ',', '.') }}</td>
-                        <td style="font-weight: bold;">Rp {{ number_format($item->jumlah * $item->harga_satuan, 0, ',', '.') }}</td>
-                        <td>{{ $item->user->nama }}</td>
-                    </tr>
-                @elseif($jenisLaporan == 'keluar')
-                    <tr>
-                        <td style="font-weight: bold;">{{ $item->no_transaksi }}</td>
-                        <td>{{ $item->tanggal->format('d-m-Y') }}</td>
-                        <td>{{ $item->barang->kode_barang }}</td>
-                        <td>{{ $item->barang->nama_barang }}</td>
-                        <td>-{{ $item->jumlah }} {{ $item->barang->satuan }}</td>
-                        <td>{{ $item->tujuan_penggunaan ?? '-' }}</td>
-                        <td>{{ $item->keterangan ?? '-' }}</td>
-                        <td>{{ $item->user->nama }}</td>
-                    </tr>
-                @elseif($jenisLaporan == 'mutasi')
-                    <tr>
-                        <td style="font-weight: bold;">{{ $item->no_transaksi }}</td>
-                        <td>{{ $item->tanggal->format('d-m-Y') }}</td>
-                        <td>{{ $item->barang->kode_barang }}</td>
-                        <td>{{ $item->barang->nama_barang }}</td>
-                        <td>{{ $item->jumlah }} {{ $item->barang->satuan }}</td>
-                        <td>{{ $item->lokasi_asal }}</td>
-                        <td style="font-weight: bold;">{{ $item->lokasi_tujuan }}</td>
-                        <td>{{ $item->pic_tujuan ?? '-' }}</td>
-                        <td>{{ $item->user->nama }}</td>
-                    </tr>
-                @elseif($jenisLaporan == 'peminjaman')
-                    <tr>
-                        <td style="font-weight: bold;">{{ $item->no_transaksi }}</td>
-                        <td>{{ $item->barang->nama_barang }}</td>
-                        <td>{{ $item->peminjam->nama }}</td>
-                        <td>{{ $item->jumlah }} {{ $item->barang->satuan }}</td>
-                        <td>{{ $item->tanggal_pinjam->format('d-m-Y') }}</td>
-                        <td>{{ $item->tanggal_rencana_kembali->format('d-m-Y') }}</td>
-                        <td>{{ $item->pengembalian ? $item->pengembalian->tanggal_kembali->format('d-m-Y') : '-' }}</td>
-                        <td><span class="badge-status">{{ $item->status }}</span></td>
-                        <td>{{ $item->user->nama }}</td>
-                    </tr>
-
                 @endif
             @empty
                 <tr>
-                    <td colspan="12" style="text-align: center; color: #666666; padding: 15px;">
-                        Tidak ada data laporan.
+                    <td colspan="{{ $colSpan }}" style="text-align: center; color: #666666; padding: 20px;">
+                        Tidak ada data laporan ditemukan.
                     </td>
                 </tr>
             @endforelse
@@ -286,7 +289,7 @@
 
     <!-- Footer PDF -->
     <div class="footer">
-        <div class="footer-left">Sistem Informasi Inventori Kantor - Metode RAD</div>
+        <div class="footer-left">Yintong Inventory - Sistem Informasi Inventori Kantor</div>
         Halaman 1 / 1
     </div>
 </body>

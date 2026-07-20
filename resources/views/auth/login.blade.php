@@ -54,7 +54,7 @@
     </form>
 
     <div class="copyright">
-        &copy; {{ date('Y') }} Sistem Informasi Inventori &bull; Metode RAD
+        &copy; {{ date('Y') }} Sistem Informasi Inventori
     </div>
 </div>
 @endsection
