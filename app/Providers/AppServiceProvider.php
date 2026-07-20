@@ -5,6 +5,9 @@ namespace App\Providers;
 use Illuminate\Support\ServiceProvider;
 use Illuminate\Support\Facades\View;
 use Illuminate\Support\Facades\URL;
+use Illuminate\Support\Facades\Schema;
+use Illuminate\Support\Facades\Artisan;
+use App\Models\User;
 use App\Models\Barang;
 use App\Models\Peminjaman;
 
@@ -25,6 +28,15 @@ class AppServiceProvider extends ServiceProvider
     {
         if ($this->app->environment('production') || request()->header('x-forwarded-proto') === 'https') {
             URL::forceScheme('https');
+        }
+
+        // Auto-seed database jika tabel users masih kosong
+        try {
+            if (Schema::hasTable('users') && User::count() === 0) {
+                Artisan::call('db:seed', ['--force' => true]);
+            }
+        } catch (\Throwable $e) {
+            // Ignore error if DB is not ready during build step
         }
 
         View::composer('layouts.app', function ($view) {
