@@ -594,8 +594,8 @@
         <nav id="sidebar">
             <div>
                 <div class="sidebar-brand">
-                    <div class="brand-logo-icon">
-                        <i class="fa-solid fa-boxes-stacked"></i>
+                    <div class="brand-logo-icon" style="background: transparent; border: none;">
+                        <img src="{{ asset('images/logo.png') }}" alt="Logo Yintong" style="height: 38px; width: 38px; object-fit: contain;">
                     </div>
                     <span class="brand-text">Yintong</span>
                 </div>

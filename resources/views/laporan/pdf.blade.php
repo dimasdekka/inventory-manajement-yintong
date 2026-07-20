@@ -317,8 +317,7 @@
 
     <!-- Footer PDF -->
     <div class="footer">
-        <div class="footer-left">Yintong Inventory - Sistem Informasi Inventori Kantor</div>
-        <div class="footer-right">Metode RAD</div>
+        <div class="footer-left">Yintong Inventory - Sistem Informasi Inventori Kantor</div> 1  
     </div>
 </body>
 </html>

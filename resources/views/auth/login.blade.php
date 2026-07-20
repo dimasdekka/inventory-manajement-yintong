@@ -2,8 +2,8 @@
 
 @section('content')
 <div class="auth-card">
-    <div class="auth-logo">
-        <i class="fa-solid fa-boxes-stacked"></i>
+    <div class="auth-logo d-flex flex-column align-items-center">
+        <img src="{{ asset('images/logo.png') }}" alt="Logo Yintong Inventory" style="height: 54px; width: auto; object-fit: contain; margin-bottom: 10px;">
         <span>Yintong Inventory</span>
     </div>
     <div class="auth-subtitle">Sistem Informasi Inventori & Aset Tetap</div>
