@@ -38,7 +38,7 @@ class BarangMasukController extends Controller
         $barangMasuk = $query->orderBy('tanggal', 'desc')
             ->orderBy('created_at', 'desc')
             ->paginate(10)
-            ->withQueryString();
+            ->appends($request->query());
 
         $suppliers = Supplier::all();
 

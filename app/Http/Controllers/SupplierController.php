@@ -25,7 +25,7 @@ class SupplierController extends Controller
             });
         }
 
-        $supplier = $query->paginate(10)->withQueryString();
+        $supplier = $query->paginate(10)->appends($request->query());
         return view('supplier.index', compact('supplier'));
     }
 

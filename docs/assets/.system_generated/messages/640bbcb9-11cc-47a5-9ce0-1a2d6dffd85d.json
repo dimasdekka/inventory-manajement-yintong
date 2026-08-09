@@ -1,0 +1,1 @@
+{"id":"640bbcb9-11cc-47a5-9ce0-1a2d6dffd85d","recipient":"7e8e95e4-086e-4fb9-b0f6-b90e2fe69975","sender":"7e8e95e4-086e-4fb9-b0f6-b90e2fe69975/task-600","priority":"MESSAGE_PRIORITY_HIGH","timestamp":"2026-07-19T05:17:59.505599400Z","renderDetails":{"messageTitle":"Scheduling test status check: Timer has expired"},"content":"Check PHPUnit test task-594 status"}

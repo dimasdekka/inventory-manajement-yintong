@@ -1,0 +1,8 @@
+Loading composer repositories with package information
+Updating dependencies
+Nothing to modify in lock file
+Writing lock file
+Installing dependencies from lock file (including require-dev)
+Package operations: 0 installs, 8 updates, 0 removals
+  - Downloading laravel/pint (v1.29.3)
+ 0/1 [>---------------------------]   0%

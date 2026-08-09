@@ -1,0 +1,26 @@
+
+   WARN  Your XML configuration validates against a deprecated schema. Migrate your XML configuration using "--migrate-configuration"!
+
+   PASS  Tests\Unit\ExampleTest
+  ✓ that true is true                                                                                            0.31s  
+
+   PASS  Tests\Feature\ExampleTest
+  ✓ the application returns a successful response                                                                3.07s  
+
+   PASS  Tests\Feature\InventoryTest
+  ✓ guest can see login page                                                                                     1.61s  
+  ✓ user can login with correct credentials                                                                      0.90s  
+  ✓ user cannot login with incorrect credentials                                                                 0.32s  
+  ✓ nonactive user cannot login                                                                                  0.05s  
+  ✓ admin can access users page                                                                                  0.41s  
+  ✓ staff cannot access users page                                                                               0.18s  
+  ✓ pimpinan cannot access users page                                                                            0.04s  
+  ✓ pimpinan cannot record transactions                                                                          0.07s  
+  ✓ admin and staff can access aset tetap list                                                                   0.19s  
+  ✓ pimpinan can view aset tetap list                                                                            0.04s  
+  ✓ pimpinan cannot access aset tetap creation form                                                              0.04s  
+  ✓ admin can create aset tetap                                                                                  0.20s  
+
+  Tests:    14 passed (26 assertions)
+  Duration: 10.53s
+

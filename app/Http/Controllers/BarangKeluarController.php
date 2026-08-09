@@ -37,7 +37,7 @@ class BarangKeluarController extends Controller
         $barangKeluar = $query->orderBy('tanggal', 'desc')
             ->orderBy('created_at', 'desc')
             ->paginate(10)
-            ->withQueryString();
+            ->appends($request->query());
 
         $barang = Barang::all();
 

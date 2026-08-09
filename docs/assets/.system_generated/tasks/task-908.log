@@ -1,0 +1,24 @@
+
+Deprecated: Method ReflectionMethod::setAccessible() is deprecated since 8.5, as it has no effect since PHP 8.1 in C:\Users\Unicodes\Documents\Developments\Project\Sistem-Inventory-Joki Skripsi\vendor\nunomaduro\collision\src\Adapters\Phpunit\ConfigureIO.php on line 37
+
+   WARN  Your XML configuration validates against a deprecated schema. Migrate your XML configuration using "--migrate-configuration"!
+
+   PASS  Tests\Unit\ExampleTest
+  ✓ that true is true                                                                                            0.01s  
+
+   PASS  Tests\Feature\ExampleTest
+  ✓ the application returns a successful response                                                                3.03s  
+
+   PASS  Tests\Feature\InventoryTest
+  ✓ guest can see login page                                                                                     0.55s  
+  ✓ user can login with correct credentials                                                                      0.75s  
+  ✓ user cannot login with incorrect credentials                                                                 0.31s  
+  ✓ nonactive user cannot login                                                                                  0.05s  
+  ✓ admin can access users page                                                                                  0.46s  
+  ✓ staff cannot access users page                                                                               0.16s  
+  ✓ pimpinan cannot access users page                                                                            0.04s  
+  ✓ pimpinan cannot record transactions                                                                          0.08s  
+
+  Tests:    10 passed (19 assertions)
+  Duration: 6.05s
+

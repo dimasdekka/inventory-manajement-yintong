@@ -46,7 +46,7 @@ class BarangController extends Controller
             $query->where('lokasi_penyimpanan', 'like', "%" . $request->input('lokasi') . "%");
         }
 
-        $barang = $query->paginate(10)->withQueryString();
+        $barang = $query->paginate(10)->appends($request->query());
         $kategori = Kategori::all();
         
         // Ambil daftar lokasi unik untuk filter

@@ -1,0 +1,6 @@
+Successfully scheduled one-shot timer.
+Expected to fire at: 2026-07-20T11:42:24+07:00
+Prompt: Wait for composer update task-831 to finish
+
+[2026-07-20T11:42:19+07:00] Still waiting. Remaining time: 5s
+[2026-07-20T11:42:24+07:00] Timer fired.

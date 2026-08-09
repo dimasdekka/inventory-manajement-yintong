@@ -51,7 +51,7 @@ class PeminjamanController extends Controller
         $peminjaman = $query->orderBy('tanggal_pinjam', 'desc')
             ->orderBy('created_at', 'desc')
             ->paginate(10)
-            ->withQueryString();
+            ->appends($request->query());
 
         $barang = Barang::all();
 

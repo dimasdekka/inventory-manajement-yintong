@@ -9,6 +9,17 @@
 
 ---
 
+> [!TIP]
+> **🚀 CARA CEPAT MENJALANKAN APLIKASI (INSTANT RUN)**
+> - **Setup Awal**: Klik ganda file [`setup.bat`](file:///c:/Users/Unicodes/Documents/Developments/Project/Sistem-Inventory-Joki%20Skripsi/setup.bat) untuk mengunduh dependency, mem-build asset, dan menyiapkan database secara otomatis.
+> - **Menjalankan Server**: Klik ganda file [`start.bat`](file:///c:/Users/Unicodes/Documents/Developments/Project/Sistem-Inventory-Joki%20Skripsi/start.bat) untuk membuka server Laravel & Vite serta otomatis membuka browser ke `http://127.0.0.1:8000`.
+>
+> **📘 BELUM PERNAH PAKAI LARAVEL? (PANDUAN UNTUK DEVELOPER JS)**
+> Baca dokumentasi khusus padanan konsep Laravel vs JS/Node.js/Express/React di file:
+> 👉 [`DOKUMENTASI_UNTUK_JS_DEVELOPER.md`](file:///c:/Users/Unicodes/Documents/Developments/Project/Sistem-Inventory-Joki%20Skripsi/DOKUMENTASI_UNTUK_JS_DEVELOPER.md)
+
+---
+
 ## 1. Ringkasan Arsitektur & Teknologi Sistem
 
 - **Framework Core**: Laravel 10 (PHP 8.3 / PHP 8.5 Compatible)
