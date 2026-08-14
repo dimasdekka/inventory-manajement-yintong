@@ -210,7 +210,7 @@
 <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 <script>
     document.addEventListener('DOMContentLoaded', function () {
-        // 1. Grafik Kategori (Bar Chart Emerald)
+        // 1. Grafik Distribusi Stok per Kategori (Bar Chart Horizontal Navy)
         const ctxCategory = document.getElementById('categoryChart').getContext('2d');
         new Chart(ctxCategory, {
             type: 'bar',
@@ -219,11 +219,11 @@
                 datasets: [{
                     label: 'Stok Barang',
                     data: {!! json_encode($categoriesStokData) !!},
-                    backgroundColor: '#0F5A37',
-                    borderColor: '#0F5A37',
+                    backgroundColor: '#0F2942',
+                    borderColor: '#0F2942',
                     borderWidth: 0,
                     borderRadius: 8,
-                    hoverBackgroundColor: '#0A4328'
+                    hoverBackgroundColor: '#1E3A5F'
                 }]
             },
             options: {
@@ -235,7 +235,7 @@
                         display: false
                     },
                     tooltip: {
-                        backgroundColor: '#0F5A37',
+                        backgroundColor: '#0F2942',
                         titleFont: { family: 'Inter', size: 12, weight: 'bold' },
                         bodyFont: { family: 'Inter', size: 12 },
                         padding: 10,
@@ -247,10 +247,10 @@
                     x: {
                         beginAtZero: true,
                         grid: {
-                            color: '#EAECEF'
+                            color: '#E2E8F0'
                         },
                         ticks: {
-                            color: '#6B7280',
+                            color: '#64748B',
                             font: { family: 'Inter', size: 11 }
                         }
                     },
@@ -259,7 +259,7 @@
                             display: false
                         },
                         ticks: {
-                            color: '#111827',
+                            color: '#0F172A',
                             font: { family: 'Inter', size: 11, weight: '600' }
                         }
                     }
@@ -267,7 +267,7 @@
             }
         });
 
-        // 2. Grafik Transaksi Masuk vs Keluar (Line Chart Emerald & Mint)
+        // 2. Grafik Transaksi Masuk vs Keluar (Line Chart Navy & Slate)
         const ctxTransaction = document.getElementById('transactionChart').getContext('2d');
         new Chart(ctxTransaction, {
             type: 'line',
@@ -277,17 +277,17 @@
                     {
                         label: 'Barang Masuk',
                         data: {!! json_encode($masukData) !!},
-                        borderColor: '#0F5A37',
-                        backgroundColor: 'rgba(15, 90, 55, 0.08)',
+                        borderColor: '#0F2942',
+                        backgroundColor: 'rgba(15, 41, 66, 0.08)',
                         borderWidth: 2.5,
                         tension: 0.4,
                         fill: true,
                         pointBackgroundColor: '#ffffff',
-                        pointBorderColor: '#0F5A37',
+                        pointBorderColor: '#0F2942',
                         pointBorderWidth: 2,
                         pointRadius: 4,
                         pointHoverRadius: 6,
-                        pointHoverBackgroundColor: '#0F5A37',
+                        pointHoverBackgroundColor: '#0F2942',
                         pointHoverBorderColor: '#ffffff'
                     },
                     {

@@ -49,9 +49,14 @@
             <div class="d-flex justify-content-between align-items-center mb-3 pb-2 border-bottom">
                 <h5 class="font-outfit m-0" style="font-size: 16px; font-weight: 600;">Spesifikasi & Informasi Aset</h5>
                 @if(in_array(auth()->user()->role, ['administrator', 'staff_gudang']))
-                    <a href="{{ route('barang.edit', $barang->id) }}" class="btn-custom btn-custom-sm btn-custom-light">
-                        <i class="fa-solid fa-pen-to-square"></i> Ubah
-                    </a>
+                    <div class="d-flex gap-2">
+                        <a href="{{ route('mutasi.create', ['barang_id' => $barang->id]) }}" class="btn-custom btn-custom-sm btn-custom-dark">
+                            <i class="fa-solid fa-arrows-spin"></i> Mutasikan
+                        </a>
+                        <a href="{{ route('barang.edit', $barang->id) }}" class="btn-custom btn-custom-sm btn-custom-light">
+                            <i class="fa-solid fa-pen-to-square"></i> Ubah
+                        </a>
+                    </div>
                 @endif
             </div>
 

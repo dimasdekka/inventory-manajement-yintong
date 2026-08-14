@@ -14,12 +14,34 @@ use Illuminate\Validation\ValidationException;
 class BarangService
 {
     /**
-     * Generate Kode Barang otomatis.
-     * Format: BRG-YYYYMM-0001
+     * Generate Kode Barang otomatis berdasarkan jenis/kategori barang.
+     * Format: [KATEGORI_PREFIX]-YYYYMM-0001 (contoh: ATK-202608-0001, ELK-202608-0001)
      */
-    public static function generateKodeBarang(): string
+    public static function generateKodeBarang(?int $kategoriId = null): string
     {
-        $prefix = 'BRG-' . now()->format('Ym') . '-';
+        $katPrefix = 'BRG';
+        if ($kategoriId) {
+            $kategori = \App\Models\Kategori::find($kategoriId);
+            if ($kategori) {
+                $nama = strtoupper($kategori->nama_kategori);
+                if (str_contains($nama, 'ATK') || str_contains($nama, 'TULIS')) {
+                    $katPrefix = 'ATK';
+                } elseif (str_contains($nama, 'KENDARAAN') || str_contains($nama, 'MOTOR') || str_contains($nama, 'MOBIL')) {
+                    $katPrefix = 'KND';
+                } elseif (str_contains($nama, 'ELEKTRONIK') || str_contains($nama, 'LAPTOP') || str_contains($nama, 'KOMPUTER')) {
+                    $katPrefix = 'ELK';
+                } elseif (str_contains($nama, 'PERALATAN') || str_contains($nama, 'PERKAKAS') || str_contains($nama, 'ALAT')) {
+                    $katPrefix = 'PRK';
+                } elseif (str_contains($nama, 'MESS') || str_contains($nama, 'KARYAWAN')) {
+                    $katPrefix = 'MSS';
+                } else {
+                    $clean = preg_replace('/[^A-Z]/', '', $nama);
+                    $katPrefix = (strlen($clean) >= 3) ? substr($clean, 0, 3) : 'BRG';
+                }
+            }
+        }
+
+        $prefix = $katPrefix . '-' . now()->format('Ym') . '-';
         
         $lastBarang = Barang::where('kode_barang', 'like', $prefix . '%')
             ->orderBy('kode_barang', 'desc')

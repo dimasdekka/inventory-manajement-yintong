@@ -20,7 +20,7 @@
         .header {
             text-align: center;
             margin-bottom: 12px;
-            border-bottom: 2px solid #0F5A37;
+            border-bottom: 2px solid #0F2942;
             padding-bottom: 6px;
         }
         
@@ -30,7 +30,7 @@
             text-transform: uppercase;
             letter-spacing: 0.5px;
             margin: 0 0 3px 0;
-            color: #0F5A37;
+            color: #0F2942;
         }
         
         .report-title {
@@ -38,19 +38,19 @@
             font-weight: bold;
             margin: 0 0 3px 0;
             text-transform: uppercase;
-            color: #111827;
+            color: #0F172A;
         }
         
         .report-period {
             font-size: 9pt;
-            color: #4B5563;
+            color: #64748B;
             margin: 0;
         }
 
         .filter-summary {
             margin-bottom: 10px;
             font-size: 8.5pt;
-            color: #4B5563;
+            color: #64748B;
         }
         
         .table-laporan {
@@ -61,12 +61,12 @@
         }
         
         .table-laporan th {
-            background-color: #E6F4ED;
-            color: #0D5230;
+            background-color: #F1F5F9;
+            color: #0F2942;
             font-weight: bold;
             text-transform: uppercase;
             font-size: 7.5pt;
-            border: 1px solid #B8E2CB;
+            border: 1px solid #CBD5E1;
             padding: 6px 5px;
             word-wrap: break-word;
             overflow-wrap: break-word;

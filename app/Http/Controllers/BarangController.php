@@ -74,8 +74,8 @@ class BarangController extends Controller
     {
         $data = $request->validated();
         
-        // Generate kode barang
-        $kodeBarang = BarangService::generateKodeBarang();
+        // Generate kode barang berbasis jenis/kategori barang
+        $kodeBarang = BarangService::generateKodeBarang($data['kategori_id'] ?? null);
         $data['kode_barang'] = $kodeBarang;
 
         // Generate QR Code

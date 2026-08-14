@@ -15,16 +15,23 @@
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
     <style>
         :root {
-            --bg-app: #F4F5F7;
-            --sidebar-bg: #FFFFFF;
-            --emerald-primary: #0F5A37;
-            --emerald-hover: #0A4328;
-            --mint-light: #E6F4ED;
-            --mint-text: #0D5230;
-            --text-main: #111827;
-            --text-muted: #6B7280;
-            --card-radius: 20px;
-            --border-color: #EAECEF;
+            --bg-app: #F8FAFC;          /* Clean Light Slate / Abu-abu Terang */
+            --sidebar-bg: #FFFFFF;      /* Pure White / Putih Bersih */
+            --navy-primary: #0F2942;    /* Deep Classic Corporate Navy */
+            --navy-hover: #0A1E31;      /* Darker Navy on hover */
+            --navy-accent: #2563EB;     /* Royal Blue Accent */
+            --slate-light: #F1F5F9;     /* Soft Cool Gray / Slate-100 */
+            --slate-subtle: #E2E8F0;    /* Slate-200 */
+            --text-main: #0F172A;       /* Slate-900 / Deep Navy-Charcoal Text */
+            --text-muted: #64748B;      /* Slate-500 / Refined Gray */
+            --card-radius: 16px;
+            --border-color: #E2E8F0;    /* Clean Gray Border */
+            
+            /* Backward compatibility aliases */
+            --emerald-primary: #0F2942;
+            --emerald-hover: #0A1E31;
+            --mint-light: #F1F5F9;
+            --mint-text: #0F2942;
         }
 
         body {
@@ -74,14 +81,14 @@
         .brand-logo-icon {
             width: 36px;
             height: 36px;
-            background: linear-gradient(135deg, var(--emerald-primary) 0%, #168050 100%);
+            background: linear-gradient(135deg, #0F2942 0%, #1E3A8A 100%);
             border-radius: 12px;
             display: flex;
             align-items: center;
             justify-content: center;
             color: #ffffff;
             font-size: 18px;
-            box-shadow: 0 4px 12px rgba(15, 90, 55, 0.25);
+            box-shadow: 0 4px 12px rgba(15, 41, 66, 0.25);
         }
         
         .brand-text {
@@ -104,7 +111,7 @@
             font-weight: 700;
             text-transform: uppercase;
             letter-spacing: 1.2px;
-            color: #A0AEC0;
+            color: #94A3B8;
         }
         
         ul.sidebar-menu li a {
@@ -128,20 +135,20 @@
         }
         
         ul.sidebar-menu li a:hover {
-            color: var(--emerald-primary);
-            background-color: var(--mint-light);
+            color: var(--navy-primary);
+            background-color: var(--slate-light);
         }
         
         ul.sidebar-menu li.active > a {
             color: #ffffff;
-            background-color: var(--emerald-primary);
+            background-color: var(--navy-primary);
             font-weight: 600;
-            box-shadow: 0 4px 14px rgba(15, 90, 55, 0.25);
+            box-shadow: 0 4px 14px rgba(15, 41, 66, 0.25);
         }
 
         /* Sidebar Bottom Widget Card (Balanced Size) */
         .sidebar-bottom-card {
-            background: linear-gradient(135deg, #0F5A37 0%, #063821 100%);
+            background: linear-gradient(135deg, #0F2942 0%, #1E3A5F 100%);
             border-radius: 12px;
             padding: 12px;
             color: #ffffff;
@@ -332,13 +339,13 @@
             box-shadow: 0 6px 16px rgba(0, 0, 0, 0.04);
         }
         .stat-card-featured {
-            background: linear-gradient(135deg, #0F5A37 0%, #083E25 100%);
+            background: linear-gradient(135deg, #0F2942 0%, #1E3A5F 100%);
             border: none;
             color: #ffffff;
-            box-shadow: 0 6px 20px rgba(15, 90, 55, 0.18);
+            box-shadow: 0 6px 20px rgba(15, 41, 66, 0.18);
         }
         .stat-card-featured:hover {
-            box-shadow: 0 10px 24px rgba(15, 90, 55, 0.25);
+            box-shadow: 0 10px 24px rgba(15, 41, 66, 0.25);
         }
         .stat-card-warning-alert {
             background-color: #FEF2F2;

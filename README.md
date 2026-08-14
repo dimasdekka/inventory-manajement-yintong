@@ -14,9 +14,9 @@
 > - **Setup Awal**: Klik ganda file [`setup.bat`](file:///c:/Users/Unicodes/Documents/Developments/Project/Sistem-Inventory-Joki%20Skripsi/setup.bat) untuk mengunduh dependency, mem-build asset, dan menyiapkan database secara otomatis.
 > - **Menjalankan Server**: Klik ganda file [`start.bat`](file:///c:/Users/Unicodes/Documents/Developments/Project/Sistem-Inventory-Joki%20Skripsi/start.bat) untuk membuka server Laravel & Vite serta otomatis membuka browser ke `http://127.0.0.1:8000`.
 >
-> **📘 BELUM PERNAH PAKAI LARAVEL? (PANDUAN UNTUK DEVELOPER JS)**
-> Baca dokumentasi khusus padanan konsep Laravel vs JS/Node.js/Express/React di file:
-> 👉 [`DOKUMENTASI_UNTUK_JS_DEVELOPER.md`](file:///c:/Users/Unicodes/Documents/Developments/Project/Sistem-Inventory-Joki%20Skripsi/DOKUMENTASI_UNTUK_JS_DEVELOPER.md)
+> **📘 PILIHAN DOKUMENTASI LENGKAP:**
+> - **Panduan Bahasa Awam (Tanpa Istilah Teknis)**: 👉 [`DOKUMENTASI_UNTUK_ORANG_AWAM.md`](file:///c:/Users/Unicodes/Documents/Developments/Project/Sistem-Inventory-Joki%20Skripsi/DOKUMENTASI_UNTUK_ORANG_AWAM.md)
+> - **Panduan untuk Developer JS/Node.js**: 👉 [`DOKUMENTASI_UNTUK_JS_DEVELOPER.md`](file:///c:/Users/Unicodes/Documents/Developments/Project/Sistem-Inventory-Joki%20Skripsi/DOKUMENTASI_UNTUK_JS_DEVELOPER.md)
 
 ---
 
@@ -24,7 +24,7 @@
 
 - **Framework Core**: Laravel 10 (PHP 8.3 / PHP 8.5 Compatible)
 - **Database Engine**: MySQL 8.0 / MariaDB
-- **Desain UI/UX**: Donezo Modern Layout Pattern (Deep Emerald `#0F5A37`, _rounded cards 14px-16px_, _compact padding_, Google Fonts Outfit & Inter)
+- **Desain UI/UX**: Donezo Modern Layout Pattern (Natural Forest Green `#1E513B`, _rounded cards 16px_, _compact padding_, Google Fonts Outfit & Inter)
 - **Modul Keamanan**: Role-based Access Control (Administrator, Staff Gudang, Pimpinan) dengan perlindungan Anti-CSRF & Rate Limiting Login.
 - **Modul Laporan**: DomPDF Export Landscape 1-Halaman & Maatwebsite Excel Integration.
 
@@ -32,11 +32,11 @@
 
 ## 2. Akun Akses Pengujian (_Credentials_)
 
-| Role User         | Email Access            | Default Password | Hak Akses Utama                                                           |
-| :---------------- | :---------------------- | :--------------- | :------------------------------------------------------------------------ |
-| **Administrator** | `admin@admin.com`       | `admin123`       | **Full Access**: Kelola Barang, Transaksi, User, Laporan, & System Config |
-| **Staff Gudang**  | `staff@staff.com`       | `staff123`       | **Operasional**: Input Barang Masuk, Keluar, Mutasi, & Peminjaman         |
-| **Pimpinan**      | `pimpinan@pimpinan.com` | `pimpinan123`    | **Monitoring**: View Dashboard, Laporan Inventori, & Download PDF/Excel   |
+| Role User | Nama Pengguna | Email Access | Default Password | Hak Akses Utama |
+| :--- | :--- | :--- | :--- | :--- |
+| **Administrator** | **Nurul Faoziah** | `admin@admin.com` / `nurul@admin.com` | `admin123` | **Full Access**: Kelola Barang, Transaksi, User, Laporan, & System Config |
+| **Staff Gudang** | **Staff Rani** | `staff@staff.com` | `staff123` | **Operasional**: Input Barang Masuk, Keluar, Mutasi, & Peminjaman |
+| **Pimpinan** | **Pak Hermawan** | `pimpinan@pimpinan.com` | `pimpinan123` | **Monitoring**: View Dashboard, Laporan Inventori, & Download PDF/Excel |
 
 ---
 

@@ -7,6 +7,7 @@ use App\Models\User;
 use App\Models\Kategori;
 use App\Models\Supplier;
 use App\Models\Barang;
+use App\Services\BarcodeService;
 use Illuminate\Support\Facades\Hash;
 
 class DatabaseSeeder extends Seeder
@@ -16,10 +17,20 @@ class DatabaseSeeder extends Seeder
      */
     public function run(): void
     {
-        // 1. Seed Users
+        $barcodeService = app(BarcodeService::class);
+
+        // 1. Seed Users (Revisi: Admin utama adalah Nurul Faoziah)
         User::create([
-            'nama' => 'Dimas Admin',
+            'nama' => 'Nurul Faoziah',
             'email' => 'admin@admin.com',
+            'password' => Hash::make('admin123'),
+            'role' => 'administrator',
+            'status' => 'aktif',
+        ]);
+
+        User::create([
+            'nama' => 'Nurul Faoziah (Akun Personal)',
+            'email' => 'nurul@admin.com',
             'password' => Hash::make('admin123'),
             'role' => 'administrator',
             'status' => 'aktif',
@@ -117,9 +128,11 @@ class DatabaseSeeder extends Seeder
             'alamat' => 'Mangga Dua Mall Lt. 3, Jakarta Pusat',
         ]);
 
-        // 4. Seed Barang
+        // 4. Seed Barang dengan Kode Jenis Barang Unik & Barcode/QR Code Masing-Masing
+        $kodeBarang1 = 'ATK-202607-0001';
+        $qr1 = $barcodeService->generateQRCode($kodeBarang1);
         Barang::create([
-            'kode_barang' => 'BRG-202607-0001',
+            'kode_barang' => $kodeBarang1,
             'nama_barang' => 'Kertas HVS A4 80gr Sinar Dunia',
             'kategori_id' => $atk->id,
             'supplier_id' => $spl1->id,
@@ -135,10 +148,13 @@ class DatabaseSeeder extends Seeder
             'pic' => 'Rian Hidayat',
             'keterangan' => 'Persediaan rutin untuk operasional administrasi.',
             'stok_minimum' => 10,
+            'barcode_path' => $qr1,
         ]);
 
+        $kodeBarang2 = 'KND-202607-0001';
+        $qr2 = $barcodeService->generateQRCode($kodeBarang2);
         Barang::create([
-            'kode_barang' => 'BRG-202607-0002',
+            'kode_barang' => $kodeBarang2,
             'nama_barang' => 'Sepeda Motor Honda Vario 160cc',
             'kategori_id' => $kendaraan->id,
             'supplier_id' => $spl2->id,
@@ -154,10 +170,13 @@ class DatabaseSeeder extends Seeder
             'pic' => 'Ahmad Kurdi',
             'keterangan' => 'Digunakan oleh divisi kurir dan umum.',
             'stok_minimum' => 1,
+            'barcode_path' => $qr2,
         ]);
 
+        $kodeBarang3 = 'ELK-202607-0001';
+        $qr3 = $barcodeService->generateQRCode($kodeBarang3);
         Barang::create([
-            'kode_barang' => 'BRG-202607-0003',
+            'kode_barang' => $kodeBarang3,
             'nama_barang' => 'Air Conditioner Sharp 1 PK',
             'kategori_id' => $elektronik->id,
             'supplier_id' => $spl4->id,
@@ -173,10 +192,13 @@ class DatabaseSeeder extends Seeder
             'pic' => 'Doni Irawan',
             'keterangan' => 'Pemeliharaan AC dilakukan berkala setiap 3 bulan.',
             'stok_minimum' => 1,
+            'barcode_path' => $qr3,
         ]);
 
+        $kodeBarang4 = 'ELK-202607-0002';
+        $qr4 = $barcodeService->generateQRCode($kodeBarang4);
         Barang::create([
-            'kode_barang' => 'BRG-202607-0004',
+            'kode_barang' => $kodeBarang4,
             'nama_barang' => 'Laptop ASUS Vivobook 14',
             'kategori_id' => $elektronik->id,
             'supplier_id' => $spl4->id,
@@ -192,6 +214,7 @@ class DatabaseSeeder extends Seeder
             'pic' => 'Hendra Saputra',
             'keterangan' => 'Aset inventaris untuk staff operasional baru.',
             'stok_minimum' => 2,
+            'barcode_path' => $qr4,
         ]);
     }
 }

@@ -14,19 +14,27 @@
     <!-- FontAwesome for Icons -->
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
     <style>
+        :root {
+            --navy-primary: #0F2942;
+            --navy-hover: #1E3A5F;
+            --bg-app: #F8FAFC;
+            --border-color: #E2E8F0;
+            --text-main: #0F172A;
+            --text-muted: #64748B;
+        }
+
         body {
             font-family: 'Inter', sans-serif;
-            background-color: #fcfcfc;
-            color: #111111;
-            height: 100vh;
+            background-color: var(--bg-app);
+            color: var(--text-main);
+            min-height: 100vh;
             display: flex;
             align-items: center;
             justify-content: center;
             margin: 0;
-            overflow: hidden;
             position: relative;
         }
-        /* Geometric clean background accent */
+        /* Soft geometric background accent */
         body::before {
             content: '';
             position: absolute;
@@ -34,7 +42,7 @@
             left: -10%;
             width: 60%;
             height: 80%;
-            background: radial-gradient(circle, rgba(230, 230, 230, 0.4) 0%, rgba(255, 255, 255, 0) 70%);
+            background: radial-gradient(circle, rgba(15, 41, 66, 0.04) 0%, rgba(248, 250, 252, 0) 70%);
             z-index: 1;
         }
         body::after {
@@ -44,7 +52,7 @@
             right: -10%;
             width: 60%;
             height: 80%;
-            background: radial-gradient(circle, rgba(230, 230, 230, 0.4) 0%, rgba(255, 255, 255, 0) 70%);
+            background: radial-gradient(circle, rgba(37, 99, 235, 0.04) 0%, rgba(248, 250, 252, 0) 70%);
             z-index: 1;
         }
         .auth-container {
@@ -55,127 +63,121 @@
         }
         .auth-card {
             background-color: #ffffff;
-            border: 1px solid #e5e5e5;
-            border-radius: 12px;
-            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.03);
+            border: 1px solid var(--border-color);
+            border-radius: 16px;
+            box-shadow: 0 10px 30px rgba(15, 23, 42, 0.04);
             padding: 40px 35px;
             transition: all 0.3s ease;
         }
         .auth-card:hover {
-            box-shadow: 0 8px 30px rgba(0, 0, 0, 0.06);
-            border-color: #d5d5d5;
+            box-shadow: 0 14px 40px rgba(15, 23, 42, 0.07);
+            border-color: #CBD5E1;
         }
         .auth-logo {
             font-family: 'Outfit', sans-serif;
-            font-size: 28px;
+            font-size: 24px;
             font-weight: 700;
             letter-spacing: -0.5px;
-            color: #111111;
-            margin-bottom: 5px;
+            color: var(--navy-primary);
+            margin-bottom: 4px;
             display: flex;
             align-items: center;
             justify-content: center;
             gap: 10px;
         }
-        .auth-logo i {
-            font-size: 24px;
-        }
         .auth-subtitle {
-            color: #666666;
-            font-size: 14px;
+            color: var(--text-muted);
+            font-size: 13.5px;
             text-align: center;
-            margin-bottom: 30px;
+            margin-bottom: 24px;
         }
         .form-label {
-            font-size: 13px;
-            font-weight: 550;
+            font-size: 12px;
+            font-weight: 600;
             text-transform: uppercase;
             letter-spacing: 0.5px;
-            color: #444444;
+            color: #334155;
             margin-bottom: 6px;
         }
         .form-control {
-            border: 1px solid #d5d5d5;
-            border-radius: 6px;
+            border: 1px solid var(--border-color);
+            border-radius: 10px;
             padding: 11px 15px;
             font-size: 14px;
-            color: #111111;
-            background-color: #fafafa;
+            color: var(--text-main);
+            background-color: #F8FAFC;
             transition: all 0.2s ease-in-out;
         }
         .form-control:focus {
             background-color: #ffffff;
-            border-color: #111111;
-            box-shadow: none;
-            color: #111111;
+            border-color: var(--navy-primary);
+            box-shadow: 0 0 0 3px rgba(15, 41, 66, 0.1);
+            color: var(--text-main);
         }
         .btn-primary-custom {
-            background-color: #111111;
-            border: 1px solid #111111;
+            background-color: var(--navy-primary);
+            border: 1px solid var(--navy-primary);
             color: #ffffff;
             font-family: 'Outfit', sans-serif;
             font-weight: 600;
             padding: 12px;
-            border-radius: 6px;
+            border-radius: 10px;
             width: 100%;
             transition: all 0.2s ease;
-            font-size: 15px;
-            letter-spacing: 0.5px;
+            font-size: 14.5px;
+            letter-spacing: 0.3px;
+            box-shadow: 0 4px 14px rgba(15, 41, 66, 0.2);
+            cursor: pointer;
         }
         .btn-primary-custom:hover {
-            background-color: #333333;
-            border-color: #333333;
+            background-color: var(--navy-hover);
+            border-color: var(--navy-hover);
             color: #ffffff;
-        }
-        .btn-primary-custom:active {
-            background-color: #000000;
-            border-color: #000000;
+            box-shadow: 0 6px 18px rgba(15, 41, 66, 0.28);
         }
         .input-group-text-custom {
-            background-color: #fafafa;
-            border: 1px solid #d5d5d5;
+            background-color: #F8FAFC;
+            border: 1px solid var(--border-color);
             border-left: none;
-            border-top-right-radius: 6px;
-            border-bottom-right-radius: 6px;
+            border-top-right-radius: 10px;
+            border-bottom-right-radius: 10px;
             cursor: pointer;
-            color: #666666;
-            transition: all 0.2s ease;
+            color: var(--text-muted);
+            padding: 0 14px;
+            display: flex;
+            align-items: center;
         }
-        .input-group-text-custom:hover {
-            color: #111111;
-        }
-        .form-control-has-group {
-            border-right: none;
+        .input-group .form-control {
             border-top-right-radius: 0;
             border-bottom-right-radius: 0;
         }
-        .form-control-has-group:focus + .input-group-text-custom {
-            border-color: #111111;
-            background-color: #ffffff;
+        .form-check-input:checked {
+            background-color: var(--navy-primary);
+            border-color: var(--navy-primary);
         }
         .alert-custom {
-            border-radius: 6px;
-            font-size: 13.5px;
-            padding: 12px 15px;
-            border: 1px solid #f5c2c2;
-            background-color: #fdf2f2;
-            color: #9b1c1c;
+            font-size: 13px;
+            border-radius: 10px;
+            padding: 10px 14px;
             margin-bottom: 20px;
+            background-color: #FEF2F2;
+            border: 1px solid #FEE2E2;
+            color: #991B1B;
         }
         .alert-success-custom {
-            border-radius: 6px;
-            font-size: 13.5px;
-            padding: 12px 15px;
-            border: 1px solid #def7ec;
-            background-color: #f3faf7;
-            color: #03543f;
+            font-size: 13px;
+            border-radius: 10px;
+            padding: 10px 14px;
             margin-bottom: 20px;
+            background-color: #F0FDF4;
+            border: 1px solid #DCFCE7;
+            color: #166534;
         }
         .copyright {
-            font-size: 11px;
-            color: #888888;
-            text-align: center;
             margin-top: 25px;
+            font-size: 12px;
+            color: #94A3B8;
+            text-align: center;
         }
     </style>
 </head>
@@ -183,8 +185,27 @@
     <div class="auth-container">
         @yield('content')
     </div>
-    <!-- Bootstrap 5 Bundle JS -->
+
+    <!-- Bootstrap 5 JS Bundle -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
-    @yield('scripts')
+    <script>
+        // Password toggle visibility
+        document.addEventListener('DOMContentLoaded', function () {
+            const togglePassword = document.getElementById('togglePassword');
+            const password = document.getElementById('password');
+            const eyeIcon = document.getElementById('eyeIcon');
+
+            if (togglePassword && password) {
+                togglePassword.addEventListener('click', function () {
+                    const type = password.getAttribute('type') === 'password' ? 'text' : 'password';
+                    password.setAttribute('type', type);
+                    if (eyeIcon) {
+                        eyeIcon.classList.toggle('fa-eye');
+                        eyeIcon.classList.toggle('fa-eye-slash');
+                    }
+                });
+            }
+        });
+    </script>
 </body>
 </html>
