@@ -83,7 +83,14 @@
                     <tr>
                         <td class="fw-semibold">{{ $item->kode_barang }}</td>
                         <td>{{ $item->nama_barang }}</td>
-                        <td>{{ $item->kategori->nama_kategori }}</td>
+                        <td>
+                            <div>{{ $item->kategori->nama_kategori }}</div>
+                            @if($item->golongan)
+                                <span class="badge" style="background-color: var(--slate-light); color: var(--navy-primary); font-size: 10.5px; border: 1px solid var(--border-color); font-weight: 600;">
+                                    {{ $item->golongan->nama_golongan }} ({{ $item->golongan->kode_golongan }})
+                                </span>
+                            @endif
+                        </td>
                         <td>
                             @if($item->jumlah <= $item->stok_minimum)
                                 <span class="text-danger fw-bold"><i class="fa-solid fa-circle-exclamation me-1"></i>{{ $item->jumlah }}</span>

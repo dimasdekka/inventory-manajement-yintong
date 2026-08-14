@@ -14,12 +14,15 @@ use Illuminate\Validation\ValidationException;
 class BarangService
 {
     /**
-     * Generate Kode Barang otomatis berdasarkan jenis/kategori barang.
-     * Format: [KATEGORI_PREFIX]-YYYYMM-0001 (contoh: ATK-202608-0001, ELK-202608-0001)
+     * Generate Kode Barang otomatis berdasarkan jenis/kategori dan golongan barang.
+     * Format Hierarkis: [KATEGORI]-[GOLONGAN]-[YYYYMM]-0001 
+     * Contoh: ATK-BKU-202608-0001, ATK-PLP-202608-0001, ELK-LPT-202608-0001
      */
-    public static function generateKodeBarang(?int $kategoriId = null): string
+    public static function generateKodeBarang(?int $kategoriId = null, ?int $golonganId = null): string
     {
         $katPrefix = 'BRG';
+        $golPrefix = '';
+
         if ($kategoriId) {
             $kategori = \App\Models\Kategori::find($kategoriId);
             if ($kategori) {
@@ -41,7 +44,14 @@ class BarangService
             }
         }
 
-        $prefix = $katPrefix . '-' . now()->format('Ym') . '-';
+        if ($golonganId) {
+            $golongan = \App\Models\GolonganBarang::find($golonganId);
+            if ($golongan && !empty($golongan->kode_golongan)) {
+                $golPrefix = '-' . strtoupper(trim($golongan->kode_golongan));
+            }
+        }
+
+        $prefix = $katPrefix . $golPrefix . '-' . now()->format('Ym') . '-';
         
         $lastBarang = Barang::where('kode_barang', 'like', $prefix . '%')
             ->orderBy('kode_barang', 'desc')

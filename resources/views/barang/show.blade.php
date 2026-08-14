@@ -66,8 +66,15 @@
                     <strong>{{ $barang->merek ?? '-' }}</strong>
                 </div>
                 <div class="col-6 col-md-4">
-                    <span class="text-muted d-block small uppercase">Kategori</span>
+                    <span class="text-muted d-block small uppercase">Kategori & Golongan</span>
                     <strong>{{ $barang->kategori->nama_kategori }}</strong>
+                    @if($barang->golongan)
+                        <div class="mt-1">
+                            <span class="badge" style="background-color: var(--slate-light); color: var(--navy-primary); border: 1px solid var(--border-color); font-size: 11px;">
+                                {{ $barang->golongan->nama_golongan }} ({{ $barang->golongan->kode_golongan }})
+                            </span>
+                        </div>
+                    @endif
                 </div>
                 <div class="col-6 col-md-4">
                     <span class="text-muted d-block small uppercase">Satuan</span>

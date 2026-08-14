@@ -21,18 +21,19 @@ class BarangController extends Controller
     }
 
     /**
-     * Tampilkan daftar barang.
+     * Tampilkan daftar barang (katalog).
      */
     public function index(Request $request)
     {
-        $query = Barang::with('kategori');
+        $query = Barang::with(['kategori', 'golongan', 'supplier']);
 
-        // Pencarian (nama atau kode)
+        // Filter Pencarian (Nama / Kode / Merek)
         if ($request->filled('search')) {
             $search = $request->input('search');
-            $query->where(function($q) use ($search) {
+            $query->where(function ($q) use ($search) {
                 $q->where('nama_barang', 'like', "%{$search}%")
-                  ->orWhere('kode_barang', 'like', "%{$search}%");
+                  ->orWhere('kode_barang', 'like', "%{$search}%")
+                  ->orWhere('merek', 'like', "%{$search}%");
             });
         }
 
@@ -41,12 +42,25 @@ class BarangController extends Controller
             $query->where('kategori_id', $request->input('kategori_id'));
         }
 
-        // Filter Lokasi
-        if ($request->filled('lokasi')) {
-            $query->where('lokasi_penyimpanan', 'like', "%" . $request->input('lokasi') . "%");
+        // Filter Kondisi
+        if ($request->filled('kondisi')) {
+            $query->where('kondisi_barang', $request->input('kondisi'));
         }
 
-        $barang = $query->paginate(10)->appends($request->query());
+        // Filter Lokasi
+        if ($request->filled('lokasi')) {
+            $query->where('lokasi_penyimpanan', $request->input('lokasi'));
+        }
+
+        // Filter Stok Minimum (Alert)
+        if ($request->filled('stok_status') && $request->input('stok_status') === 'menipis') {
+            $query->whereColumn('jumlah', '<=', 'stok_minimum');
+        }
+
+        $barang = $query->orderBy('nama_barang', 'asc')
+            ->paginate(10)
+            ->appends($request->query());
+
         $kategori = Kategori::all();
         
         // Ambil daftar lokasi unik untuk filter
@@ -62,9 +76,10 @@ class BarangController extends Controller
      */
     public function create()
     {
-        $kategori = Kategori::all();
+        $kategori = Kategori::with('golongan')->get();
+        $golongan = \App\Models\GolonganBarang::all();
         $supplier = Supplier::all();
-        return view('barang.create', compact('kategori', 'supplier'));
+        return view('barang.create', compact('kategori', 'golongan', 'supplier'));
     }
 
     /**
@@ -74,8 +89,8 @@ class BarangController extends Controller
     {
         $data = $request->validated();
         
-        // Generate kode barang berbasis jenis/kategori barang
-        $kodeBarang = BarangService::generateKodeBarang($data['kategori_id'] ?? null);
+        // Generate kode barang berbasis hierarki jenis/kategori dan golongan barang
+        $kodeBarang = BarangService::generateKodeBarang($data['kategori_id'] ?? null, $data['golongan_id'] ?? null);
         $data['kode_barang'] = $kodeBarang;
 
         // Generate QR Code
@@ -87,7 +102,7 @@ class BarangController extends Controller
 
         Barang::create($data);
 
-        return redirect()->route('barang.index')->with('success', 'Barang berhasil ditambahkan. Silakan lakukan transaksi Barang Masuk untuk mengisi stok.');
+        return redirect()->route('barang.index')->with('success', 'Barang berhasil ditambahkan dengan kode ' . $kodeBarang . '. Silakan lakukan transaksi Barang Masuk untuk mengisi stok.');
     }
 
     /**
@@ -97,6 +112,7 @@ class BarangController extends Controller
     {
         $barang->load([
             'kategori', 
+            'golongan',
             'supplier',
             'barangMasuk' => fn($q) => $q->with(['supplier', 'user'])->orderBy('tanggal', 'desc'),
             'barangKeluar' => fn($q) => $q->with('user')->orderBy('tanggal', 'desc'),
@@ -112,9 +128,10 @@ class BarangController extends Controller
      */
     public function edit(Barang $barang)
     {
-        $kategori = Kategori::all();
+        $kategori = Kategori::with('golongan')->get();
+        $golongan = \App\Models\GolonganBarang::all();
         $supplier = Supplier::all();
-        return view('barang.edit', compact('barang', 'kategori', 'supplier'));
+        return view('barang.edit', compact('barang', 'kategori', 'golongan', 'supplier'));
     }
 
     /**

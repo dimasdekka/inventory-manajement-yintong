@@ -5,6 +5,7 @@ use App\Http\Controllers\AuthController;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\BarangController;
 use App\Http\Controllers\KategoriController;
+use App\Http\Controllers\GolonganBarangController;
 use App\Http\Controllers\SupplierController;
 use App\Http\Controllers\BarangMasukController;
 use App\Http\Controllers\BarangKeluarController;
@@ -67,6 +68,17 @@ Route::middleware('auth')->group(function () {
         Route::post('/kategori', [KategoriController::class, 'store'])->name('kategori.store');
         Route::put('/kategori/{kategori}', [KategoriController::class, 'update'])->name('kategori.update');
         Route::delete('/kategori/{kategori}', [KategoriController::class, 'destroy'])->name('kategori.destroy');
+    });
+
+    // 2.1 Modul Data Golongan / Jenis Barang (Mapping Kode)
+    Route::get('/api/golongan/by-kategori/{kategoriId}', [GolonganBarangController::class, 'byKategori'])->name('api.golongan.by-kategori');
+    Route::middleware('role:administrator,staff_gudang,pimpinan')->group(function () {
+        Route::get('/golongan', [GolonganBarangController::class, 'index'])->name('golongan.index');
+    });
+    Route::middleware('role:administrator')->group(function () {
+        Route::post('/golongan', [GolonganBarangController::class, 'store'])->name('golongan.store');
+        Route::put('/golongan/{golongan}', [GolonganBarangController::class, 'update'])->name('golongan.update');
+        Route::delete('/golongan/{golongan}', [GolonganBarangController::class, 'destroy'])->name('golongan.destroy');
     });
 
     // 3. Modul Data Supplier

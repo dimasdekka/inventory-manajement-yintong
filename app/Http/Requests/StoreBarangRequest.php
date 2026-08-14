@@ -16,6 +16,7 @@ class StoreBarangRequest extends FormRequest
         return [
             'nama_barang' => 'required|string|max:150',
             'kategori_id' => 'required|exists:kategori,id',
+            'golongan_id' => 'nullable|exists:golongan_barang,id',
             'supplier_id' => 'nullable|exists:supplier,id',
             'merek' => 'nullable|string|max:100',
             'spesifikasi' => 'nullable|string',

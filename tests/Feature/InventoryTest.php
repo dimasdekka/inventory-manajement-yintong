@@ -136,4 +136,34 @@ class InventoryTest extends TestCase
         $response->assertStatus(403);
     }
 
+    /**
+     * Test admin can access golongan page.
+     */
+    public function test_admin_can_access_golongan_page(): void
+    {
+        $response = $this->actingAs($this->admin)->get('/golongan');
+        $response->assertStatus(200);
+        $response->assertSee('Golongan Barang');
+    }
+
+    /**
+     * Test hierarchical item code generation with golongan.
+     */
+    public function test_hierarchical_code_generation_with_golongan(): void
+    {
+        $kat = \App\Models\Kategori::create([
+            'kode_kategori' => 'KTG-TEST',
+            'nama_kategori' => 'ATK',
+        ]);
+
+        $gol = \App\Models\GolonganBarang::create([
+            'kategori_id' => $kat->id,
+            'kode_golongan' => 'BKU',
+            'nama_golongan' => 'Buku Catatan',
+        ]);
+
+        $code = \App\Services\BarangService::generateKodeBarang($kat->id, $gol->id);
+        $this->assertStringStartsWith('ATK-BKU-' . now()->format('Ym') . '-', $code);
+    }
 }
+

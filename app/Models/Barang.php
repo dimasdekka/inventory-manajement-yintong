@@ -18,6 +18,7 @@ class Barang extends Model
         'kode_barang',
         'nama_barang',
         'kategori_id',
+        'golongan_id',
         'supplier_id',
         'merek',
         'spesifikasi',
@@ -45,6 +46,11 @@ class Barang extends Model
     public function kategori(): BelongsTo
     {
         return $this->belongsTo(Kategori::class, 'kategori_id');
+    }
+
+    public function golongan(): BelongsTo
+    {
+        return $this->belongsTo(GolonganBarang::class, 'golongan_id');
     }
 
     public function supplier(): BelongsTo

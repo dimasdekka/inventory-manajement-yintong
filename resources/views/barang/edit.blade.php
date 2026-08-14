@@ -12,8 +12,8 @@
 
 @section('content')
 <div class="card-custom">
-    <h5 class="font-outfit mb-4" style="font-size: 16px; font-weight: 600; border-bottom: 1px solid #e5e5e5; padding-bottom: 12px;">
-        <i class="fa-solid fa-pen-to-square me-1"></i> Form Ubah Barang ({{ $barang->kode_barang }})
+    <h5 class="font-outfit mb-4" style="font-size: 16px; font-weight: 600; border-bottom: 1px solid var(--border-color); padding-bottom: 12px; color: var(--text-main);">
+        <i class="fa-solid fa-pen-to-square me-1 text-primary"></i> Form Ubah Barang ({{ $barang->kode_barang }})
     </h5>
 
     <form action="{{ route('barang.update', $barang->id) }}" method="POST">
@@ -22,18 +22,18 @@
         
         <div class="row g-3 mb-4">
             <div class="col-12 col-md-4">
-                <label class="form-label-custom">Kode Barang</label>
-                <input type="text" class="form-control form-control-custom w-100" value="{{ $barang->kode_barang }}" disabled>
+                <label class="form-label-custom">Kode Barang (Permanen)</label>
+                <input type="text" class="form-control form-control-custom w-100 fw-bold" value="{{ $barang->kode_barang }}" disabled style="background-color: var(--slate-light);">
             </div>
             
             <div class="col-12 col-md-4">
-                <label class="form-label-custom">Stok Saat Ini (Hanya Berubah Lewat Transaksi)</label>
-                <input type="number" class="form-control form-control-custom w-100" value="{{ $barang->jumlah }}" disabled>
+                <label class="form-label-custom">Stok Saat Ini (Lewat Transaksi)</label>
+                <input type="text" class="form-control form-control-custom w-100 fw-bold" value="{{ $barang->jumlah }} {{ $barang->satuan }}" disabled style="background-color: var(--slate-light);">
             </div>
 
             <div class="col-12 col-md-4">
-                <label class="form-label-custom">Total Nilai Aset Saat Ini</label>
-                <input type="text" class="form-control form-control-custom w-100" value="Rp {{ number_format($barang->total_nilai_aset, 0, ',', '.') }}" disabled>
+                <label class="form-label-custom">Total Nilai Aset</label>
+                <input type="text" class="form-control form-control-custom w-100 fw-bold" value="Rp {{ number_format($barang->total_nilai_aset, 0, ',', '.') }}" disabled style="background-color: var(--slate-light);">
             </div>
         </div>
 
@@ -57,6 +57,23 @@
             </div>
 
             <div class="col-12 col-md-3">
+                <label for="golongan_id" class="form-label-custom">Golongan / Jenis Barang</label>
+                <select class="form-select form-control-custom w-100 @error('golongan_id') is-invalid @enderror" id="golongan_id" name="golongan_id">
+                    <option value="">-- Pilih Golongan --</option>
+                    @foreach($golongan as $gol)
+                        <option value="{{ $gol->id }}" 
+                                data-kategori-id="{{ $gol->kategori_id }}"
+                                {{ old('golongan_id', $barang->golongan_id) == $gol->id ? 'selected' : '' }}>
+                            {{ $gol->nama_golongan }} ({{ $gol->kode_golongan }})
+                        </option>
+                    @endforeach
+                </select>
+                @error('golongan_id')<div class="invalid-feedback">{{ $message }}</div>@enderror
+            </div>
+        </div>
+
+        <div class="row g-3 mb-4">
+            <div class="col-12 col-md-4">
                 <label for="supplier_id" class="form-label-custom">Supplier Utama (Opsional)</label>
                 <select class="form-select form-control-custom w-100 @error('supplier_id') is-invalid @enderror" id="supplier_id" name="supplier_id">
                     <option value="">-- Tanpa Supplier --</option>
@@ -68,9 +85,7 @@
                 </select>
                 @error('supplier_id')<div class="invalid-feedback">{{ $message }}</div>@enderror
             </div>
-        </div>
 
-        <div class="row g-3 mb-4">
             <div class="col-12 col-md-4">
                 <label for="merek" class="form-label-custom">Merek Barang (Opsional)</label>
                 <input type="text" class="form-control form-control-custom w-100 @error('merek') is-invalid @enderror" id="merek" name="merek" value="{{ old('merek', $barang->merek) }}" placeholder="Contoh: Sinar Dunia, Honda">
@@ -82,7 +97,9 @@
                 <input type="text" class="form-control form-control-custom w-100 @error('satuan') is-invalid @enderror" id="satuan" name="satuan" value="{{ old('satuan', $barang->satuan) }}" placeholder="Contoh: rim, unit, box, pcs" required>
                 @error('satuan')<div class="invalid-feedback">{{ $message }}</div>@enderror
             </div>
+        </div>
 
+        <div class="row g-3 mb-4">
             <div class="col-12 col-md-4">
                 <label for="kondisi_barang" class="form-label-custom">Kondisi Barang <span class="text-danger">*</span></label>
                 <select class="form-select form-control-custom w-100 @error('kondisi_barang') is-invalid @enderror" id="kondisi_barang" name="kondisi_barang" required>
@@ -92,17 +109,15 @@
                 </select>
                 @error('kondisi_barang')<div class="invalid-feedback">{{ $message }}</div>@enderror
             </div>
-        </div>
 
-        <div class="row g-3 mb-4">
-            <div class="col-12 col-md-6">
+            <div class="col-12 col-md-4">
                 <label for="lokasi_penyimpanan" class="form-label-custom">Lokasi Penyimpanan <span class="text-danger">*</span></label>
                 <input type="text" class="form-control form-control-custom w-100 @error('lokasi_penyimpanan') is-invalid @enderror" id="lokasi_penyimpanan" name="lokasi_penyimpanan" value="{{ old('lokasi_penyimpanan', $barang->lokasi_penyimpanan) }}" placeholder="Contoh: Gudang A - Rak 2" required>
                 @error('lokasi_penyimpanan')<div class="invalid-feedback">{{ $message }}</div>@enderror
             </div>
 
-            <div class="col-12 col-md-6">
-                <label for="pic" class="form-label-custom">Penanggung Jawab (PIC) (Opsional)</label>
+            <div class="col-12 col-md-4">
+                <label for="pic" class="form-label-custom">Penanggung Jawab (PIC)</label>
                 <input type="text" class="form-control form-control-custom w-100 @error('pic') is-invalid @enderror" id="pic" name="pic" value="{{ old('pic', $barang->pic) }}" placeholder="Contoh: Budi Santoso">
                 @error('pic')<div class="invalid-feedback">{{ $message }}</div>@enderror
             </div>
@@ -150,4 +165,35 @@
         </div>
     </form>
 </div>
+@endsection
+
+@section('scripts')
+<script>
+    document.addEventListener('DOMContentLoaded', function () {
+        const kategoriSelect = document.getElementById('kategori_id');
+        const golonganSelect = document.getElementById('golongan_id');
+        const allGolonganOptions = Array.from(golonganSelect.querySelectorAll('option[data-kategori-id]'));
+
+        function filterGolongan() {
+            const selectedKatId = kategoriSelect.value;
+            const currentGolVal = golonganSelect.value;
+
+            golonganSelect.innerHTML = '<option value="">-- Pilih Golongan / Jenis --</option>';
+
+            if (selectedKatId) {
+                const filtered = allGolonganOptions.filter(opt => opt.getAttribute('data-kategori-id') === selectedKatId);
+                
+                filtered.forEach(opt => {
+                    const clone = opt.cloneNode(true);
+                    if (clone.value === currentGolVal) {
+                        clone.selected = true;
+                    }
+                    golonganSelect.appendChild(clone);
+                });
+            }
+        }
+
+        kategoriSelect.addEventListener('change', filterGolongan);
+    });
+</script>
 @endsection

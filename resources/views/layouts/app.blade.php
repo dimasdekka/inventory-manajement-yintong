@@ -761,6 +761,9 @@
                     <li class="{{ Request::is('kategori*') ? 'active' : '' }}">
                         <a href="{{ route('kategori.index') }}"><i class="fa-solid fa-tags"></i> Kategori Barang</a>
                     </li>
+                    <li class="{{ Request::is('golongan*') ? 'active' : '' }}">
+                        <a href="{{ route('golongan.index') }}"><i class="fa-solid fa-layer-group"></i> Golongan Barang</a>
+                    </li>
                     <li class="{{ Request::is('supplier*') ? 'active' : '' }}">
                         <a href="{{ route('supplier.index') }}"><i class="fa-solid fa-truck-field"></i> Data Supplier</a>
                     </li>
