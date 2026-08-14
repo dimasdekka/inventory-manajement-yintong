@@ -13,15 +13,15 @@
 @section('content')
 <div class="card-custom">
     <div class="d-flex justify-content-between align-items-center mb-4 pb-2 border-bottom">
-        <h5 class="font-outfit m-0" style="font-size: 16px; font-weight: 600;">
-            <i class="fa-solid fa-arrows-spin me-2 text-success"></i> Form Mutasi Lokasi Penyimpanan & Penanggung Jawab
+        <h5 class="font-outfit m-0" style="font-size: 16px; font-weight: 600; color: var(--text-main);">
+            <i class="fa-solid fa-arrows-spin me-2 text-primary"></i> Form Mutasi Lokasi Penyimpanan & Penanggung Jawab
         </h5>
         <button type="button" class="btn-custom btn-custom-sm btn-custom-light px-3" id="btnScanQR" style="font-size: 12px; font-weight: 600;">
-            <i class="fa-solid fa-qrcode text-success"></i> Scan QR Code
+            <i class="fa-solid fa-qrcode text-primary"></i> Scan QR Code
         </button>
     </div>
 
-    <form action="{{ route('mutasi.store') }}" method="POST">
+    <form action="{{ route('mutasi.store') }}" method="POST" id="form-mutasi">
         @csrf
         
         <div class="row g-3 mb-4">
@@ -29,14 +29,15 @@
                 <label for="barang_id" class="form-label-custom">Pilih Barang yang Dimutasi <span class="text-danger">*</span></label>
                 <select class="form-select form-control-custom w-100 @error('barang_id') is-invalid @enderror" id="barang_id" name="barang_id" required>
                     <option value="">-- Pilih Barang dari Daftar --</option>
-                    @foreach($barang as $item)
+                    @foreach($barang as $index => $item)
                         <option value="{{ $item->id }}" 
+                                data-nama="{{ $item->nama_barang }}"
                                 data-kode="{{ $item->kode_barang }}" 
                                 data-stok="{{ $item->jumlah }}" 
                                 data-satuan="{{ $item->satuan }}" 
                                 data-lokasi="{{ $item->lokasi_penyimpanan }}" 
                                 data-pic="{{ $item->pic }}"
-                                {{ (old('barang_id', request('barang_id')) == $item->id) ? 'selected' : '' }}>
+                                {{ (old('barang_id', request('barang_id', $loop->first ? $item->id : '')) == $item->id) ? 'selected' : '' }}>
                             [{{ $item->kode_barang }}] {{ $item->nama_barang }} (Stok: {{ $item->jumlah }} {{ $item->satuan }} | Lokasi: {{ $item->lokasi_penyimpanan }})
                         </option>
                     @endforeach
@@ -52,7 +53,7 @@
         </div>
 
         <!-- Box Informasi Otomatis Data Asal Saat Ini -->
-        <div class="p-3 mb-4 rounded-3" style="background-color: var(--slate-light, #F1F5F9); border: 1px solid #CBD5E1;">
+        <div class="p-3 mb-4 rounded-3" style="background-color: var(--slate-light, #F1F5F9); border: 1px solid var(--border-color, #E2E8F0);">
             <div class="d-flex align-items-center gap-2 mb-2">
                 <i class="fa-solid fa-circle-info" style="color: var(--navy-primary, #0F2942);"></i>
                 <strong class="font-outfit" style="font-size: 13px; color: var(--navy-primary, #0F2942);">Informasi Posisi Barang Saat Ini (Otomatis Terdeteksi):</strong>
@@ -88,21 +89,22 @@
                 <label for="lokasi_tujuan" class="form-label-custom">Lokasi Penyimpanan Baru (Tujuan) <span class="text-danger">*</span></label>
                 <input type="text" class="form-control form-control-custom w-100 @error('lokasi_tujuan') is-invalid @enderror" id="lokasi_tujuan" name="lokasi_tujuan" value="{{ old('lokasi_tujuan') }}" placeholder="Contoh: Gedung B - Ruang IT 2" required>
                 @error('lokasi_tujuan')<div class="invalid-feedback">{{ $message }}</div>@enderror
-                <div class="form-text text-muted" style="font-size: 11px;">Data lokasi pada master barang akan otomatis dipindahkan ke lokasi ini.</div>
+                <div class="form-text text-muted" style="font-size: 11px;">Data lokasi master barang akan dipindahkan ke lokasi ini.</div>
             </div>
 
             <div class="col-12 col-md-4">
                 <label for="pic_tujuan" class="form-label-custom">PIC Baru (Penanggung Jawab Tujuan) <span class="text-danger">*</span></label>
                 <input type="text" class="form-control form-control-custom w-100 @error('pic_tujuan') is-invalid @enderror" id="pic_tujuan" name="pic_tujuan" value="{{ old('pic_tujuan') }}" placeholder="Contoh: Bpk. Heri Setiawan" required>
                 @error('pic_tujuan')<div class="invalid-feedback">{{ $message }}</div>@enderror
-                <div class="form-text text-muted" style="font-size: 11px;">Penanggung jawab master barang akan diperbarui ke nama ini.</div>
+                <div class="form-text text-muted" style="font-size: 11px;">Otomatis terisi sama atau ubah jika penanggung jawab berganti.</div>
             </div>
         </div>
 
         <div class="mb-4">
-            <label for="keterangan" class="form-label-custom">Keterangan / Alasan Mutasi</label>
-            <textarea class="form-control form-control-custom w-100 @error('keterangan') is-invalid @enderror" id="keterangan" name="keterangan" rows="3" placeholder="Contoh: Pemindahan ruang kerja divisi, pemenuhan kebutuhan operasional, dll..."></textarea>
+            <label for="keterangan" class="form-label-custom">Keterangan / Alasan Mutasi (Otomatis)</label>
+            <textarea class="form-control form-control-custom w-100 @error('keterangan') is-invalid @enderror" id="keterangan" name="keterangan" rows="2" placeholder="Catatan mutasi terisi otomatis...">{{ old('keterangan') }}</textarea>
             @error('keterangan')<div class="invalid-feedback">{{ $message }}</div>@enderror
+            <div class="form-text text-muted" style="font-size: 11px;">Catatan ini terisi secara otomatis tanpa perlu diketik ulang (dapat disesuaikan bila perlu).</div>
         </div>
 
         <div class="d-flex gap-2 justify-content-end border-top pt-3">
@@ -117,18 +119,18 @@
 <!-- Modal Scanner QR Code -->
 <div class="modal fade" id="scannerModal" tabindex="-1" aria-labelledby="scannerModalLabel" aria-hidden="true">
     <div class="modal-dialog modal-dialog-centered">
-        <div class="modal-content" style="border-radius: 12px; border: 1px solid #e5e5e5; box-shadow: 0 10px 30px rgba(0,0,0,0.1);">
-            <div class="modal-header" style="border-bottom: 1px solid #f0f0f0; padding: 16px 20px;">
-                <h6 class="modal-title font-outfit fw-bold m-0" id="scannerModalLabel" style="font-size: 15px;">
-                    <i class="fa-solid fa-camera me-1"></i> Scan QR Code Barang untuk Mutasi
+        <div class="modal-content" style="border-radius: 16px; border: 1px solid var(--border-color, #E2E8F0); box-shadow: 0 10px 30px rgba(0,0,0,0.1);">
+            <div class="modal-header" style="border-bottom: 1px solid var(--border-color, #E2E8F0); padding: 16px 20px;">
+                <h6 class="modal-title font-outfit fw-bold m-0" id="scannerModalLabel" style="font-size: 15px; color: var(--text-main);">
+                    <i class="fa-solid fa-camera me-1 text-primary"></i> Scan QR Code Barang untuk Mutasi
                 </h6>
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close" id="btnCloseScanner"></button>
             </div>
             <div class="modal-body text-center p-4">
-                <div class="alert alert-info text-start py-2 px-3 mb-3" style="font-size: 12.5px; border-radius: 6px; border-color: #def7ec; background-color: #f3faf7; color: #03543f;">
-                    <i class="fa-solid fa-info-circle me-1"></i> Arahkan kamera pada QR Code barang. Barang dan lokasi asal akan terisi otomatis.
+                <div class="alert alert-info text-start py-2 px-3 mb-3" style="font-size: 12.5px; border-radius: 8px; border-color: #BAE6FD; background-color: #F0F9FF; color: #0369A1;">
+                    <i class="fa-solid fa-info-circle me-1"></i> Arahkan kamera pada QR Code barang. Barang, lokasi asal, dan catatan akan terisi otomatis.
                 </div>
-                <div id="reader" style="width: 100%; max-width: 320px; margin: 0 auto; border-radius: 8px; overflow: hidden; border: 1px solid #e5e5e5; background-color: #fafafa;"></div>
+                <div id="reader" style="width: 100%; max-width: 320px; margin: 0 auto; border-radius: 12px; overflow: hidden; border: 1px solid #e5e5e5; background-color: #fafafa;"></div>
                 <div id="scanner-result" class="mt-3 text-muted small" style="font-size: 13px;">Menunggu deteksi QR Code...</div>
             </div>
         </div>
@@ -145,6 +147,8 @@
         const lokasiAsalDisplay = document.getElementById('lokasi_asal_display');
         const picAsalDisplay = document.getElementById('pic_asal_display');
         const stokAsalDisplay = document.getElementById('stok_asal_display');
+        const picTujuanInput = document.getElementById('pic_tujuan');
+        const keteranganInput = document.getElementById('keterangan');
         const satuanLabel = document.getElementById('satuan-label');
         const stokInfo = document.getElementById('stok-info');
         const btnSubmit = document.getElementById('btn-submit');
@@ -154,6 +158,8 @@
         function updateBarangDetails() {
             const selectedOption = barangSelect.options[barangSelect.selectedIndex];
             if (selectedOption && selectedOption.value !== "") {
+                const nama = selectedOption.getAttribute('data-nama') || '';
+                const kode = selectedOption.getAttribute('data-kode') || '';
                 const stok = parseInt(selectedOption.getAttribute('data-stok')) || 0;
                 const satuan = selectedOption.getAttribute('data-satuan') || 'unit';
                 const lokasi = selectedOption.getAttribute('data-lokasi') || '-';
@@ -166,6 +172,18 @@
                 stokAsalDisplay.value = `${stok} ${satuan}`;
                 stokInfo.innerHTML = `Stok tersedia: <strong>${stok} ${satuan}</strong> (Lokasi saat ini: <strong>${lokasi}</strong>).`;
                 jumlahInput.max = stok;
+                
+                // Auto-fill PIC Tujuan jika masih kosong
+                if (!picTujuanInput.value || picTujuanInput.dataset.autofilled === "true") {
+                    picTujuanInput.value = pic !== '-' ? pic : '';
+                    picTujuanInput.dataset.autofilled = "true";
+                }
+
+                // Auto-fill Keterangan otomatis tanpa perlu mengetik ulang
+                if (!keteranganInput.value || keteranganInput.dataset.autofilled === "true") {
+                    keteranganInput.value = `Mutasi perpindahan lokasi barang ${nama} (${kode}) dari ${lokasi}.`;
+                    keteranganInput.dataset.autofilled = "true";
+                }
                 
                 validateStok();
             } else {
@@ -180,7 +198,13 @@
             }
         }
 
-        barangSelect.addEventListener('change', updateBarangDetails);
+        barangSelect.addEventListener('change', function() {
+            // Reset dataset so updateBarangDetails refreshes description
+            picTujuanInput.dataset.autofilled = "true";
+            keteranganInput.dataset.autofilled = "true";
+            updateBarangDetails();
+        });
+
         jumlahInput.addEventListener('input', validateStok);
 
         function validateStok() {
@@ -202,7 +226,7 @@
             }
         }
 
-        // Trigger change event if pre-selected
+        // Trigger on load
         if (barangSelect.value !== "") {
             updateBarangDetails();
         }
@@ -249,6 +273,8 @@
                 const kode = opt.getAttribute('data-kode');
                 if (kode === decodedText || opt.text.includes(decodedText)) {
                     barangSelect.selectedIndex = i;
+                    picTujuanInput.dataset.autofilled = "true";
+                    keteranganInput.dataset.autofilled = "true";
                     updateBarangDetails();
                     found = true;
                     break;
