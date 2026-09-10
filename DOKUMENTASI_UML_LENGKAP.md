@@ -1,32 +1,28 @@
 # DOKUMENTASI DIAGRAM UML SISTEM INFORMASI INVENTORI PT YINTONG
-(Standard Skripsi & Tugas Akhir - Format Bersih Tanpa Ikon)
+(Standard Skripsi & Tugas Akhir - Format Swimlane User vs System Tanpa Ikon)
 
 Dokumen ini berisi:
-1. XML Draw.io Use Case Diagram (Siap di-copy-paste langsung ke draw.io / diagrams.net)
-2. Use Case Diagram (Mermaid Standar)
-3. 5 Activity Diagram (Sisi User / Alur Bisnis Non-Teknis)
-4. 5 Sequence Diagram (Sisi Teknis & Arsitektur Sistem)
+1. Use Case Diagram (Lengkap dengan XML Draw.io)
+2. 5 Activity Diagram Swimlane User vs System (Lengkap dengan XML Draw.io untuk masing-masing diagram)
+3. 5 Sequence Diagram Arsitektur Teknis
 
 ---
 
 # 1. USE CASE DIAGRAM
 
-## A. Kode XML Draw.io (Bisa langsung di-import di Draw.io)
+## XML Draw.io Use Case Diagram
 ```xml
 <mxGraphModel dx="1422" dy="794" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1654" pageHeight="2336" math="0" shadow="0">
   <root>
     <mxCell id="0" />
     <mxCell id="1" parent="0" />
-    
-    <!-- Boundary Sistem Utama -->
     <mxCell id="system_box" value="" style="swimlane;startSize=0;fillColor=#FFFFFF;strokeColor=#333333;strokeWidth=2;rounded=1;" vertex="1" parent="1">
       <mxGeometry x="380" y="100" width="880" height="1520" as="geometry" />
     </mxCell>
     <mxCell id="system_title" value="Sistem Informasi Inventori PT Yintong" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontStyle=1;fontSize=16;fontFamily=Helvetica;" vertex="1" parent="system_box">
       <mxGeometry x="240" y="20" width="400" height="30" as="geometry" />
     </mxCell>
-
-    <!-- Group 1: Otentikasi Akun -->
+    <!-- Group 1: Otentikasi -->
     <mxCell id="grp_auth" value="" style="swimlane;startSize=0;fillColor=#F8FAFC;strokeColor=#CBD5E1;rounded=1;" vertex="1" parent="system_box">
       <mxGeometry x="40" y="80" width="800" height="180" as="geometry" />
     </mxCell>
@@ -39,8 +35,7 @@ Dokumen ini berisi:
     <mxCell id="uc_logout" value="Logout" style="ellipse;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#0F2942;strokeWidth=1.5;" vertex="1" parent="grp_auth">
       <mxGeometry x="440" y="50" width="140" height="70" as="geometry" />
     </mxCell>
-
-    <!-- Group 2: Data Master & Konfigurasi -->
+    <!-- Group 2: Master Data -->
     <mxCell id="grp_master" value="" style="swimlane;startSize=0;fillColor=#F8FAFC;strokeColor=#CBD5E1;rounded=1;" vertex="1" parent="system_box">
       <mxGeometry x="40" y="290" width="800" height="280" as="geometry" />
     </mxCell>
@@ -62,8 +57,7 @@ Dokumen ini berisi:
     <mxCell id="uc_stok_min" value="Setting Stok Minimum" style="ellipse;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#0F2942;strokeWidth=1.5;" vertex="1" parent="grp_master">
       <mxGeometry x="440" y="160" width="140" height="70" as="geometry" />
     </mxCell>
-
-    <!-- Group 3: Transaksi & Operasional -->
+    <!-- Group 3: Transaksi -->
     <mxCell id="grp_trx" value="" style="swimlane;startSize=0;fillColor=#F8FAFC;strokeColor=#CBD5E1;rounded=1;" vertex="1" parent="system_box">
       <mxGeometry x="40" y="600" width="800" height="420" as="geometry" />
     </mxCell>
@@ -88,19 +82,10 @@ Dokumen ini berisi:
     <mxCell id="uc_kembali" value="Catat Pengembalian" style="ellipse;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#0F2942;strokeWidth=1.5;" vertex="1" parent="grp_trx">
       <mxGeometry x="340" y="320" width="140" height="70" as="geometry" />
     </mxCell>
-
-    <!-- Include Edges for Scan QR -->
-    <mxCell id="inc_1" value="&amp;lt;&amp;lt;include&amp;gt;&amp;gt;" style="html=1;verticalAlign=bottom;labelBackgroundColor=none;endArrow=open;endFill=0;dashed=1;rounded=0;exitX=1;exitY=0.5;entryX=0;entryY=0.5;" edge="1" parent="grp_trx" source="uc_in" target="uc_scan">
-      <mxGeometry relative="1" as="geometry" />
-    </mxCell>
-    <mxCell id="inc_2" value="&amp;lt;&amp;lt;include&amp;gt;&amp;gt;" style="html=1;verticalAlign=bottom;labelBackgroundColor=none;endArrow=open;endFill=0;dashed=1;rounded=0;exitX=1;exitY=0.5;entryX=0;entryY=0.5;" edge="1" parent="grp_trx" source="uc_out" target="uc_scan">
-      <mxGeometry relative="1" as="geometry" />
-    </mxCell>
-    <mxCell id="inc_3" value="&amp;lt;&amp;lt;include&amp;gt;&amp;gt;" style="html=1;verticalAlign=bottom;labelBackgroundColor=none;endArrow=open;endFill=0;dashed=1;rounded=0;exitX=1;exitY=0.5;entryX=0;entryY=0.5;" edge="1" parent="grp_trx" source="uc_mutasi" target="uc_scan">
-      <mxGeometry relative="1" as="geometry" />
-    </mxCell>
-
-    <!-- Group 4: Laporan & Monitoring -->
+    <mxCell id="inc_1" value="&amp;lt;&amp;lt;include&amp;gt;&amp;gt;" style="html=1;verticalAlign=bottom;labelBackgroundColor=none;endArrow=open;endFill=0;dashed=1;rounded=0;exitX=1;exitY=0.5;entryX=0;entryY=0.5;" edge="1" parent="grp_trx" source="uc_in" target="uc_scan"><mxGeometry relative="1" as="geometry" /></mxCell>
+    <mxCell id="inc_2" value="&amp;lt;&amp;lt;include&amp;gt;&amp;gt;" style="html=1;verticalAlign=bottom;labelBackgroundColor=none;endArrow=open;endFill=0;dashed=1;rounded=0;exitX=1;exitY=0.5;entryX=0;entryY=0.5;" edge="1" parent="grp_trx" source="uc_out" target="uc_scan"><mxGeometry relative="1" as="geometry" /></mxCell>
+    <mxCell id="inc_3" value="&amp;lt;&amp;lt;include&amp;gt;&amp;gt;" style="html=1;verticalAlign=bottom;labelBackgroundColor=none;endArrow=open;endFill=0;dashed=1;rounded=0;exitX=1;exitY=0.5;entryX=0;entryY=0.5;" edge="1" parent="grp_trx" source="uc_mutasi" target="uc_scan"><mxGeometry relative="1" as="geometry" /></mxCell>
+    <!-- Group 4: Laporan -->
     <mxCell id="grp_report" value="" style="swimlane;startSize=0;fillColor=#F8FAFC;strokeColor=#CBD5E1;rounded=1;" vertex="1" parent="system_box">
       <mxGeometry x="40" y="1050" width="800" height="230" as="geometry" />
     </mxCell>
@@ -116,8 +101,7 @@ Dokumen ini berisi:
     <mxCell id="uc_laporan" value="Cetak Laporan (PDF/Excel)" style="ellipse;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#0F2942;strokeWidth=1.5;" vertex="1" parent="grp_report">
       <mxGeometry x="540" y="50" width="150" height="70" as="geometry" />
     </mxCell>
-
-    <!-- Group 5: Manajemen Pengguna -->
+    <!-- Group 5: User Management -->
     <mxCell id="grp_user" value="" style="swimlane;startSize=0;fillColor=#F8FAFC;strokeColor=#CBD5E1;rounded=1;" vertex="1" parent="system_box">
       <mxGeometry x="40" y="1310" width="800" height="170" as="geometry" />
     </mxCell>
@@ -127,24 +111,17 @@ Dokumen ini berisi:
     <mxCell id="uc_users" value="Kelola Data User &amp; Role" style="ellipse;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#0F2942;strokeWidth=1.5;" vertex="1" parent="grp_user">
       <mxGeometry x="320" y="50" width="160" height="70" as="geometry" />
     </mxCell>
-
-    <!-- Aktor 1: Administrator (Kiri Bawah) -->
+    <!-- Actors -->
     <mxCell id="act_admin" value="Administrator&#xa;(Nurul Faoziah)" style="shape=umlActor;verticalLabelPosition=bottom;verticalAlign=top;html=1;outlineConnect=0;" vertex="1" parent="1">
       <mxGeometry x="160" y="800" width="80" height="150" as="geometry" />
     </mxCell>
-
-    <!-- Aktor 2: Staff Gudang (Kiri Atas) -->
     <mxCell id="act_staff" value="Staff Gudang&#xa;(Rani)" style="shape=umlActor;verticalLabelPosition=bottom;verticalAlign=top;html=1;outlineConnect=0;" vertex="1" parent="1">
       <mxGeometry x="160" y="320" width="80" height="150" as="geometry" />
     </mxCell>
-
-    <!-- Aktor 3: Pimpinan (Kanan Tengah) -->
     <mxCell id="act_pimpinan" value="Pimpinan&#xa;(Pak Hermawan)" style="shape=umlActor;verticalLabelPosition=bottom;verticalAlign=top;html=1;outlineConnect=0;" vertex="1" parent="1">
       <mxGeometry x="1400" y="700" width="80" height="150" as="geometry" />
     </mxCell>
-
-    <!-- Relasi Asosiasi Actor -> Use Case -->
-    <!-- Staff Links -->
+    <!-- Associations Staff -->
     <mxCell id="e_s1" style="endArrow=none;html=1;strokeWidth=1.5;entryX=0;entryY=0.5;" edge="1" parent="1" source="act_staff" target="uc_login"><mxGeometry relative="1" as="geometry" /></mxCell>
     <mxCell id="e_s2" style="endArrow=none;html=1;strokeWidth=1.5;entryX=0;entryY=0.5;" edge="1" parent="1" source="act_staff" target="uc_logout"><mxGeometry relative="1" as="geometry" /></mxCell>
     <mxCell id="e_s3" style="endArrow=none;html=1;strokeWidth=1.5;entryX=0;entryY=0.5;" edge="1" parent="1" source="act_staff" target="uc_barang"><mxGeometry relative="1" as="geometry" /></mxCell>
@@ -153,8 +130,7 @@ Dokumen ini berisi:
     <mxCell id="e_s6" style="endArrow=none;html=1;strokeWidth=1.5;entryX=0;entryY=0.5;" edge="1" parent="1" source="act_staff" target="uc_mutasi"><mxGeometry relative="1" as="geometry" /></mxCell>
     <mxCell id="e_s7" style="endArrow=none;html=1;strokeWidth=1.5;entryX=0;entryY=0.5;" edge="1" parent="1" source="act_staff" target="uc_pinjam"><mxGeometry relative="1" as="geometry" /></mxCell>
     <mxCell id="e_s8" style="endArrow=none;html=1;strokeWidth=1.5;entryX=0;entryY=0.5;" edge="1" parent="1" source="act_staff" target="uc_kembali"><mxGeometry relative="1" as="geometry" /></mxCell>
-
-    <!-- Admin Links (All Master, Trx, Report, User) -->
+    <!-- Associations Admin -->
     <mxCell id="e_a1" style="endArrow=none;html=1;strokeWidth=1.5;entryX=0;entryY=0.5;" edge="1" parent="1" source="act_admin" target="uc_login"><mxGeometry relative="1" as="geometry" /></mxCell>
     <mxCell id="e_a2" style="endArrow=none;html=1;strokeWidth=1.5;entryX=0;entryY=0.5;" edge="1" parent="1" source="act_admin" target="uc_logout"><mxGeometry relative="1" as="geometry" /></mxCell>
     <mxCell id="e_a3" style="endArrow=none;html=1;strokeWidth=1.5;entryX=0;entryY=0.5;" edge="1" parent="1" source="act_admin" target="uc_barang"><mxGeometry relative="1" as="geometry" /></mxCell>
@@ -171,226 +147,320 @@ Dokumen ini berisi:
     <mxCell id="e_a14" style="endArrow=none;html=1;strokeWidth=1.5;entryX=0;entryY=0.5;" edge="1" parent="1" source="act_admin" target="uc_notif"><mxGeometry relative="1" as="geometry" /></mxCell>
     <mxCell id="e_a15" style="endArrow=none;html=1;strokeWidth=1.5;entryX=0;entryY=0.5;" edge="1" parent="1" source="act_admin" target="uc_laporan"><mxGeometry relative="1" as="geometry" /></mxCell>
     <mxCell id="e_a16" style="endArrow=none;html=1;strokeWidth=1.5;entryX=0;entryY=0.5;" edge="1" parent="1" source="act_admin" target="uc_users"><mxGeometry relative="1" as="geometry" /></mxCell>
-
-    <!-- Pimpinan Links -->
+    <!-- Associations Pimpinan -->
     <mxCell id="e_p1" style="endArrow=none;html=1;strokeWidth=1.5;entryX=1;entryY=0.5;" edge="1" parent="1" source="act_pimpinan" target="uc_login"><mxGeometry relative="1" as="geometry" /></mxCell>
     <mxCell id="e_p2" style="endArrow=none;html=1;strokeWidth=1.5;entryX=1;entryY=0.5;" edge="1" parent="1" source="act_pimpinan" target="uc_logout"><mxGeometry relative="1" as="geometry" /></mxCell>
     <mxCell id="e_p3" style="endArrow=none;html=1;strokeWidth=1.5;entryX=1;entryY=0.5;" edge="1" parent="1" source="act_pimpinan" target="uc_dashboard"><mxGeometry relative="1" as="geometry" /></mxCell>
     <mxCell id="e_p4" style="endArrow=none;html=1;strokeWidth=1.5;entryX=1;entryY=0.5;" edge="1" parent="1" source="act_pimpinan" target="uc_notif"><mxGeometry relative="1" as="geometry" /></mxCell>
     <mxCell id="e_p5" style="endArrow=none;html=1;strokeWidth=1.5;entryX=1;entryY=0.5;" edge="1" parent="1" source="act_pimpinan" target="uc_laporan"><mxGeometry relative="1" as="geometry" /></mxCell>
-
   </root>
 </mxGraphModel>
 ```
 
-## B. Use Case Diagram (Format Mermaid)
+---
+
+# 2. 5 ACTIVITY DIAGRAM (SWIMLANE USER VS SYSTEM)
+
+---
+
+### 1. Activity Diagram: Login & Autentikasi Pengguna
+
+#### XML Draw.io Activity Diagram 1:
+```xml
+<mxGraphModel dx="1000" dy="700" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="827" pageHeight="1169">
+  <root>
+    <mxCell id="0"/><mxCell id="1" parent="0"/>
+    <mxCell id="frame" value="Activity Diagram: Login &amp; Autentikasi Pengguna" style="shape=umlFrame;whiteSpace=wrap;html=1;width=220;height=35;fontStyle=1;" vertex="1" parent="1"><mxGeometry x="40" y="40" width="620" height="540" as="geometry"/></mxCell>
+    <!-- Swimlanes -->
+    <mxCell id="lane_user" value="User (Pengguna)" style="swimlane;startSize=25;fontStyle=1;fillColor=#FFFFFF;" vertex="1" parent="frame"><mxGeometry x="20" y="45" width="270" height="470" as="geometry"/></mxCell>
+    <mxCell id="lane_sys" value="System (Sistem Inventori)" style="swimlane;startSize=25;fontStyle=1;fillColor=#FFFFFF;" vertex="1" parent="frame"><mxGeometry x="290" y="45" width="290" height="470" as="geometry"/></mxCell>
+    <!-- Nodes User -->
+    <mxCell id="start1" value="" style="ellipse;fillColor=#000000;strokeColor=#000000;" vertex="1" parent="lane_user"><mxGeometry x="125" y="40" width="20" height="20" as="geometry"/></mxCell>
+    <mxCell id="u_act1" value="Buka Halaman Login" style="rounded=1;whiteSpace=wrap;html=1;" vertex="1" parent="lane_user"><mxGeometry x="65" y="80" width="140" height="35" as="geometry"/></mxCell>
+    <mxCell id="u_act2" value="Input Email &amp; Password&#xa;Klik Tombol Masuk" style="rounded=1;whiteSpace=wrap;html=1;" vertex="1" parent="lane_user"><mxGeometry x="65" y="145" width="140" height="45" as="geometry"/></mxCell>
+    <mxCell id="u_act3" value="Terima Pesan Peringatan&#xa;Ulangi Pengisian Data" style="rounded=1;whiteSpace=wrap;html=1;" vertex="1" parent="lane_user"><mxGeometry x="65" y="270" width="140" height="45" as="geometry"/></mxCell>
+    <mxCell id="u_act4" value="Masuk ke Dashboard&#xa;Sesuai Role (Admin/Staff/Pimpinan)" style="rounded=1;whiteSpace=wrap;html=1;" vertex="1" parent="lane_user"><mxGeometry x="50" y="370" width="170" height="45" as="geometry"/></mxCell>
+    <mxCell id="end1" value="" style="ellipse;shape=endState;fillColor=#000000;strokeColor=#000000;" vertex="1" parent="lane_user"><mxGeometry x="123" y="435" width="24" height="24" as="geometry"/></mxCell>
+    <!-- Nodes System -->
+    <mxCell id="s_dec1" value="Verifikasi&#xa;Kredensial &amp; Status?" style="rhombus;whiteSpace=wrap;html=1;" vertex="1" parent="lane_sys"><mxGeometry x="85" y="195" width="120" height="65" as="geometry"/></mxCell>
+    <mxCell id="s_act1" value="Kirim Pesan Error&#xa;'Email atau password salah'" style="rounded=1;whiteSpace=wrap;html=1;" vertex="1" parent="lane_sys"><mxGeometry x="70" y="270" width="150" height="45" as="geometry"/></mxCell>
+    <mxCell id="s_act2" value="Buat Sesi Login Pengguna&#xa;&amp; Siapkan Hak Akses Menu" style="rounded=1;whiteSpace=wrap;html=1;" vertex="1" parent="lane_sys"><mxGeometry x="70" y="370" width="150" height="45" as="geometry"/></mxCell>
+    <!-- Edges -->
+    <mxCell id="e1" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" edge="1" parent="frame" source="start1" target="u_act1"><mxGeometry relative="1" as="geometry"/></mxCell>
+    <mxCell id="e2" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" edge="1" parent="frame" source="u_act1" target="u_act2"><mxGeometry relative="1" as="geometry"/></mxCell>
+    <mxCell id="e3" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" edge="1" parent="frame" source="u_act2" target="s_dec1"><mxGeometry relative="1" as="geometry"/></mxCell>
+    <mxCell id="e4" value="Tidak Valid" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" edge="1" parent="frame" source="s_dec1" target="s_act1"><mxGeometry relative="1" as="geometry"/></mxCell>
+    <mxCell id="e5" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" edge="1" parent="frame" source="s_act1" target="u_act3"><mxGeometry relative="1" as="geometry"/></mxCell>
+    <mxCell id="e6" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" edge="1" parent="frame" source="u_act3" target="u_act2"><mxGeometry relative="1" as="geometry"><Array as="points"><mxPoint x="40" y="337"/><mxPoint x="40" y="212"/></Array></mxGeometry></mxCell>
+    <mxCell id="e7" value="Valid" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" edge="1" parent="frame" source="s_dec1" target="s_act2"><mxGeometry relative="1" as="geometry"/></mxCell>
+    <mxCell id="e8" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" edge="1" parent="frame" source="s_act2" target="u_act4"><mxGeometry relative="1" as="geometry"/></mxCell>
+    <mxCell id="e9" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" edge="1" parent="frame" source="u_act4" target="end1"><mxGeometry relative="1" as="geometry"/></mxCell>
+  </root>
+</mxGraphModel>
+```
+
+#### Diagram Mermaid Activity 1:
 ```mermaid
-flowchart LR
-    Admin[Administrator]
-    Staff[Staff Gudang]
-    Pimpinan[Pimpinan]
-
-    subgraph Sistem_Inventori ["Sistem Informasi Inventori PT Yintong"]
-        subgraph Otentikasi ["Otentikasi Akun"]
-            UC_Login(Login)
-            UC_Logout(Logout)
-        end
-
-        subgraph MasterData ["Data Master dan Konfigurasi"]
-            UC_Barang(Kelola Data Barang)
-            UC_Kategori(Kelola Kategori Barang)
-            UC_Golongan(Kelola Golongan Barang)
-            UC_Supplier(Kelola Data Supplier)
-            UC_StokMin(Setting Stok Minimum)
-        end
-
-        subgraph Transaksi ["Transaksi dan Operasional"]
-            UC_Masuk(Input Barang Masuk)
-            UC_Keluar(Input Barang Keluar)
-            UC_Mutasi(Mutasi Lokasi dan PIC)
-            UC_Pinjam(Catat Peminjaman)
-            UC_Kembali(Catat Pengembalian)
-            UC_Scan(Scan QR Code / Barcode)
-        end
-
-        subgraph Laporan ["Laporan dan Monitoring"]
-            UC_Dashboard(Lihat Dashboard dan Grafik)
-            UC_Notif(Monitoring Alert Stok Kritis)
-            UC_Laporan(Cetak Laporan PDF / Excel)
-        end
-
-        subgraph ManajemenUser ["Manajemen Pengguna"]
-            UC_User(Kelola Data User dan Role)
-        end
+flowchart TD
+    subgraph User [User / Pengguna]
+        Start1([Mulai]) --> U1[Buka Halaman Login]
+        U1 --> U2[Input Email dan Password lalu Klik Masuk]
+        U3[Terima Pesan Peringatan dan Ulangi Input] --> U2
+        U4[Masuk ke Dashboard Sesuai Role] --> End1([Selesai])
     end
 
-    %% Include Relations
-    UC_Masuk -.->|<<include>>| UC_Scan
-    UC_Keluar -.->|<<include>>| UC_Scan
-    UC_Mutasi -.->|<<include>>| UC_Scan
-
-    %% Staff Relations
-    Staff --- UC_Login
-    Staff --- UC_Logout
-    Staff --- UC_Barang
-    Staff --- UC_Masuk
-    Staff --- UC_Keluar
-    Staff --- UC_Mutasi
-    Staff --- UC_Pinjam
-    Staff --- UC_Kembali
-
-    %% Admin Relations
-    Admin --- UC_Login
-    Admin --- UC_Logout
-    Admin --- UC_Barang
-    Admin --- UC_Kategori
-    Admin --- UC_Golongan
-    Admin --- UC_Supplier
-    Admin --- UC_StokMin
-    Admin --- UC_Masuk
-    Admin --- UC_Keluar
-    Admin --- UC_Mutasi
-    Admin --- UC_Pinjam
-    Admin --- UC_Kembali
-    Admin --- UC_Dashboard
-    Admin --- UC_Notif
-    Admin --- UC_Laporan
-    Admin --- UC_User
-
-    %% Pimpinan Relations
-    Pimpinan --- UC_Login
-    Pimpinan --- UC_Logout
-    Pimpinan --- UC_Dashboard
-    Pimpinan --- UC_Notif
-    Pimpinan --- UC_Laporan
+    subgraph System [System / Sistem]
+        U2 --> S1{Verifikasi Kredensial dan Status Aktif?}
+        S1 -- Tidak Valid --> S2[Kirim Pesan Error Email atau Password Salah]
+        S2 --> U3
+        S1 -- Valid --> S3[Buat Sesi Login dan Siapkan Hak Akses Menu]
+        S3 --> U4
+    end
 ```
 
 ---
 
-# 2. 5 ACTIVITY DIAGRAM (SISI USER / NON-TEKNIS)
+### 2. Activity Diagram: Pendaftaran Barang Baru & Pemetaan Golongan
 
-### 1. Activity Diagram: Alur Login Pengguna
+#### XML Draw.io Activity Diagram 2:
+```xml
+<mxGraphModel dx="1000" dy="700" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="827" pageHeight="1169">
+  <root>
+    <mxCell id="0"/><mxCell id="1" parent="0"/>
+    <mxCell id="frame2" value="Activity Diagram: Pendaftaran Barang Baru &amp; Pemetaan Golongan" style="shape=umlFrame;whiteSpace=wrap;html=1;width=280;height=35;fontStyle=1;" vertex="1" parent="1"><mxGeometry x="40" y="40" width="620" height="560" as="geometry"/></mxCell>
+    <!-- Swimlanes -->
+    <mxCell id="l_u2" value="User (Admin / Staff)" style="swimlane;startSize=25;fontStyle=1;fillColor=#FFFFFF;" vertex="1" parent="frame2"><mxGeometry x="20" y="45" width="270" height="490" as="geometry"/></mxCell>
+    <mxCell id="l_s2" value="System (Sistem Inventori)" style="swimlane;startSize=25;fontStyle=1;fillColor=#FFFFFF;" vertex="1" parent="frame2"><mxGeometry x="290" y="45" width="290" height="490" as="geometry"/></mxCell>
+    <!-- Nodes User -->
+    <mxCell id="st2" value="" style="ellipse;fillColor=#000000;strokeColor=#000000;" vertex="1" parent="l_u2"><mxGeometry x="125" y="35" width="20" height="20" as="geometry"/></mxCell>
+    <mxCell id="u2_1" value="Buka Menu Data Barang &amp;&#xa;Klik Tambah Barang" style="rounded=1;whiteSpace=wrap;html=1;" vertex="1" parent="l_u2"><mxGeometry x="60" y="70" width="150" height="40" as="geometry"/></mxCell>
+    <mxCell id="u2_2" value="Pilih Kategori Barang&#xa;(Contoh: ATK)" style="rounded=1;whiteSpace=wrap;html=1;" vertex="1" parent="l_u2"><mxGeometry x="60" y="130" width="150" height="40" as="geometry"/></mxCell>
+    <mxCell id="u2_3" value="Pilih Golongan Barang&#xa;&amp; Lengkapi Form Barang" style="rounded=1;whiteSpace=wrap;html=1;" vertex="1" parent="l_u2"><mxGeometry x="60" y="250" width="150" height="40" as="geometry"/></mxCell>
+    <mxCell id="u2_4" value="Klik Tombol Simpan" style="rounded=1;whiteSpace=wrap;html=1;" vertex="1" parent="l_u2"><mxGeometry x="60" y="310" width="150" height="35" as="geometry"/></mxCell>
+    <mxCell id="u2_5" value="Lihat Barang Baru &amp; QR Code&#xa;pada Katalog Master Barang" style="rounded=1;whiteSpace=wrap;html=1;" vertex="1" parent="l_u2"><mxGeometry x="50" y="405" width="170" height="40" as="geometry"/></mxCell>
+    <mxCell id="end2" value="" style="ellipse;shape=endState;fillColor=#000000;strokeColor=#000000;" vertex="1" parent="l_u2"><mxGeometry x="123" y="455" width="24" height="24" as="geometry"/></mxCell>
+    <!-- Nodes System -->
+    <mxCell id="s2_1" value="Filter &amp; Muat Golongan Sesuai&#xa;Kategori Secara Dinamis" style="rounded=1;whiteSpace=wrap;html=1;" vertex="1" parent="l_s2"><mxGeometry x="65" y="130" width="160" height="40" as="geometry"/></mxCell>
+    <mxCell id="s2_2" value="Tampilkan Live Preview&#xa;Kode Barang (Hierarkis)" style="rounded=1;whiteSpace=wrap;html=1;" vertex="1" parent="l_s2"><mxGeometry x="65" y="190" width="160" height="40" as="geometry"/></mxCell>
+    <mxCell id="s2_dec" value="Validasi Form &amp;&#xa;Kelengkapan Input?" style="rhombus;whiteSpace=wrap;html=1;" vertex="1" parent="l_s2"><mxGeometry x="85" y="295" width="120" height="65" as="geometry"/></mxCell>
+    <mxCell id="s2_3" value="Generate Kode Hierarkis,&#xa;Render SVG QR Code, &amp;&#xa;Simpan Record ke Database" style="rounded=1;whiteSpace=wrap;html=1;" vertex="1" parent="l_s2"><mxGeometry x="60" y="395" width="170" height="50" as="geometry"/></mxCell>
+    <!-- Edges -->
+    <mxCell id="e2_1" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" edge="1" parent="frame2" source="st2" target="u2_1"><mxGeometry relative="1" as="geometry"/></mxCell>
+    <mxCell id="e2_2" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" edge="1" parent="frame2" source="u2_1" target="u2_2"><mxGeometry relative="1" as="geometry"/></mxCell>
+    <mxCell id="e2_3" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" edge="1" parent="frame2" source="u2_2" target="s2_1"><mxGeometry relative="1" as="geometry"/></mxCell>
+    <mxCell id="e2_4" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" edge="1" parent="frame2" source="s2_1" target="s2_2"><mxGeometry relative="1" as="geometry"/></mxCell>
+    <mxCell id="e2_5" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" edge="1" parent="frame2" source="s2_2" target="u2_3"><mxGeometry relative="1" as="geometry"/></mxCell>
+    <mxCell id="e2_6" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" edge="1" parent="frame2" source="u2_3" target="u2_4"><mxGeometry relative="1" as="geometry"/></mxCell>
+    <mxCell id="e2_7" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" edge="1" parent="frame2" source="u2_4" target="s2_dec"><mxGeometry relative="1" as="geometry"/></mxCell>
+    <mxCell id="e2_8" value="Tidak Valid" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" edge="1" parent="frame2" source="s2_dec" target="u2_3"><mxGeometry relative="1" as="geometry"><Array as="points"><mxPoint x="435" y="275"/></Array></mxGeometry></mxCell>
+    <mxCell id="e2_9" value="Valid" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" edge="1" parent="frame2" source="s2_dec" target="s2_3"><mxGeometry relative="1" as="geometry"/></mxCell>
+    <mxCell id="e2_10" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" edge="1" parent="frame2" source="s2_3" target="u2_5"><mxGeometry relative="1" as="geometry"/></mxCell>
+    <mxCell id="e2_11" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" edge="1" parent="frame2" source="u2_5" target="end2"><mxGeometry relative="1" as="geometry"/></mxCell>
+  </root>
+</mxGraphModel>
+```
+
+#### Diagram Mermaid Activity 2:
 ```mermaid
 flowchart TD
-    Start([Mulai]) --> A1[Pengguna membuka halaman Login]
-    A1 --> A2[Pengguna memasukkan Email dan Password]
-    A2 --> A3[Pengguna menekan tombol Masuk]
-    A3 --> A4{Apakah Data Akun Valid?}
-    
-    A4 -- Tidak Valid / Nonaktif --> A5[Sistem menampilkan pesan error: Email atau password salah]
-    A5 --> A2
+    subgraph User [User / Admin & Staff]
+        Start2([Mulai]) --> U2_1[Buka Menu Data Barang dan Klik Tambah Barang]
+        U2_1 --> U2_2[Pilih Kategori Barang]
+        U2_3[Pilih Golongan Barang dan Lengkapi Form Input] --> U2_4[Klik Tombol Simpan]
+        U2_5[Lihat Barang Baru dan QR Code pada Katalog] --> End2([Selesai])
+    end
 
-    A4 -- Valid --> A6{Pemeriksaan Role Pengguna}
-    
-    A6 -- Administrator --> A7[Buka Dashboard Admin: Hak Akses Penuh Master, Transaksi, Laporan, User]
-    A6 -- Staff Gudang --> A8[Buka Dashboard Staff: Hak Akses Operasional Barang dan Transaksi]
-    A6 -- Pimpinan --> A9[Buka Dashboard Pimpinan: Hak Akses Grafik Eksekutif dan Unduh Laporan]
-    
-    A7 --> End([Selesai])
-    A8 --> End
-    A9 --> End
+    subgraph System [System / Sistem]
+        U2_2 --> S2_1[Filter dan Muat Daftar Golongan Sesuai Kategori]
+        S2_1 --> S2_2[Tampilkan Live Preview Kode Barang Hierarkis]
+        S2_2 --> U2_3
+        U2_4 --> S2_3{Validasi Kelengkapan Data?}
+        S2_3 -- Tidak Valid --> U2_3
+        S2_3 -- Valid --> S2_4[Generate Kode Hierarkis, Cetak QR Code SVG, dan Simpan ke DB]
+        S2_4 --> U2_5
+    end
 ```
 
 ---
 
-### 2. Activity Diagram: Pendaftaran Barang Baru dan Pemetaan Golongan
+### 3. Activity Diagram: Mutasi Lokasi & PIC Barang (Scan QR / Auto-fill)
+
+#### XML Draw.io Activity Diagram 3:
+```xml
+<mxGraphModel dx="1000" dy="700" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="827" pageHeight="1169">
+  <root>
+    <mxCell id="0"/><mxCell id="1" parent="0"/>
+    <mxCell id="frame3" value="Activity Diagram: Mutasi Lokasi &amp; PIC Barang" style="shape=umlFrame;whiteSpace=wrap;html=1;width=250;height=35;fontStyle=1;" vertex="1" parent="1"><mxGeometry x="40" y="40" width="620" height="560" as="geometry"/></mxCell>
+    <!-- Swimlanes -->
+    <mxCell id="l_u3" value="User (Staff Gudang / Admin)" style="swimlane;startSize=25;fontStyle=1;fillColor=#FFFFFF;" vertex="1" parent="frame3"><mxGeometry x="20" y="45" width="270" height="490" as="geometry"/></mxCell>
+    <mxCell id="l_s3" value="System (Sistem Inventori)" style="swimlane;startSize=25;fontStyle=1;fillColor=#FFFFFF;" vertex="1" parent="frame3"><mxGeometry x="290" y="45" width="290" height="490" as="geometry"/></mxCell>
+    <!-- Nodes User -->
+    <mxCell id="st3" value="" style="ellipse;fillColor=#000000;strokeColor=#000000;" vertex="1" parent="l_u3"><mxGeometry x="125" y="35" width="20" height="20" as="geometry"/></mxCell>
+    <mxCell id="u3_1" value="Buka Menu Mutasi Barang &amp;&#xa;Klik Mutasikan Barang" style="rounded=1;whiteSpace=wrap;html=1;" vertex="1" parent="l_u3"><mxGeometry x="60" y="70" width="150" height="40" as="geometry"/></mxCell>
+    <mxCell id="u3_2" value="Pilih Barang dari Dropdown /&#xa;Scan QR Kamera" style="rounded=1;whiteSpace=wrap;html=1;" vertex="1" parent="l_u3"><mxGeometry x="60" y="130" width="150" height="40" as="geometry"/></mxCell>
+    <mxCell id="u3_3" value="Isi Jumlah Mutasi &amp;&#xa;Lokasi Penyimpanan Baru" style="rounded=1;whiteSpace=wrap;html=1;" vertex="1" parent="l_u3"><mxGeometry x="60" y="240" width="150" height="40" as="geometry"/></mxCell>
+    <mxCell id="u3_4" value="Klik Simpan Transaksi Mutasi" style="rounded=1;whiteSpace=wrap;html=1;" vertex="1" parent="l_u3"><mxGeometry x="55" y="300" width="160" height="35" as="geometry"/></mxCell>
+    <mxCell id="u3_5" value="Melihat Riwayat Mutasi&#xa;Terbaru pada Tabel" style="rounded=1;whiteSpace=wrap;html=1;" vertex="1" parent="l_u3"><mxGeometry x="60" y="405" width="150" height="40" as="geometry"/></mxCell>
+    <mxCell id="end3" value="" style="ellipse;shape=endState;fillColor=#000000;strokeColor=#000000;" vertex="1" parent="l_u3"><mxGeometry x="123" y="455" width="24" height="24" as="geometry"/></mxCell>
+    <!-- Nodes System -->
+    <mxCell id="s3_1" value="Otomatis Mengisi Lokasi Asal,&#xa;PIC Asal, Stok, &amp; Catatan Mutasi" style="rounded=1;whiteSpace=wrap;html=1;" vertex="1" parent="l_s3"><mxGeometry x="60" y="130" width="170" height="40" as="geometry"/></mxCell>
+    <mxCell id="s3_dec" value="Validasi Jumlah&#xa;&lt;= Stok Tersedia?" style="rhombus;whiteSpace=wrap;html=1;" vertex="1" parent="l_s3"><mxGeometry x="85" y="285" width="120" height="65" as="geometry"/></mxCell>
+    <mxCell id="s3_2" value="Tampilkan Peringatan:&#xa;Jumlah Melebihi Stok" style="rounded=1;whiteSpace=wrap;html=1;" vertex="1" parent="l_s3"><mxGeometry x="70" y="225" width="150" height="40" as="geometry"/></mxCell>
+    <mxCell id="s3_3" value="Catat Record Mutasi &amp;&#xa;Perbarui Lokasi/PIC pada Master" style="rounded=1;whiteSpace=wrap;html=1;" vertex="1" parent="l_s3"><mxGeometry x="60" y="400" width="170" height="45" as="geometry"/></mxCell>
+    <!-- Edges -->
+    <mxCell id="e3_1" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" edge="1" parent="frame3" source="st3" target="u3_1"><mxGeometry relative="1" as="geometry"/></mxCell>
+    <mxCell id="e3_2" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" edge="1" parent="frame3" source="u3_1" target="u3_2"><mxGeometry relative="1" as="geometry"/></mxCell>
+    <mxCell id="e3_3" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" edge="1" parent="frame3" source="u3_2" target="s3_1"><mxGeometry relative="1" as="geometry"/></mxCell>
+    <mxCell id="e3_4" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" edge="1" parent="frame3" source="s3_1" target="u3_3"><mxGeometry relative="1" as="geometry"/></mxCell>
+    <mxCell id="e3_5" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" edge="1" parent="frame3" source="u3_3" target="u3_4"><mxGeometry relative="1" as="geometry"/></mxCell>
+    <mxCell id="e3_6" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" edge="1" parent="frame3" source="u3_4" target="s3_dec"><mxGeometry relative="1" as="geometry"/></mxCell>
+    <mxCell id="e3_7" value="Tidak Cukup" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" edge="1" parent="frame3" source="s3_dec" target="s3_2"><mxGeometry relative="1" as="geometry"/></mxCell>
+    <mxCell id="e3_8" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" edge="1" parent="frame3" source="s3_2" target="u3_3"><mxGeometry relative="1" as="geometry"/></mxCell>
+    <mxCell id="e3_9" value="Cukup" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" edge="1" parent="frame3" source="s3_dec" target="s3_3"><mxGeometry relative="1" as="geometry"/></mxCell>
+    <mxCell id="e3_10" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" edge="1" parent="frame3" source="s3_3" target="u3_5"><mxGeometry relative="1" as="geometry"/></mxCell>
+    <mxCell id="e3_11" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" edge="1" parent="frame3" source="u3_5" target="end3"><mxGeometry relative="1" as="geometry"/></mxCell>
+  </root>
+</mxGraphModel>
+```
+
+#### Diagram Mermaid Activity 3:
 ```mermaid
 flowchart TD
-    Start([Mulai]) --> B1[Pengguna membuka menu Data Barang dan klik Tambah Barang]
-    B1 --> B2[Pengguna mengisi Nama Barang, Satuan, Lokasi Penyimpanan, dan Harga]
-    B2 --> B3[Pengguna memilih Kategori Barang]
-    B3 --> B4[Sistem memfilter daftar Golongan Barang yang sesuai]
-    B4 --> B5[Pengguna memilih Golongan Barang]
-    B5 --> B6[Sistem menampilkan Live Preview Kode Barang]
-    B6 --> B7[Pengguna menekan tombol Simpan Data Barang]
-    B7 --> B8{Apakah Data Lengkap dan Valid?}
-    
-    B8 -- Tidak Lengkap --> B9[Sistem menampilkan tanda peringatan merah pada kolom input]
-    B9 --> B2
+    subgraph User [User / Staff & Admin]
+        Start3([Mulai]) --> U3_1[Buka Menu Mutasi dan Klik Mutasikan Barang]
+        U3_1 --> U3_2[Pilih Barang Manual / Scan QR Kamera]
+        U3_3[Isi Jumlah Mutasi dan Lokasi Baru] --> U3_4[Klik Simpan Transaksi Mutasi]
+        U3_5[Melihat Riwayat Mutasi Terbaru] --> End3([Selesai])
+    end
 
-    B8 -- Valid --> B10[Sistem menyimpan barang, membuat file QR Code otomatis, dan menampilkan pesan sukses]
-    B10 --> B11[Barang baru muncul di daftar katalog siap ditransaksikan]
-    B11 --> End([Selesai])
+    subgraph System [System / Sistem]
+        U3_2 --> S3_1[Auto-fill Lokasi Asal, PIC Asal, Stok, dan Catatan]
+        S3_1 --> U3_3
+        U3_4 --> S3_2{Validasi Jumlah <= Stok Tersedia?}
+        S3_2 -- Melebihi Stok --> S3_3[Tampilkan Pesan Peringatan Stok Kurang]
+        S3_3 --> U3_3
+        S3_2 -- Cukup --> S3_4[Catat Mutasi dan Perbarui Lokasi/PIC Master Barang]
+        S3_4 --> U3_5
+    end
 ```
 
 ---
 
-### 3. Activity Diagram: Mutasi Lokasi dan PIC Barang
+### 4. Activity Diagram: Peminjaman & Pengembalian Barang Inventaris
+
+#### XML Draw.io Activity Diagram 4:
+```xml
+<mxGraphModel dx="1000" dy="700" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="827" pageHeight="1169">
+  <root>
+    <mxCell id="0"/><mxCell id="1" parent="0"/>
+    <mxCell id="frame4" value="Activity Diagram: Peminjaman &amp; Pengembalian Barang" style="shape=umlFrame;whiteSpace=wrap;html=1;width=270;height=35;fontStyle=1;" vertex="1" parent="1"><mxGeometry x="40" y="40" width="620" height="580" as="geometry"/></mxCell>
+    <!-- Swimlanes -->
+    <mxCell id="l_u4" value="User (Staff / Admin)" style="swimlane;startSize=25;fontStyle=1;fillColor=#FFFFFF;" vertex="1" parent="frame4"><mxGeometry x="20" y="45" width="270" height="510" as="geometry"/></mxCell>
+    <mxCell id="l_s4" value="System (Sistem Inventori)" style="swimlane;startSize=25;fontStyle=1;fillColor=#FFFFFF;" vertex="1" parent="frame4"><mxGeometry x="290" y="45" width="290" height="510" as="geometry"/></mxCell>
+    <!-- Nodes User -->
+    <mxCell id="st4" value="" style="ellipse;fillColor=#000000;strokeColor=#000000;" vertex="1" parent="l_u4"><mxGeometry x="125" y="30" width="20" height="20" as="geometry"/></mxCell>
+    <mxCell id="u4_dec" value="Pilih Transaksi?" style="rhombus;whiteSpace=wrap;html=1;" vertex="1" parent="l_u4"><mxGeometry x="85" y="65" width="100" height="50" as="geometry"/></mxCell>
+    <mxCell id="u4_p1" value="Input Data Peminjaman&#xa;(Barang, Peminjam, Tgl Kembali)" style="rounded=1;whiteSpace=wrap;html=1;" vertex="1" parent="l_u4"><mxGeometry x="20" y="140" width="150" height="45" as="geometry"/></mxCell>
+    <mxCell id="u4_p2" value="Klik Simpan Pinjam" style="rounded=1;whiteSpace=wrap;html=1;" vertex="1" parent="l_u4"><mxGeometry x="35" y="205" width="120" height="35" as="geometry"/></mxCell>
+    <mxCell id="u4_k1" value="Pilih Transaksi Aktif &amp;&#xa;Klik Kembalikan Barang" style="rounded=1;whiteSpace=wrap;html=1;" vertex="1" parent="l_u4"><mxGeometry x="100" y="330" width="150" height="40" as="geometry"/></mxCell>
+    <mxCell id="u4_k2" value="Input Tgl Kembali &amp; Kondisi&#xa;Klik Simpan Pengembalian" style="rounded=1;whiteSpace=wrap;html=1;" vertex="1" parent="l_u4"><mxGeometry x="100" y="390" width="150" height="40" as="geometry"/></mxCell>
+    <mxCell id="end4" value="" style="ellipse;shape=endState;fillColor=#000000;strokeColor=#000000;" vertex="1" parent="l_u4"><mxGeometry x="123" y="465" width="24" height="24" as="geometry"/></mxCell>
+    <!-- Nodes System -->
+    <mxCell id="s4_dec" value="Cek Ketersediaan&#xa;Stok Barang?" style="rhombus;whiteSpace=wrap;html=1;" vertex="1" parent="l_s4"><mxGeometry x="85" y="190" width="120" height="65" as="geometry"/></mxCell>
+    <mxCell id="s4_p1" value="Catat Peminjaman (PIN-...),&#xa;Status 'Dipinjam', &amp;&#xa;Kurangi Stok Barang" style="rounded=1;whiteSpace=wrap;html=1;" vertex="1" parent="l_s4"><mxGeometry x="60" y="275" width="170" height="45" as="geometry"/></mxCell>
+    <mxCell id="s4_k1" value="Catat Pengembalian (RET-...),&#xa;Ubah Status 'Dikembalikan', &amp;&#xa;Tambah Stok Kembali" style="rounded=1;whiteSpace=wrap;html=1;" vertex="1" parent="l_s4"><mxGeometry x="60" y="390" width="170" height="50" as="geometry"/></mxCell>
+    <!-- Edges -->
+    <mxCell id="e4_1" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" edge="1" parent="frame4" source="st4" target="u4_dec"><mxGeometry relative="1" as="geometry"/></mxCell>
+    <mxCell id="e4_2" value="Pinjam" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" edge="1" parent="frame4" source="u4_dec" target="u4_p1"><mxGeometry relative="1" as="geometry"/></mxCell>
+    <mxCell id="e4_3" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" edge="1" parent="frame4" source="u4_p1" target="u4_p2"><mxGeometry relative="1" as="geometry"/></mxCell>
+    <mxCell id="e4_4" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" edge="1" parent="frame4" source="u4_p2" target="s4_dec"><mxGeometry relative="1" as="geometry"/></mxCell>
+    <mxCell id="e4_5" value="Kurang" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" edge="1" parent="frame4" source="s4_dec" target="u4_p1"><mxGeometry relative="1" as="geometry"><Array as="points"><mxPoint x="435" y="162"/></Array></mxGeometry></mxCell>
+    <mxCell id="e4_6" value="Cukup" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" edge="1" parent="frame4" source="s4_dec" target="s4_p1"><mxGeometry relative="1" as="geometry"/></mxCell>
+    <mxCell id="e4_7" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" edge="1" parent="frame4" source="s4_p1" target="end4"><mxGeometry relative="1" as="geometry"/></mxCell>
+    <mxCell id="e4_8" value="Kembali" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" edge="1" parent="frame4" source="u4_dec" target="u4_k1"><mxGeometry relative="1" as="geometry"/></mxCell>
+    <mxCell id="e4_9" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" edge="1" parent="frame4" source="u4_k1" target="u4_k2"><mxGeometry relative="1" as="geometry"/></mxCell>
+    <mxCell id="e4_10" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" edge="1" parent="frame4" source="u4_k2" target="s4_k1"><mxGeometry relative="1" as="geometry"/></mxCell>
+    <mxCell id="e4_11" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" edge="1" parent="frame4" source="s4_k1" target="end4"><mxGeometry relative="1" as="geometry"/></mxCell>
+  </root>
+</mxGraphModel>
+```
+
+#### Diagram Mermaid Activity 4:
 ```mermaid
 flowchart TD
-    Start([Mulai]) --> C1[Pengguna membuka menu Mutasi Barang dan klik Mutasikan Barang]
-    C1 --> C2{Metode Pemilihan Barang}
-    
-    C2 -- Pilih Manual --> C3[Pengguna memilih barang dari daftar pilihan]
-    C2 -- Scan Kamera --> C4[Pengguna klik Scan QR Code dan mengarahkan kamera ke barcode]
-    C4 --> C5[Sistem mendeteksi QR Code dan memilih barang otomatis]
-    
-    C3 --> C6[Sistem otomatis mengisi Lokasi Asal, PIC Asal, Stok Tersedia, dan Catatan Mutasi]
-    C5 --> C6
-    
-    C6 --> C7[Pengguna mengisi Jumlah Unit yang dimutasi dan Lokasi Tujuan Baru]
-    C7 --> C8[Pengguna menekan tombol Simpan Transaksi Mutasi]
-    C8 --> C9{Apakah Jumlah Mutasi <= Stok?}
-    
-    C9 -- Melebihi Stok --> C10[Sistem menolak dan menampilkan pesan peringatan stok tidak mencukupi]
-    C10 --> C7
+    subgraph User [User / Staff & Admin]
+        Start4([Mulai]) --> U4_Dec{Pilihan Transaksi?}
+        U4_Dec -- Peminjaman --> U4_P1[Input Barang, Peminjam, dan Tgl Kembali]
+        U4_P1 --> U4_P2[Klik Simpan Pinjam]
+        U4_Dec -- Pengembalian --> U4_K1[Pilih Transaksi Aktif dan Klik Kembalikan]
+        U4_K1 --> U4_K2[Input Tgl Kembali, Kondisi, dan Simpan]
+        End4([Selesai])
+    end
 
-    C9 -- Stok Mencukupi --> C11[Sistem mencatat mutasi dan memperbarui Lokasi serta PIC pada data master barang]
-    C11 --> C12[Sistem menampilkan riwayat mutasi terbaru]
-    C12 --> End([Selesai])
+    subgraph System [System / Sistem]
+        U4_P2 --> S4_Dec{Cek Ketersediaan Stok?}
+        S4_Dec -- Stok Kurang --> U4_P1
+        S4_Dec -- Stok Cukup --> S4_P1[Catat Peminjaman, Status Dipinjam, dan Kurangi Stok]
+        S4_P1 --> End4
+        U4_K2 --> S4_K1[Catat Pengembalian, Update Status Dikembalikan, dan Tambah Stok]
+        S4_K1 --> End4
+    end
 ```
 
 ---
 
-### 4. Activity Diagram: Peminjaman dan Pengembalian Barang Inventaris
-```mermaid
-flowchart TD
-    Start([Mulai]) --> D1[Pengguna membuka menu Peminjaman Barang]
-    D1 --> D2{Pilihan Aktivitas}
-    
-    %% Alur Pinjam
-    D2 -- Peminjaman Baru --> D3[Pengguna klik Catat Peminjaman]
-    D3 --> D4[Pengguna memilih Barang, Nama Peminjam, Jumlah, dan Tanggal Rencana Kembali]
-    D4 --> D5[Pengguna klik Simpan Peminjaman]
-    D5 --> D6{Apakah Stok Tersedia?}
-    D6 -- Stok Habis / Kurang --> D7[Sistem menampilkan pesan stok tidak mencukupi]
-    D7 --> D4
-    D6 -- Stok Cukup --> D8[Sistem memotong stok barang, membuat no transaksi PIN, dan mencatat status Dipinjam]
-    D8 --> D9[Barang diserahkan ke peminjam]
+### 5. Activity Diagram: Monitoring Stok & Cetak Laporan (PDF / Excel)
 
-    %% Alur Kembali
-    D2 -- Pengembalian Barang --> D10[Pengguna mencari data pada daftar peminjaman aktif]
-    D10 --> D11[Pengguna klik tombol Kembalikan Barang]
-    D11 --> D12[Pengguna mengisi Tanggal Kembali Aktual dan Kondisi Barang saat diterima]
-    D12 --> D13[Pengguna klik Simpan Pengembalian]
-    D13 --> D14[Sistem mengembalikan stok ke master barang dan mengubah status transaksi menjadi Dikembalikan]
-    
-    D9 --> End([Selesai])
-    D14 --> End
+#### XML Draw.io Activity Diagram 5:
+```xml
+<mxGraphModel dx="1000" dy="700" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="827" pageHeight="1169">
+  <root>
+    <mxCell id="0"/><mxCell id="1" parent="0"/>
+    <mxCell id="frame5" value="Activity Diagram: Monitoring Stok &amp; Cetak Laporan" style="shape=umlFrame;whiteSpace=wrap;html=1;width=250;height=35;fontStyle=1;" vertex="1" parent="1"><mxGeometry x="40" y="40" width="620" height="520" as="geometry"/></mxCell>
+    <!-- Swimlanes -->
+    <mxCell id="l_u5" value="User (Pimpinan / Admin)" style="swimlane;startSize=25;fontStyle=1;fillColor=#FFFFFF;" vertex="1" parent="frame5"><mxGeometry x="20" y="45" width="270" height="450" as="geometry"/></mxCell>
+    <mxCell id="l_s5" value="System (Sistem Inventori)" style="swimlane;startSize=25;fontStyle=1;fillColor=#FFFFFF;" vertex="1" parent="frame5"><mxGeometry x="290" y="45" width="290" height="450" as="geometry"/></mxCell>
+    <!-- Nodes User -->
+    <mxCell id="st5" value="" style="ellipse;fillColor=#000000;strokeColor=#000000;" vertex="1" parent="l_u5"><mxGeometry x="125" y="30" width="20" height="20" as="geometry"/></mxCell>
+    <mxCell id="u5_1" value="Buka Menu Laporan Inventori" style="rounded=1;whiteSpace=wrap;html=1;" vertex="1" parent="l_u5"><mxGeometry x="60" y="65" width="150" height="35" as="geometry"/></mxCell>
+    <mxCell id="u5_2" value="Pilih Jenis Laporan &amp;&#xa;Tentukan Filter (Periode/Kategori)" style="rounded=1;whiteSpace=wrap;html=1;" vertex="1" parent="l_u5"><mxGeometry x="50" y="120" width="170" height="40" as="geometry"/></mxCell>
+    <mxCell id="u5_3" value="Klik Tombol Tampilkan / Filter" style="rounded=1;whiteSpace=wrap;html=1;" vertex="1" parent="l_u5"><mxGeometry x="55" y="180" width="160" height="35" as="geometry"/></mxCell>
+    <mxCell id="u5_4" value="Melihat Pratinjau Tabel &amp;&#xa;Pilih Ekspor (PDF / Excel)" style="rounded=1;whiteSpace=wrap;html=1;" vertex="1" parent="l_u5"><mxGeometry x="55" y="270" width="160" height="40" as="geometry"/></mxCell>
+    <mxCell id="u5_5" value="Menerima Unduhan File Dokumen&#xa;(Laporan_Inventori.pdf / .xlsx)" style="rounded=1;whiteSpace=wrap;html=1;" vertex="1" parent="l_u5"><mxGeometry x="50" y="375" width="170" height="40" as="geometry"/></mxCell>
+    <mxCell id="end5" value="" style="ellipse;shape=endState;fillColor=#000000;strokeColor=#000000;" vertex="1" parent="l_u5"><mxGeometry x="123" y="420" width="20" height="20" as="geometry"/></mxCell>
+    <!-- Nodes System -->
+    <mxCell id="s5_1" value="Query Database Sesuai Filter &amp;&#xa;Sajikan Tabel Pratinjau" style="rounded=1;whiteSpace=wrap;html=1;" vertex="1" parent="l_s5"><mxGeometry x="60" y="175" width="170" height="45" as="geometry"/></mxCell>
+    <mxCell id="s5_2" value="Render Dokumen Ber-Kop Surat&#xa;(PDF DomPDF / Sheet Excel) &amp;&#xa;Kirim File Download Stream" style="rounded=1;whiteSpace=wrap;html=1;" vertex="1" parent="l_s5"><mxGeometry x="55" y="265" width="180" height="50" as="geometry"/></mxCell>
+    <!-- Edges -->
+    <mxCell id="e5_1" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" edge="1" parent="frame5" source="st5" target="u5_1"><mxGeometry relative="1" as="geometry"/></mxCell>
+    <mxCell id="e5_2" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" edge="1" parent="frame5" source="u5_1" target="u5_2"><mxGeometry relative="1" as="geometry"/></mxCell>
+    <mxCell id="e5_3" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" edge="1" parent="frame5" source="u5_2" target="u5_3"><mxGeometry relative="1" as="geometry"/></mxCell>
+    <mxCell id="e5_4" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" edge="1" parent="frame5" source="u5_3" target="s5_1"><mxGeometry relative="1" as="geometry"/></mxCell>
+    <mxCell id="e5_5" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" edge="1" parent="frame5" source="s5_1" target="u5_4"><mxGeometry relative="1" as="geometry"/></mxCell>
+    <mxCell id="e5_6" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" edge="1" parent="frame5" source="u5_4" target="s5_2"><mxGeometry relative="1" as="geometry"/></mxCell>
+    <mxCell id="e5_7" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" edge="1" parent="frame5" source="s5_2" target="u5_5"><mxGeometry relative="1" as="geometry"/></mxCell>
+    <mxCell id="e5_8" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" edge="1" parent="frame5" source="u5_5" target="end5"><mxGeometry relative="1" as="geometry"/></mxCell>
+  </root>
+</mxGraphModel>
 ```
 
----
-
-### 5. Activity Diagram: Monitoring Stok dan Cetak Laporan
+#### Diagram Mermaid Activity 5:
 ```mermaid
 flowchart TD
-    Start([Mulai]) --> E1[Pengguna membuka menu Laporan Inventori]
-    E1 --> E2[Pengguna memilih Jenis Laporan: Stok / Masuk / Keluar / Mutasi / Pinjam]
-    E2 --> E3[Pengguna mengatur Filter: Periode Tanggal, Kategori, atau Lokasi]
-    E3 --> E4[Pengguna klik tombol Tampilkan / Filter]
-    E4 --> E5[Sistem memproses dan menyajikan tabel pratinjau data laporan di layar]
-    E5 --> E6{Pilihan Format Unduh}
-    
-    E6 -- Unduh PDF --> E7[Pengguna klik tombol Cetak PDF]
-    E7 --> E8[Sistem menyusun dokumen PDF ber-kop surat resmi PT Yintong format tema Navy]
-    E8 --> E9[File PDF otomatis terunduh ke komputer pengguna]
+    subgraph User [User / Pimpinan & Admin]
+        Start5([Mulai]) --> U5_1[Buka Menu Laporan Inventori]
+        U5_1 --> U5_2[Pilih Jenis Laporan dan Tentukan Filter]
+        U5_2 --> U5_3[Klik Tombol Tampilkan / Filter]
+        U5_4[Melihat Pratinjau Tabel dan Klik Cetak PDF / Excel]
+        U5_5[Menerima Unduhan File Laporan Resmi] --> End5([Selesai])
+    end
 
-    E6 -- Unduh Excel --> E10[Pengguna klik tombol Ekspor Excel]
-    E10 --> E11[Sistem membentuk file spreadsheet .xlsx]
-    E11 --> E12[File Excel otomatis terunduh untuk rekapitulasi data]
-
-    E9 --> End([Selesai])
-    E12 --> End
+    subgraph System [System / Sistem]
+        U5_3 --> S5_1[Query Database Sesuai Filter dan Sajikan Tabel Pratinjau]
+        S5_1 --> U5_4
+        U5_4 --> S5_2[Render Dokumen Ber-Kop Surat dan Kirim File Stream Download]
+        S5_2 --> U5_5
+    end
 ```
 
 ---
